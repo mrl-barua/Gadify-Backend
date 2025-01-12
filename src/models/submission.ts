@@ -1,14 +1,20 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/db";
+import { Proponents } from "./proponents";
+import { Evaluator } from "./evaluator";
+import { Remarks } from "./remarks";
 
 export class Submission extends Model {
   public id!: number;
-  public title!: string;
-  public description!: string;
+  public submissionId!: string;
+  public proponentId!: number;
+  public evaluatorId!: number;
+  public proposalTitle!: string;
+  public proposalDescription!: string;
+  public resourcesLink!: string;
+  public submissionStatus!: "Pending" | "Approved" | "Rejected";
+  public remarksId!: number;
   public createdAt!: Date;
-  public updatedAt!: Date;
-
-  // Define any additional methods for database interactions here
 }
 
 Submission.init(
@@ -18,20 +24,58 @@ Submission.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    title: {
-      type: DataTypes.STRING,
+    submissionId: {
+      type: DataTypes.STRING(10),
+      unique: true,
       allowNull: false,
     },
-    description: {
+    proponentId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "Proponents",
+        key: "id",
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    },
+    evaluatorId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "Evaluator",
+        key: "id",
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    },
+    proposalTitle: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    proposalDescription: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    createdAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
+    resourcesLink: {
+      type: DataTypes.TEXT,
+      allowNull: true,
     },
-    updatedAt: {
+    submissionStatus: {
+      type: DataTypes.ENUM("Pending", "Approved", "Rejected"),
+      allowNull: false,
+    },
+    remarksId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "Remarks",
+        key: "id",
+      },
+      onDelete: "SET NULL",
+      onUpdate: "CASCADE",
+    },
+    createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
@@ -39,7 +83,14 @@ Submission.init(
   },
   {
     sequelize,
-    tableName: "submissions",
-    timestamps: true,
+    tableName: "Submission",
+    timestamps: false,
   }
 );
+
+Submission.belongsTo(Proponents, {
+  foreignKey: "proponentId",
+  as: "proponent",
+});
+Submission.belongsTo(Evaluator, { foreignKey: "evaluatorId", as: "evaluator" });
+Submission.belongsTo(Remarks, { foreignKey: "remarksId", as: "remarks" });

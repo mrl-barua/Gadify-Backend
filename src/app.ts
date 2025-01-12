@@ -9,6 +9,7 @@ import Campus from "./routes/campusRoutes";
 import Office from "./routes/officeRoutes";
 import Evaluator from "./routes/evaluatorRoutes";
 import Remarks from "./routes/remarksRoutes";
+import Submission from "./routes/submissionRoutes";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,6 +23,7 @@ app.use("/api", Campus);
 app.use("/api", Office);
 app.use("/api", Evaluator);
 app.use("/api", Remarks);
+app.use("/api", Submission);
 
 sequelize
   .authenticate()
