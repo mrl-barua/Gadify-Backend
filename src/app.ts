@@ -6,6 +6,7 @@ import Admin from "./routes/adminRoutes";
 import Proponents from "./routes/proponentsRoutes";
 import Department from "./routes/departmentRoutes";
 import Campus from "./routes/campusRoutes";
+import Office from "./routes/officeRoutes";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,6 +17,7 @@ app.use("/api", Admin);
 app.use("/api", Proponents);
 app.use("/api", Department);
 app.use("/api", Campus);
+app.use("/api", Office);
 
 sequelize
   .authenticate()
