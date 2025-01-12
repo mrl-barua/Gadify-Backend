@@ -1,7 +1,12 @@
 import express from "express";
+import { Request, Response } from "express";
 import sequelize from "./config/db";
 import { json } from "body-parser";
-import { authenticateJWT } from "./middleware/auth";
+import {
+  authenticateJWT,
+  blacklistToken,
+  checkBlacklist,
+} from "./middleware/auth";
 import Admin from "./routes/adminRoutes";
 import Proponents from "./routes/proponentsRoutes";
 import Department from "./routes/departmentRoutes";
@@ -19,7 +24,7 @@ app.use(express.json());
 
 app.use("/api", AuthRoutes);
 
-app.use("/api", authenticateJWT, Admin);
+app.use("/api", authenticateJWT, checkBlacklist, Admin);
 // app.use("/api", authenticateJWT, Proponents);
 // app.use("/api", authenticateJWT, Department);
 // app.use("/api", authenticateJWT, Campus);

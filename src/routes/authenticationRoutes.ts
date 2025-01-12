@@ -1,7 +1,8 @@
 import express, { Request, Response } from "express";
 import { generateToken, hashPassword, comparePassword } from "../auth";
 import { Proponents } from "../models/proponents";
-
+import { BlacklistedToken } from "../models/blacklistedToken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 const router = express.Router();
 
 router.post("/register/proponent", async (req: Request, res: Response) => {
@@ -99,6 +100,23 @@ router.post("/login", async (req: Request, res: Response) => {
     username: proponent.userName,
   });
   res.json({ token });
+});
+
+router.post("/logout", async (req: Request, res: Response) => {
+  const token = req.header("Authorization")?.split(" ")[1];
+
+  if (!token) {
+    return res.status(400).json({ message: "Token is required." });
+  }
+
+  // Decode the token to extract expiration
+  const decoded = jwt.decode(token) as jwt.JwtPayload;
+  const expiresAt = new Date(decoded.exp! * 1000);
+
+  // Save to blacklist
+  await BlacklistedToken.create({ token, expiresAt });
+
+  res.json({ message: "Token has been blacklisted." });
 });
 
 export default router;
