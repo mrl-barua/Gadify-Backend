@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Proponents } from "../models/proponents";
+import { Department } from "../models/department";
 
 export const GetAllProponents = async (req: Request, res: Response) => {
   try {
@@ -12,10 +13,39 @@ export const GetAllProponents = async (req: Request, res: Response) => {
       .json({ error: "error getting new proponents", details: errorMessage });
   }
 };
+export const GetProponentsWithDepartment = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const proponents = await Proponents.findAll({
+      include: [
+        {
+          model: Department,
+          as: "department",
+          attributes: ["departmentId", "departmentName", "campusId"],
+        },
+      ],
+    });
+    res.json(proponents);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "error getting proponents with department",
+      details: errorMessage,
+    });
+  }
+};
 
 export const CreateProponents = async (req: Request, res: Response) => {
-  const { departmentId, proponentType, proponentStatus, fullName, password } =
-    req.body;
+  const {
+    departmentId,
+    proponentType,
+    proponentStatus,
+    fullName,
+    userName,
+    password,
+  } = req.body;
 
   // Input validation
   const missingFields = [];
@@ -23,6 +53,7 @@ export const CreateProponents = async (req: Request, res: Response) => {
   if (!proponentType) missingFields.push("proponentType");
   if (!proponentStatus) missingFields.push("proponentStatus");
   if (!fullName) missingFields.push("fullName");
+  if (!userName) missingFields.push("userName");
   if (!password) missingFields.push("password");
 
   if (missingFields.length > 0) {
@@ -35,15 +66,34 @@ export const CreateProponents = async (req: Request, res: Response) => {
     const lastProponents = await Proponents.findOne({
       order: [["id", "DESC"]],
     });
-    const newProponentsId = lastProponents
-      ? `A-${String(lastProponents.id + 1).padStart(4, "0")}`
-      : "A-0001";
+
+    const newProponentsId =
+      proponentType === "Inside"
+        ? lastProponents
+          ? `IN-${String(lastProponents.id + 1).padStart(4, "0")}`
+          : "IN-0001"
+        : proponentType === "Outside"
+        ? lastProponents
+          ? `OUT-${String(lastProponents.id + 1).padStart(4, "0")}`
+          : "OUT-0001"
+        : null;
+
+    const proponentsUserNameExist = await Proponents.findOne({
+      where: { userName },
+    });
+    if (proponentsUserNameExist) {
+      return res.status(400).json({
+        message: "Username already exist in the database, please use another",
+      });
+    }
+
     const newProponents = await Proponents.create({
       proponentId: newProponentsId,
       departmentId,
       proponentType,
       proponentStatus,
       fullName,
+      userName,
       password,
     });
     res.status(201).json(newProponents);

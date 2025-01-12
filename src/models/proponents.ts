@@ -1,5 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/db";
+import { Department } from "./department";
 
 export enum ProponentType {
   Inside = "Inside",
@@ -19,6 +20,7 @@ export class Proponents extends Model {
   public proponentType!: ProponentType;
   public proponentStatus!: ProponentStatus;
   public fullName!: string;
+  public userName!: string;
   public password!: string;
   public readonly createdAt!: Date;
 }
@@ -52,6 +54,10 @@ Proponents.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    userName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -68,3 +74,11 @@ Proponents.init(
     timestamps: false,
   }
 );
+Proponents.belongsTo(Department, {
+  foreignKey: "departmentId",
+  as: "department",
+});
+Department.hasMany(Proponents, {
+  foreignKey: "departmentId",
+  as: "proponents",
+});

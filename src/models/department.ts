@@ -3,11 +3,9 @@ import sequelize from "../config/db";
 
 export class Department extends Model {
   public id!: number;
-  public name!: string;
-  public createdAt!: Date;
-  public updatedAt!: Date;
-
-  // Define any additional methods for database interactions here
+  public departmentId!: string;
+  public campusId!: number;
+  public departmentName!: string;
 }
 
 Department.init(
@@ -17,24 +15,22 @@ Department.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
+    departmentId: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    campusId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    departmentName: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
     },
   },
   {
     sequelize,
-    tableName: "departments",
-    timestamps: true,
+    tableName: "Department",
+    timestamps: false,
   }
 );
