@@ -1,5 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/db";
+import { Campus } from "./campus";
 
 export class Department extends Model {
   public id!: number;
@@ -34,3 +35,7 @@ Department.init(
     timestamps: false,
   }
 );
+Department.belongsTo(Campus, {
+  foreignKey: "campusId",
+  as: "campus",
+});

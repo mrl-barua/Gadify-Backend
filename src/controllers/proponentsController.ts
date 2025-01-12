@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Proponents } from "../models/proponents";
 import { Department } from "../models/department";
+import { Campus } from "../models/campus";
 
 export const GetAllProponents = async (req: Request, res: Response) => {
   try {
@@ -24,6 +25,13 @@ export const GetProponentsWithDepartment = async (
           model: Department,
           as: "department",
           attributes: ["departmentId", "departmentName", "campusId"],
+          include: [
+            {
+              model: Campus,
+              as: "campus",
+              attributes: ["campusId", "campusName", "campusAddress"],
+            },
+          ],
         },
       ],
     });
