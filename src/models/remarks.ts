@@ -3,11 +3,8 @@ import sequelize from "../config/db";
 
 export class Remarks extends Model {
   public id!: number;
-  public submissionId!: number;
-  public evaluatorId!: number;
-  public comment!: string;
-  public createdAt!: Date;
-  public updatedAt!: Date;
+  public remarksId!: string;
+  public remarks!: string;
 }
 
 Remarks.init(
@@ -17,31 +14,19 @@ Remarks.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    submissionId: {
-      type: DataTypes.INTEGER,
+    remarksId: {
+      type: DataTypes.STRING(10),
       allowNull: false,
+      unique: true,
     },
-    evaluatorId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    comment: {
+    remarks: {
       type: DataTypes.TEXT,
       allowNull: false,
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
     },
   },
   {
     sequelize,
     tableName: "remarks",
+    timestamps: false,
   }
 );
