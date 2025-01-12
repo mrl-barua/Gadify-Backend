@@ -1,7 +1,7 @@
 import express from "express";
 import sequelize from "./config/db";
 import { json } from "body-parser";
-
+import { authenticateJWT } from "./middleware/auth";
 import Admin from "./routes/adminRoutes";
 import Proponents from "./routes/proponentsRoutes";
 import Department from "./routes/departmentRoutes";
@@ -10,13 +10,26 @@ import Office from "./routes/officeRoutes";
 import Evaluator from "./routes/evaluatorRoutes";
 import Remarks from "./routes/remarksRoutes";
 import Submission from "./routes/submissionRoutes";
+import AuthRoutes from "./routes/authenticationRoutes";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use("/api", Admin);
+app.use("/api", AuthRoutes);
+
+app.use("/api", authenticateJWT, Admin);
+// app.use("/api", authenticateJWT, Proponents);
+// app.use("/api", authenticateJWT, Department);
+// app.use("/api", authenticateJWT, Campus);
+// app.use("/api", authenticateJWT, Office);
+// app.use("/api", authenticateJWT, Evaluator);
+// app.use("/api", authenticateJWT, Evaluator);
+// app.use("/api", authenticateJWT, Remarks);
+// app.use("/api", authenticateJWT, Submission);
+
+// app.use("/api", Admin);
 app.use("/api", Proponents);
 app.use("/api", Department);
 app.use("/api", Campus);
