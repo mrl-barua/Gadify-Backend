@@ -3,12 +3,9 @@ import sequelize from "../config/db";
 
 export class Campus extends Model {
   public id!: number;
-  public name!: string;
-  public location!: string;
-
-  // timestamps!
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  public campusId!: string;
+  public campusName!: string;
+  public campusAddress!: string;
 }
 
 Campus.init(
@@ -18,17 +15,22 @@ Campus.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
+    campusId: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    location: {
+    campusName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    campusAddress: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   },
   {
     sequelize,
-    tableName: "campus",
+    tableName: "Campus",
+    timestamps: false,
   }
 );

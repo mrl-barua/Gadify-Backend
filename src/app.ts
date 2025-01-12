@@ -5,6 +5,7 @@ import { json } from "body-parser";
 import Admin from "./routes/adminRoutes";
 import Proponents from "./routes/proponentsRoutes";
 import Department from "./routes/departmentRoutes";
+import Campus from "./routes/campusRoutes";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use("/api", Admin);
 app.use("/api", Proponents);
 app.use("/api", Department);
+app.use("/api", Campus);
 
 sequelize
   .authenticate()
