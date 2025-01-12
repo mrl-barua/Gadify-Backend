@@ -1,16 +1,36 @@
-import express from 'express';
-import { setRoutes } from './routes/index';
+import express from "express";
+import sequelize from "./config/db";
+import { json } from "body-parser";
+
+import Admin from "./routes/adminRoutes";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// Initialize routes
-setRoutes(app);
+app.use("/api", Admin);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully.");
+
+    // Sync the models with the database (optional, use { force: true } for dev mode to reset tables)
+    sequelize
+      .sync({ force: false })
+      .then(() => {
+        console.log("Database synchronized");
+      })
+      .catch((err: Error) => {
+        console.error("Error synchronizing database:", err);
+      });
+
+    // Start the server only after the database connection is successful
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((err: Error) => {
+    console.error("Unable to connect to the database:", err);
+  });
