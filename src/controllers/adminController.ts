@@ -9,7 +9,7 @@ export const GetAllAdmin = async (req: Request, res: Response) => {
     const errorMessage = (error as Error).message;
     res
       .status(500)
-      .json({ error: "error creating new admin", details: errorMessage });
+      .json({ error: "error getting new admin", details: errorMessage });
   }
 };
 

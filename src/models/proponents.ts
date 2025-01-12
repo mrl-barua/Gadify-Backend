@@ -1,12 +1,26 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/db";
 
+export enum ProponentType {
+  Inside = "Inside",
+  Outside = "Outside",
+}
+
+export enum ProponentStatus {
+  Pending = "Pending",
+  Approved = "Approved",
+  Rejected = "Rejected",
+}
+
 export class Proponents extends Model {
   public id!: number;
-  public name!: string;
-  public email!: string;
-  public createdAt!: Date;
-  public updatedAt!: Date;
+  public proponentId!: string;
+  public departmentId!: number;
+  public proponentType!: ProponentType;
+  public proponentStatus!: ProponentStatus;
+  public fullName!: string;
+  public password!: string;
+  public readonly createdAt!: Date;
 }
 
 Proponents.init(
@@ -16,21 +30,33 @@ Proponents.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
+    proponentId: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
+    departmentId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    proponentType: {
+      type: DataTypes.ENUM,
+      values: Object.values(ProponentType),
+      allowNull: false,
+    },
+    proponentStatus: {
+      type: DataTypes.ENUM,
+      values: Object.values(ProponentStatus),
+      allowNull: false,
+    },
+    fullName: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     createdAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
@@ -39,6 +65,6 @@ Proponents.init(
   {
     sequelize,
     tableName: "proponents",
-    timestamps: true,
+    timestamps: false,
   }
 );

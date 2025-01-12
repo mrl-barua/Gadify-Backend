@@ -3,6 +3,7 @@ import sequelize from "./config/db";
 import { json } from "body-parser";
 
 import Admin from "./routes/adminRoutes";
+import Proponents from "./routes/proponentsRoutes";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.use("/api", Admin);
+app.use("/api", Proponents);
 
 sequelize
   .authenticate()
