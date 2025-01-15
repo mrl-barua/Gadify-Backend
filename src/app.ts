@@ -1,6 +1,7 @@
 import express from "express";
 import { Request, Response } from "express";
 import sequelize from "./config/db";
+const cors = require("cors");
 import { json } from "body-parser";
 import {
   authenticateJWT,
@@ -17,12 +18,17 @@ import Remarks from "./routes/remarksRoutes";
 import Submission from "./routes/submissionRoutes";
 import AuthRoutes from "./routes/authenticationRoutes";
 
+import mailRoutes from "./routes/mailRoutes";
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/api", AuthRoutes);
+
+app.use('/mail', mailRoutes);
 
 app.use("/api", authenticateJWT, checkBlacklist, Admin);
 // app.use("/api", authenticateJWT, Proponents);
