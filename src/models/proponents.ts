@@ -22,6 +22,7 @@ export class Proponents extends Model {
   public fullName!: string;
   public userName!: string;
   public password!: string;
+  public isDeleted!: boolean;
   public readonly createdAt!: Date;
 }
 
@@ -61,6 +62,11 @@ Proponents.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    isDeleted: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
     createdAt: {
       type: DataTypes.DATE,

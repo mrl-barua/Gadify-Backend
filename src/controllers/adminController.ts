@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Admin } from "../models/admin";
+import { Proponents, ProponentStatus } from "../models/proponents";
 
 export const GetAllAdmin = async (req: Request, res: Response) => {
   try {
@@ -45,5 +46,57 @@ export const CreateAdmin = async (req: Request, res: Response) => {
     res
       .status(500)
       .json({ error: "Error creating admin", messageDetails: errorMessage });
+  }
+};
+
+export const ApproveProponent = async (req: Request, res: Response) => {
+  const { proponentId } = req.body;
+
+  if (!proponentId) {
+    return res.status(400).json({ message: "Proponent ID is required" });
+  }
+
+  try {
+    const proponent = await Proponents.findByPk(proponentId);
+    if (!proponent) {
+      return res.status(404).json({ message: "Proponent not found" });
+    }
+
+    proponent.proponentStatus = ProponentStatus.Approved;
+    await proponent.save();
+
+    res.status(200).json(proponent);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error approving proponent",
+      messageDetails: errorMessage,
+    });
+  }
+};
+
+export const RejectProponent = async (req: Request, res: Response) => {
+  const { proponentId } = req.body;
+
+  if (!proponentId) {
+    return res.status(400).json({ message: "Proponent ID is required" });
+  }
+
+  try {
+    const proponent = await Proponents.findByPk(proponentId);
+    if (!proponent) {
+      return res.status(404).json({ message: "Proponent not found" });
+    }
+
+    proponent.proponentStatus = ProponentStatus.Rejected;
+    await proponent.save();
+
+    res.status(200).json(proponent);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error rejecting proponent",
+      messageDetails: errorMessage,
+    });
   }
 };
