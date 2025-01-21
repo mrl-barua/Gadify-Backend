@@ -109,6 +109,7 @@ export const UpdateProponents = async (req: Request, res: Response) => {
     proponentStatus,
     fullName,
     userName,
+    email,
     password,
   } = req.body;
 
@@ -119,6 +120,7 @@ export const UpdateProponents = async (req: Request, res: Response) => {
   if (!proponentStatus) missingFields.push("proponentStatus");
   if (!fullName) missingFields.push("fullName");
   if (!userName) missingFields.push("userName");
+  if (!email) missingFields.push("email");
   if (!password) missingFields.push("password");
 
   if (missingFields.length > 0) {
@@ -150,6 +152,7 @@ export const UpdateProponents = async (req: Request, res: Response) => {
       proponentStatus,
       fullName,
       userName,
+      email,
       password,
     });
     res.json(proponents);
