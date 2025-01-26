@@ -106,6 +106,7 @@ export const CreateSubmission = async (req: Request, res: Response) => {
   const {
     proponentId,
     evaluatorId,
+    fileType,
     proposalTitle,
     proposalDescription,
     resourcesLink,
@@ -117,12 +118,19 @@ export const CreateSubmission = async (req: Request, res: Response) => {
   const missingFields = [];
   if (!proponentId) missingFields.push("proponentId");
   if (!evaluatorId) missingFields.push("evaluatorId");
+  if (!fileType) missingFields.push("fileType");
   if (!proposalTitle) missingFields.push("proposalTitle");
   if (!submissionStatus) missingFields.push("submissionStatus");
 
   if (missingFields.length > 0) {
     return res.status(400).json({
       message: `${missingFields.join(", ")} are required`,
+    });
+  }
+
+  if (fileType !== "Link" && fileType !== "File") {
+    return res.status(400).json({
+      message: "fileType must be either 'Link' or 'File'",
     });
   }
 
@@ -139,6 +147,7 @@ export const CreateSubmission = async (req: Request, res: Response) => {
       submissionId: newSubmissionId,
       proponentId,
       evaluatorId,
+      fileType,
       proposalTitle,
       proposalDescription,
       resourcesLink,

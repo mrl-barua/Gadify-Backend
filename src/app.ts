@@ -36,7 +36,7 @@ app.use("/api", AuthRoutes);
 
 app.use("/mail", mailRoutes);
 
-app.use("/api", authenticateJWT, checkBlacklist, Admin);
+// app.use("/api", authenticateJWT, checkBlacklist, Admin);
 // app.use("/api", authenticateJWT, Proponents);
 // app.use("/api", authenticateJWT, Department);
 // app.use("/api", authenticateJWT, Campus);
@@ -46,7 +46,7 @@ app.use("/api", authenticateJWT, checkBlacklist, Admin);
 // app.use("/api", authenticateJWT, Remarks);
 // app.use("/api", authenticateJWT, Submission);
 
-// app.use("/api", Admin);
+app.use("/api", Admin);
 app.use("/api", Proponents);
 app.use("/api", Department);
 app.use("/api", Campus);

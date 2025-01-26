@@ -9,6 +9,7 @@ export class Submission extends Model {
   public submissionId!: string;
   public proponentId!: number;
   public evaluatorId!: number;
+  public fileType!: "Link" | "File";
   public proposalTitle!: string;
   public proposalDescription!: string;
   public resourcesLink!: string;
@@ -41,13 +42,17 @@ Submission.init(
     },
     evaluatorId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: "Evaluator",
         key: "id",
       },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
+    },
+    fileType: {
+      type: DataTypes.ENUM("Link", "File"),
+      allowNull: false,
     },
     proposalTitle: {
       type: DataTypes.TEXT,
@@ -62,7 +67,12 @@ Submission.init(
       allowNull: true,
     },
     submissionStatus: {
-      type: DataTypes.ENUM("Pending", "Approved", "Rejected"),
+      type: DataTypes.ENUM(
+        "OnHold",
+        "Evaluation",
+        "Completed",
+        "ForCorrection"
+      ),
       allowNull: false,
     },
     remarksId: {
