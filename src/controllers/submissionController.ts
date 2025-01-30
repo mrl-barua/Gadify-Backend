@@ -110,6 +110,7 @@ export const CreateSubmission = async (req: Request, res: Response) => {
     proposalTitle,
     proposalDescription,
     resourcesLink,
+    resourcesFile,
     submissionStatus,
     remarksId,
   } = req.body;
@@ -134,6 +135,18 @@ export const CreateSubmission = async (req: Request, res: Response) => {
     });
   }
 
+  if (fileType === "Link" && !resourcesLink) {
+    return res.status(400).json({
+      message: "resourcesLink is required when fileType is 'Link'",
+    });
+  }
+
+  if (fileType === "File" && !resourcesFile) {
+    return res.status(400).json({
+      message: "resourcesFile is required when fileType is 'File'",
+    });
+  }
+
   try {
     const lastSubmission = await Submission.findOne({
       order: [["id", "DESC"]],
@@ -150,7 +163,8 @@ export const CreateSubmission = async (req: Request, res: Response) => {
       fileType,
       proposalTitle,
       proposalDescription,
-      resourcesLink,
+      resourcesLink: fileType === "Link" ? resourcesLink : null,
+      resourcesFile: fileType === "File" ? resourcesFile : null,
       submissionStatus,
       remarksId,
     });
@@ -195,6 +209,111 @@ export const AddSubmissionRemarks = async (req: Request, res: Response) => {
     const errorMessage = (error as Error).message;
     res.status(500).json({
       error: "Error adding remarks",
+      messageDetails: errorMessage,
+    });
+  }
+};
+
+export const GetSubmissionById = async (req: Request, res: Response) => {
+  const { Id } = req.body;
+
+  try {
+    const submission = await Submission.findOne({
+      where: { id: Id },
+      include: [
+        {
+          model: Proponents,
+          as: "proponent",
+          attributes: [
+            "proponentId",
+            "departmentId",
+            "proponentType",
+            "proponentStatus",
+            "fullName",
+            "userName",
+          ],
+          include: [
+            {
+              model: Department,
+              as: "department",
+              attributes: ["departmentId", "campusId", "departmentName"],
+              include: [
+                {
+                  model: Campus,
+                  as: "campus",
+                  attributes: ["campusId", "campusName", "campusAddress"],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          model: Evaluator,
+          as: "evaluator",
+          attributes: [
+            "evaluatorId",
+            "campusId",
+            "departmentId",
+            "officeId",
+            "fullName",
+            "email",
+          ],
+          include: [
+            {
+              model: Campus,
+              as: "campus",
+              attributes: ["campusId", "campusName", "campusAddress"],
+            },
+            {
+              model: Office,
+              as: "office",
+              attributes: [
+                "officeId",
+                "campusId",
+                "departmentId",
+                "officeName",
+              ],
+              include: [
+                {
+                  model: Campus,
+                  as: "campus",
+                  attributes: ["campusId", "campusName", "campusAddress"],
+                },
+                {
+                  model: Department,
+                  as: "department",
+                  attributes: ["departmentId", "campusId", "departmentName"],
+                  include: [
+                    {
+                      model: Campus,
+                      as: "campus",
+                      attributes: ["campusId", "campusName", "campusAddress"],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          model: Remarks,
+          as: "remarks",
+          attributes: ["remarksId", "remarks"],
+        },
+      ],
+    });
+
+    if (!submission) {
+      return res.status(404).json({
+        message: "Submission not found",
+      });
+    }
+
+    res.json(submission);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error getting submission",
       messageDetails: errorMessage,
     });
   }
