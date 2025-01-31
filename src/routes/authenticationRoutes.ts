@@ -165,7 +165,6 @@ router.post("/login/admin", async (req: Request, res: Response) => {
   // if (!validPassword) {
   //   return res.status(400).json({ message: "Invalid password" });
   // }
-  const validPassword = true;
 
   const token = generateToken({ id: admin.id, username: admin.email });
   res.json({ token });
