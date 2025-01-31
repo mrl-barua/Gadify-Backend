@@ -26,5 +26,6 @@ export const hashPassword = async (password: string) => {
 };
 
 export const comparePassword = async (password: string, hash: string) => {
+  console.log("Password compared:", password, hash);
   return bcrypt.compare(password, hash);
 };

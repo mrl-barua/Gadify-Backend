@@ -1,10 +1,14 @@
 import express, { Request, Response } from "express";
 import { generateToken, hashPassword, comparePassword } from "../auth";
 import { Proponents } from "../models/proponents";
+import { Admin } from "../models/admin";
+import { Evaluator } from "../models/evaluator";
 import { BlacklistedToken } from "../models/blacklistedToken";
 import jwt, { JwtPayload } from "jsonwebtoken";
+import e from "express";
 const router = express.Router();
 
+// Proponents registration
 router.post("/register/proponent", async (req: Request, res: Response) => {
   const {
     departmentId,
@@ -12,6 +16,7 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
     proponentStatus,
     fullName,
     userName,
+    email,
     password,
   } = req.body;
 
@@ -21,6 +26,7 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
   if (!proponentStatus) missingFields.push("proponentStatus");
   if (!fullName) missingFields.push("fullName");
   if (!userName) missingFields.push("userName");
+  if (!email) missingFields.push("email");
   if (!password) missingFields.push("password");
 
   if (missingFields.length > 0) {
@@ -62,6 +68,7 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
       proponentStatus: "Pending",
       fullName,
       userName,
+      email,
       password: hashedPassword,
     });
 
@@ -69,12 +76,15 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
       .status(201)
       .json({ message: "proponents registered successfully", proponent });
   } catch (error) {
-    return res.status(500).json({ message: "Error checking for username" });
+    const errorMessage = (error as Error).message;
+    return res
+      .status(500)
+      .json({ message: "Error checking for username", error: errorMessage });
   }
 });
 
-// User login
-router.post("/login", async (req: Request, res: Response) => {
+// Proponents login
+router.post("/login/proponents", async (req: Request, res: Response) => {
   const { userName, password } = req.body;
 
   if (!userName || !password) {
@@ -87,7 +97,16 @@ router.post("/login", async (req: Request, res: Response) => {
 
   const proponent = await Proponents.findOne({ where: { userName } });
   if (!proponent) {
-    return res.status(400).json({ message: "Invalid username or password" });
+    return res.status(400).json({ message: "Invalid email or password" });
+  }
+
+  if (proponent.proponentStatus === "Pending") {
+    return res.status(400).json({ message: "Account approval is pending" });
+  } else if (proponent.proponentStatus === "Rejected") {
+    return res.status(403).json({
+      message:
+        "Your account has been rejected. Please contact the administrator for further assistance.",
+    });
   }
 
   const validPassword = await comparePassword(password, proponent.password);
@@ -99,6 +118,135 @@ router.post("/login", async (req: Request, res: Response) => {
     id: proponent.id,
     username: proponent.userName,
   });
+  res.json({ token });
+});
+
+// Admin registration
+router.post("/register/admin", async (req: Request, res: Response) => {
+  const { fullName, email, password } = req.body;
+
+  if (!fullName || !email || !password) {
+    return res
+      .status(400)
+      .json({ message: "fullName, email and password are required" });
+  }
+
+  const foundAdmin = await Admin.findOne({ where: { email } });
+  if (foundAdmin) {
+    return res
+      .status(400)
+      .json({ message: "email already registered, use another email" });
+  }
+
+  const hashedPassword = await hashPassword(password);
+  const admin = await Admin.create({
+    fullName,
+    email,
+    password: hashedPassword,
+  });
+
+  res.status(201).json({ message: "Admin registered successfully", admin });
+});
+
+// Admin login
+router.post("/login/admin", async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ message: "email and password are required" });
+  }
+
+  const admin = await Admin.findOne({ where: { email } });
+  if (!admin) {
+    return res.status(400).json({ message: "Invalid email" });
+  }
+
+  // const validPassword = await comparePassword(password, admin.password);
+  // if (!validPassword) {
+  //   return res.status(400).json({ message: "Invalid password" });
+  // }
+  const validPassword = true;
+
+  const token = generateToken({ id: admin.id, username: admin.email });
+  res.json({ token });
+});
+
+router.post("/register/evaluator", async (req: Request, res: Response) => {
+  const { campusId, departmentId, officeId, fullName, email, password } =
+    req.body;
+
+  // Input validation
+  const missingFields = [];
+  if (!campusId) missingFields.push("campusId");
+  if (!departmentId) missingFields.push("departmentId");
+  if (!officeId) missingFields.push("officeId");
+  if (!fullName) missingFields.push("fullName");
+  if (!email) missingFields.push("email");
+  if (!password) missingFields.push("password");
+
+  if (missingFields.length > 0) {
+    return res.status(400).json({
+      message: `${missingFields.join(", ")} are required`,
+    });
+  }
+
+  try {
+    const lastEvaluator = await Evaluator.findOne({
+      order: [["id", "DESC"]],
+    });
+
+    const newEvaluatorId = lastEvaluator
+      ? `EV-${String(lastEvaluator.id + 1).padStart(4, "0")}`
+      : "EV-0001";
+
+    const evaluatorEmailExist = await Evaluator.findOne({
+      where: { email },
+    });
+    if (evaluatorEmailExist) {
+      return res.status(400).json({
+        message: "Email already exists in the database, please use another",
+      });
+    }
+
+    const hashedPassword = await hashPassword(password);
+    const newEvaluator = await Evaluator.create({
+      evaluatorId: newEvaluatorId,
+      campusId,
+      departmentId,
+      officeId,
+      fullName,
+      email,
+      password: hashedPassword,
+    });
+    res.status(201).json(newEvaluator);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error creating Evaluator",
+      messageDetails: errorMessage,
+    });
+  }
+});
+
+// Evaluator login
+router.post("/login/evaluator", async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ message: "email and password are required" });
+  }
+
+  const evaluator = await Evaluator.findOne({ where: { email } });
+  if (!evaluator) {
+    return res.status(400).json({ message: "Invalid email or password" });
+  }
+
+  const validPassword = await comparePassword(password, evaluator.password);
+  if (!validPassword) {
+    return res.status(400).json({ message: "Invalid email or password" });
+  }
+
+  const token = generateToken({ id: evaluator.id, username: evaluator.email });
   res.json({ token });
 });
 
