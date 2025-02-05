@@ -105,6 +105,53 @@ export const CreateEvaluator = async (req: Request, res: Response) => {
   }
 };
 
+export const UpdateEvaluator = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { campusId, departmentId, officeId, fullName, email, password } =
+    req.body;
+
+  // Input validation
+  const missingFields = [];
+  if (!campusId) missingFields.push("campusId");
+  if (!departmentId) missingFields.push("departmentId");
+  if (!officeId) missingFields.push("officeId");
+  if (!fullName) missingFields.push("fullName");
+  if (!email) missingFields.push("email");
+  if (!password) missingFields.push("password");
+
+  if (missingFields.length > 0) {
+    return res.status(400).json({
+      message: `${missingFields.join(", ")} are required`,
+    });
+  }
+
+  try {
+    const evaluator = await Evaluator.findByPk(id);
+    if (!evaluator) {
+      return res.status(404).json({
+        message: "Evaluator not found",
+      });
+    }
+
+    evaluator.campusId = campusId;
+    evaluator.departmentId = departmentId;
+    evaluator.officeId = officeId;
+    evaluator.fullName = fullName;
+    evaluator.email = email;
+    evaluator.password = password;
+
+    await evaluator.save();
+
+    res.status(200).json(evaluator);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error updating Evaluator",
+      messageDetails: errorMessage,
+    });
+  }
+};
+
 export const AddEvaluatorSignature = async (req: Request, res: Response) => {
   const { evaluatorId, signature } = req.body;
 
