@@ -117,6 +117,7 @@ router.post("/login/proponents", async (req: Request, res: Response) => {
   const token = generateToken({
     id: proponent.id,
     username: proponent.userName,
+    role: "proponent",
   });
   res.json({ token });
 });
@@ -166,7 +167,11 @@ router.post("/login/admin", async (req: Request, res: Response) => {
   //   return res.status(400).json({ message: "Invalid password" });
   // }
 
-  const token = generateToken({ id: admin.id, username: admin.email });
+  const token = generateToken({
+    id: admin.id,
+    username: admin.email,
+    role: "admin",
+  });
   res.json({ token });
 });
 
@@ -245,7 +250,11 @@ router.post("/login/evaluator", async (req: Request, res: Response) => {
     return res.status(400).json({ message: "Invalid email or password" });
   }
 
-  const token = generateToken({ id: evaluator.id, username: evaluator.email });
+  const token = generateToken({
+    id: evaluator.id,
+    username: evaluator.email,
+    role: "evaluator",
+  });
   res.json({ token });
 });
 

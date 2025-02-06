@@ -32,6 +32,41 @@ export const GetAllProponents = async (req: Request, res: Response) => {
   }
 };
 
+export const GetProponentById = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  try {
+    const proponent = await Proponents.findByPk(id, {
+      include: [
+        {
+          model: Department,
+          as: "department",
+          attributes: ["departmentId", "departmentName", "campusId"],
+          include: [
+            {
+              model: Campus,
+              as: "campus",
+              attributes: ["campusId", "campusName", "campusAddress"],
+            },
+          ],
+        },
+      ],
+    });
+    if (!proponent) {
+      return res.status(404).json({
+        message: "Proponent not found",
+      });
+    }
+    res.json(proponent);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error getting proponent",
+      messageDetails: errorMessage,
+    });
+  }
+};
+
 export const CreateProponents = async (req: Request, res: Response) => {
   const {
     departmentId,
@@ -43,7 +78,6 @@ export const CreateProponents = async (req: Request, res: Response) => {
     password,
   } = req.body;
 
-  // Input validation
   const missingFields = [];
   if (!departmentId) missingFields.push("departmentId");
   if (!proponentType) missingFields.push("proponentType");
@@ -105,8 +139,8 @@ export const CreateProponents = async (req: Request, res: Response) => {
 };
 
 export const UpdateProponents = async (req: Request, res: Response) => {
-  const { id } = req.params;
   const {
+    id,
     departmentId,
     proponentType,
     proponentStatus,
@@ -116,7 +150,6 @@ export const UpdateProponents = async (req: Request, res: Response) => {
     password,
   } = req.body;
 
-  // Input validation
   const missingFields = [];
   if (!departmentId) missingFields.push("departmentId");
   if (!proponentType) missingFields.push("proponentType");

@@ -102,6 +102,107 @@ export const GetAllSubmissions = async (req: Request, res: Response) => {
   }
 };
 
+export const GetSubmissionsByProponentId = async (
+  req: Request,
+  res: Response
+) => {
+  const { proponentId } = req.body;
+
+  try {
+    const submissions = await Submission.findAll({
+      where: { proponentId },
+      include: [
+        {
+          model: Proponents,
+          as: "proponent",
+          attributes: [
+            "proponentId",
+            "departmentId",
+            "proponentType",
+            "proponentStatus",
+            "fullName",
+            "userName",
+          ],
+          include: [
+            {
+              model: Department,
+              as: "department",
+              attributes: ["departmentId", "campusId", "departmentName"],
+              include: [
+                {
+                  model: Campus,
+                  as: "campus",
+                  attributes: ["campusId", "campusName", "campusAddress"],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          model: Evaluator,
+          as: "evaluator",
+          attributes: [
+            "evaluatorId",
+            "campusId",
+            "departmentId",
+            "officeId",
+            "fullName",
+            "email",
+          ],
+          include: [
+            {
+              model: Campus,
+              as: "campus",
+              attributes: ["campusId", "campusName", "campusAddress"],
+            },
+            {
+              model: Office,
+              as: "office",
+              attributes: [
+                "officeId",
+                "campusId",
+                "departmentId",
+                "officeName",
+              ],
+              include: [
+                {
+                  model: Campus,
+                  as: "campus",
+                  attributes: ["campusId", "campusName", "campusAddress"],
+                },
+                {
+                  model: Department,
+                  as: "department",
+                  attributes: ["departmentId", "campusId", "departmentName"],
+                  include: [
+                    {
+                      model: Campus,
+                      as: "campus",
+                      attributes: ["campusId", "campusName", "campusAddress"],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          model: Remarks,
+          as: "remarks",
+          attributes: ["remarksId", "remarks"],
+        },
+      ],
+    });
+    res.json(submissions);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "error getting submissions with details",
+      details: errorMessage,
+    });
+  }
+};
+
 export const CreateSubmission = async (req: Request, res: Response) => {
   const {
     proponentId,
