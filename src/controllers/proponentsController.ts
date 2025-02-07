@@ -33,7 +33,7 @@ export const GetAllProponents = async (req: Request, res: Response) => {
 };
 
 export const GetProponentById = async (req: Request, res: Response) => {
-  const { id } = req.params;
+  const { id } = req.body;
 
   try {
     const proponent = await Proponents.findByPk(id, {
@@ -147,7 +147,6 @@ export const UpdateProponents = async (req: Request, res: Response) => {
     fullName,
     userName,
     email,
-    password,
   } = req.body;
 
   const missingFields = [];
@@ -157,7 +156,6 @@ export const UpdateProponents = async (req: Request, res: Response) => {
   if (!fullName) missingFields.push("fullName");
   if (!userName) missingFields.push("userName");
   if (!email) missingFields.push("email");
-  if (!password) missingFields.push("password");
 
   if (missingFields.length > 0) {
     return res.status(400).json({
@@ -189,7 +187,6 @@ export const UpdateProponents = async (req: Request, res: Response) => {
       fullName,
       userName,
       email,
-      password,
     });
     res.json(proponents);
   } catch (error) {
