@@ -18,6 +18,7 @@ import Remarks from "./routes/remarksRoutes";
 import Submission from "./routes/submissionRoutes";
 import AuthRoutes from "./routes/authenticationRoutes";
 import ImageRoutes from "./routes/imageRoutes";
+import FileRoutes from "./routes/fileRoutes";
 
 import mailRoutes from "./routes/mailRoutes";
 
@@ -56,6 +57,7 @@ app.use("/api", Evaluator);
 app.use("/api", Remarks);
 app.use("/api", Submission);
 app.use("/api", ImageRoutes);
+app.use("/api", FileRoutes);
 
 sequelize
   .authenticate()
