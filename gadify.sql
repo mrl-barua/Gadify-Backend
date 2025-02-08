@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 27, 2025 at 02:01 PM
+-- Generation Time: Feb 08, 2025 at 04:34 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -38,19 +38,19 @@ CREATE TABLE IF NOT EXISTS `admin` (
   PRIMARY KEY (`Id`),
   UNIQUE KEY `AdminId` (`AdminId`),
   UNIQUE KEY `Email` (`Email`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`Id`, `AdminId`, `FullName`, `Email`, `Password`, `CreatedAt`) VALUES
-(1, 'A-0001', 'John Admin', 'admin1@example.com', '', '2025-01-12 00:10:10'),
-(2, 'A-0002', 'Jane Admin', 'admin2@example.com', '', '2025-01-12 00:10:10'),
-(3, 'A-0003', 'Marlo Barua', 'admin3@example.com', '11111', '2025-01-12 00:18:02'),
-(4, 'A-0004', 'Marlo Barua', 'admin4@example.com', '11111', '2025-01-12 00:24:23'),
-(5, 'A-0005', 'Marlo Barua', 'admin5@example.com', '11111', '2025-01-12 00:26:40'),
-(6, 'A-0006', 'Marlo Barua', 'admin7@example.com', '11111', '2025-01-12 00:26:45');
+(1, 'A-0001', 'John Admin', 'admin1@example.com', '$2a$10$qC4pCbw8K22JvvJreC0h..OPHqHGctpfJuqbiU', '2025-01-12 00:10:10'),
+(2, 'A-0002', 'Jane Admin', 'admin2@example.com', '$2a$10$qC4pCbw8K22JvvJreC0h..OPHqHGctpfJuqbiU', '2025-01-12 00:10:10'),
+(3, 'A-0003', 'Marlo Barua', 'admin3@example.com', '$2a$10$qC4pCbw8K22JvvJreC0h..OPHqHGctpfJuqbiU', '2025-01-12 00:18:02'),
+(4, 'A-0004', 'Marlo Barua', 'admin4@example.com', '$2a$10$qC4pCbw8K22JvvJreC0h..OPHqHGctpfJuqbiU', '2025-01-12 00:24:23'),
+(5, 'A-0005', 'Marlo Barua', 'admin5@example.com', '$2a$10$qC4pCbw8K22JvvJreC0h..OPHqHGctpfJuqbiU', '2025-01-12 00:26:40'),
+(10, 'A-0006', 'Marlo Barua', 'mlbarua@usep.edu.ph', '$2a$10$wqr9hPKPuyilCO9ju/m3D.NduMfUTpxUOGWi8Z', '2025-01-31 11:51:56');
 
 --
 -- Triggers `admin`
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `blacklistedtoken` (
   `blacklistedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `expiresAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `blacklistedtoken`
@@ -134,7 +134,9 @@ INSERT INTO `blacklistedtoken` (`id`, `token`, `blacklistedAt`, `expiresAt`) VAL
 (28, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTczNzM3NzMyMiwiZXhwIjoxNzM3MzgwOTIyfQ.umrL4aMiQ7-b9GN9TIbLWposqcJD4Yu9vjrsmvtUmUI', '2025-01-20 13:55:11', '2025-01-20 13:48:42'),
 (29, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTczNzM4MTMxMiwiZXhwIjoxNzM3Mzg0OTEyfQ.czWvHN-vuflCP9uzTUgME8792xHKJ-apMDYXJlSTyGQ', '2025-01-21 13:32:14', '2025-01-20 14:55:12'),
 (30, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTczNzQ2NjMzNSwiZXhwIjoxNzM3NDY5OTM1fQ.yh-5Vkp-ucwHsF95wRg9Gv5XvzTWfcv-5R3w-s9VL-I', '2025-01-21 13:56:19', '2025-01-21 14:32:15'),
-(31, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInVzZXJuYW1lIjoiMTIiLCJpYXQiOjE3Mzc1NDk1MzcsImV4cCI6MTczNzU1MzEzN30.eurwHEzfGM_tL57TvU2Z7qtGdzpI_AmyE24nPf-Jl0Q', '2025-01-24 11:48:04', '2025-01-22 13:38:57');
+(31, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInVzZXJuYW1lIjoiMTIiLCJpYXQiOjE3Mzc1NDk1MzcsImV4cCI6MTczNzU1MzEzN30.eurwHEzfGM_tL57TvU2Z7qtGdzpI_AmyE24nPf-Jl0Q', '2025-01-24 11:48:04', '2025-01-22 13:38:57'),
+(32, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTczODIzODk4NSwiZXhwIjoxNzM4MjQyNTg1fQ.LTnNzfqAhbBPT6Ul3rCKzuvNaNXeqzSt_DgqlG-9xoY', '2025-01-31 11:33:15', '2025-01-30 13:09:45'),
+(33, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbjFAZXhhbXBsZS5jb20iLCJpYXQiOjE3Mzg1OTMwODUsImV4cCI6MTczODU5NjY4NX0.nstAT1D2e-BPYMHj4iqDwBi4hy-nMFkqg3D-1_4S6DM', '2025-02-04 09:29:28', '2025-02-03 15:31:25');
 
 -- --------------------------------------------------------
 
@@ -338,14 +340,14 @@ CREATE TABLE IF NOT EXISTS `proponents` (
   UNIQUE KEY `Email_UNIQUE` (`Email`),
   KEY `DepartmentId` (`DepartmentId`),
   KEY `OfficeId` (`OfficeId`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `proponents`
 --
 
 INSERT INTO `proponents` (`Id`, `ProponentId`, `DepartmentId`, `OfficeId`, `ProponentType`, `ProponentStatus`, `FullName`, `UserName`, `Email`, `Password`, `IsDeleted`, `CreatedAt`) VALUES
-(1, 'IN-0001', 1, 1, 'Inside', 'Approved', 'Charlie Proponent', 'mlbarua@usep.edu.ph', 'a@gmail.com', 'hashed_password3', 0, '2025-01-12 01:33:36'),
+(1, 'IN-0001', 1, 1, 'Inside', 'Approved', 'Marlo Barua', 'mrl', 'mlbarua@gmail.com', 'hashed_password3', 0, '2025-01-12 01:33:36'),
 (2, 'OUT-0002', 2, 2, 'Outside', 'Rejected', 'Diana Proponent', '2', 'b@gmail.com', 'hashed_password4', 0, '2025-01-12 01:33:36'),
 (6, 'IN-0006', 1, 2, 'Inside', 'Rejected', 'Charlie Proponent', '3', 'c@gmail.com', 'hashed_password3', 0, '2025-01-12 02:24:21'),
 (5, 'OUT-0005', 2, 2, 'Outside', 'Approved', 'Diana Proponent', '4', 'd@gmail.com', 'hashed_password4', 0, '2025-01-12 02:23:49'),
@@ -358,7 +360,8 @@ INSERT INTO `proponents` (`Id`, `ProponentId`, `DepartmentId`, `OfficeId`, `Prop
 (13, 'OUT-0013', 1, NULL, 'Outside', 'Approved', 'Charlie Paroponent', '11', 'k@gmail.com', 'hasheda_password3', 0, '2025-01-12 02:32:45'),
 (14, 'OUT-0014', 1, NULL, 'Outside', 'Approved', 'Charlie Paroponent', 'test', 'l@gmail.com', '$2a$10$qC4pCbw8K22JvvJreC0h..OPHqHGctpfJuqbiUwH6qSSM14RYYI/2', 0, '2025-01-12 10:45:09'),
 (15, 'IN-0015', 1, NULL, 'Inside', 'Approved', 'Charlie Paroponent', '13', 'm@gmail.com', '$2a$10$eDU5k85MqondlZMdFjEt1O4FO.5B7hxA2LKsiuTWDbsX00lfbKPhi', 0, '2025-01-12 11:06:49'),
-(16, 'OUT-0016', 1, NULL, 'Outside', 'Pending', 'Charlie Paroponent', 'ac2a', 's@gmail.com', 'hasheda_password3', 0, '2025-01-26 11:17:49');
+(16, 'OUT-0016', 1, NULL, 'Outside', 'Approved', 'Charlie Paroponent', 'ac2a', 's@gmail.com', 'hasheda_password3', 0, '2025-01-26 11:17:49'),
+(17, 'IN-0017', 1, NULL, 'Inside', 'Approved', 'Charlie Paropo31nent', 'Marls', 'mlbarua@usep.edu.ph', '$2a$10$3oju9zdVHxrFsx0.hZfOwu4qdjDBZNgi6u8EO8NrQzIEVNAlKQkAC', 0, '2025-01-31 12:08:59');
 
 --
 -- Triggers `proponents`
@@ -440,7 +443,7 @@ CREATE TABLE IF NOT EXISTS `submission` (
   KEY `ProponentId` (`ProponentId`),
   KEY `EvaluatorId` (`EvaluatorId`),
   KEY `RemarksId` (`RemarksId`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `submission`
@@ -451,7 +454,21 @@ INSERT INTO `submission` (`Id`, `SubmissionId`, `ProponentId`, `EvaluatorId`, `F
 (2, 'SUB-0002', 1, 1, 'File', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'Evaluation', NULL, '2025-01-25 23:26:48'),
 (3, 'SUB-0003', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'Completed', NULL, '2025-01-25 23:27:05'),
 (4, 'SUB-0004', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'ForCorrection', NULL, '2025-01-26 11:03:58'),
-(5, 'SUB-0005', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-26 11:04:50');
+(5, 'SUB-0005', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-26 11:04:50'),
+(6, 'SUB-0006', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-29 02:00:34'),
+(7, 'SUB-0007', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-29 02:00:36'),
+(8, 'SUB-0008', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-29 02:00:37'),
+(9, 'SUB-0009', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-29 02:00:37'),
+(10, 'SUB-0010', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-29 02:00:38'),
+(11, 'SUB-0011', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-29 02:00:39'),
+(12, 'SUB-0012', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-29 02:00:39'),
+(13, 'SUB-0013', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-29 02:00:40'),
+(14, 'SUB-0014', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-29 02:00:41'),
+(15, 'SUB-0015', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-29 02:00:41'),
+(16, 'SUB-0016', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-29 02:00:42'),
+(17, 'SUB-0017', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-29 02:00:43'),
+(18, 'SUB-0018', 1, 1, 'Link', 'Proposal 1 Title', 'This is the description of proposal 1.', 'https://resources-link.com/proposal1', 'OnHold', NULL, '2025-01-30 11:48:26'),
+(19, 'SUB-0019', 1, 1, 'File', 'Proposal 1 Title', 'This is the description of proposal 1.', NULL, 'OnHold', NULL, '2025-01-30 11:48:50');
 
 --
 -- Triggers `submission`
