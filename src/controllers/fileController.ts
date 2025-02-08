@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 
     // Replace spaces with hyphens and remove special characters
     const sanitizedFileName = baseName
-      .trim()
+    .trim()
       .replace(/\s+/g, "-")
       .replace(/[^a-zA-Z0-9-_]/g, "");
 

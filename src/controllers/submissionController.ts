@@ -211,7 +211,6 @@ export const CreateSubmission = async (req: Request, res: Response) => {
     proposalTitle,
     proposalDescription,
     resourcesLink,
-    resourcesFile,
     submissionStatus,
     remarksId,
   } = req.body;
@@ -236,18 +235,6 @@ export const CreateSubmission = async (req: Request, res: Response) => {
     });
   }
 
-  if (fileType === "Link" && !resourcesLink) {
-    return res.status(400).json({
-      message: "resourcesLink is required when fileType is 'Link'",
-    });
-  }
-
-  if (fileType === "File" && !resourcesFile) {
-    return res.status(400).json({
-      message: "resourcesFile is required when fileType is 'File'",
-    });
-  }
-
   try {
     const lastSubmission = await Submission.findOne({
       order: [["id", "DESC"]],
@@ -264,8 +251,7 @@ export const CreateSubmission = async (req: Request, res: Response) => {
       fileType,
       proposalTitle,
       proposalDescription,
-      resourcesLink: fileType === "Link" ? resourcesLink : null,
-      resourcesFile: fileType === "File" ? resourcesFile : null,
+      resourcesLink,
       submissionStatus,
       remarksId,
     });

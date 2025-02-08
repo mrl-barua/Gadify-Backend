@@ -13,7 +13,6 @@ export class Submission extends Model {
   public proposalTitle!: string;
   public proposalDescription!: string;
   public resourcesLink!: string;
-  public resources!: Blob;
   public submissionStatus!: "Pending" | "Approved" | "Rejected";
   public remarksId!: number;
   public createdAt!: Date;
@@ -65,10 +64,6 @@ Submission.init(
     },
     resourcesLink: {
       type: DataTypes.TEXT,
-      allowNull: true,
-    },
-    resourcesFile: {
-      type: DataTypes.BLOB,
       allowNull: true,
     },
     submissionStatus: {
