@@ -8,7 +8,7 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import e from "express";
 const router = express.Router();
 
-// Proponents login
+/* Proponent Login */
 router.post("/login/proponents", async (req: Request, res: Response) => {
   const { userName, password } = req.body;
 
@@ -47,39 +47,7 @@ router.post("/login/proponents", async (req: Request, res: Response) => {
   res.json({ token });
 });
 
-// Admin login
-router.post("/login/admin", async (req: Request, res: Response) => {
-  const { email, password } = req.body;
-
-  if (!email || !password) {
-    return res.status(400).json({ message: "email and password are required" });
-  }
-
-  console.log("Login request received with email:", email);
-
-  const admin = await Admin.findOne({ where: { email } });
-  if (!admin) {
-    return res.status(400).json({ message: "Invalid email" });
-  }
-
-  console.log("Admin Login - Entered Password:", password);
-  console.log("Admin Login - Stored Hashed Password:", admin.password);
-
-  const validPassword = await comparePassword(password, admin.password);
-  console.log("Admin Login - Password Match:", validPassword);
-  if (!validPassword) {
-    return res.status(400).json({ message: "Invalid password" });
-  }
-
-  const token = generateToken({
-    id: admin.id,
-    username: admin.email,
-    role: "admin",
-  });
-  res.json({ token });
-});
-
-// Proponents registration
+/* Proponent Register */
 router.post("/register/proponent", async (req: Request, res: Response) => {
   const {
     departmentId,
@@ -154,7 +122,39 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
   }
 });
 
-// Admin registration
+/* Admin Login */
+router.post("/login/admin", async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ message: "email and password are required" });
+  }
+
+  console.log("Login request received with email:", email);
+
+  const admin = await Admin.findOne({ where: { email } });
+  if (!admin) {
+    return res.status(400).json({ message: "Invalid email" });
+  }
+
+  console.log("Admin Login - Entered Password:", password);
+  console.log("Admin Login - Stored Hashed Password:", admin.password);
+
+  const validPassword = await comparePassword(password, admin.password);
+  console.log("Admin Login - Password Match:", validPassword);
+  if (!validPassword) {
+    return res.status(400).json({ message: "Invalid password" });
+  }
+
+  const token = generateToken({
+    id: admin.id,
+    username: admin.email,
+    role: "admin",
+  });
+  res.json({ token });
+});
+
+/* Admin Register */
 router.post("/register/admin", async (req: Request, res: Response) => {
   const { fullName, email, password } = req.body;
 
@@ -201,6 +201,33 @@ router.post("/register/admin", async (req: Request, res: Response) => {
   }
 });
 
+/* Evaluator Login */
+router.post("/login/evaluator", async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ message: "email and password are required" });
+  }
+
+  const evaluator = await Evaluator.findOne({ where: { email } });
+  if (!evaluator) {
+    return res.status(400).json({ message: "Invalid email or password" });
+  }
+
+  const validPassword = await comparePassword(password, evaluator.password);
+  if (!validPassword) {
+    return res.status(400).json({ message: "Invalid email or password" });
+  }
+
+  const token = generateToken({
+    id: evaluator.id,
+    username: evaluator.email,
+    role: "evaluator",
+  });
+  res.json({ token });
+});
+
+/* Evaluator Register */
 router.post("/register/evaluator", async (req: Request, res: Response) => {
   const { campusId, departmentId, officeId, fullName, email, password } =
     req.body;
@@ -258,32 +285,7 @@ router.post("/register/evaluator", async (req: Request, res: Response) => {
   }
 });
 
-// Evaluator login
-router.post("/login/evaluator", async (req: Request, res: Response) => {
-  const { email, password } = req.body;
-
-  if (!email || !password) {
-    return res.status(400).json({ message: "email and password are required" });
-  }
-
-  const evaluator = await Evaluator.findOne({ where: { email } });
-  if (!evaluator) {
-    return res.status(400).json({ message: "Invalid email or password" });
-  }
-
-  const validPassword = await comparePassword(password, evaluator.password);
-  if (!validPassword) {
-    return res.status(400).json({ message: "Invalid email or password" });
-  }
-
-  const token = generateToken({
-    id: evaluator.id,
-    username: evaluator.email,
-    role: "evaluator",
-  });
-  res.json({ token });
-});
-
+/* Logout */
 router.post("/logout", async (req: Request, res: Response) => {
   const token = req.header("Authorization")?.split(" ")[1];
 
