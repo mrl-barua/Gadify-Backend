@@ -8,6 +8,77 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import e from "express";
 const router = express.Router();
 
+// Proponents login
+router.post("/login/proponents", async (req: Request, res: Response) => {
+  const { userName, password } = req.body;
+
+  if (!userName || !password) {
+    return res
+      .status(400)
+      .json({ message: "username and password are required" });
+  }
+
+  console.log("Login request received with username:", userName);
+
+  const proponent = await Proponents.findOne({ where: { userName } });
+  if (!proponent) {
+    return res.status(400).json({ message: "Invalid email or password" });
+  }
+
+  if (proponent.proponentStatus === "Pending") {
+    return res.status(400).json({ message: "Account approval is pending" });
+  } else if (proponent.proponentStatus === "Rejected") {
+    return res.status(403).json({
+      message:
+        "Your account has been rejected. Please contact the administrator for further assistance.",
+    });
+  }
+
+  const validPassword = await comparePassword(password, proponent.password);
+  if (!validPassword) {
+    return res.status(400).json({ message: "Invalid username or password" });
+  }
+
+  const token = generateToken({
+    id: proponent.id,
+    username: proponent.userName,
+    role: "proponent",
+  });
+  res.json({ token });
+});
+
+// Admin login
+router.post("/login/admin", async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ message: "email and password are required" });
+  }
+
+  console.log("Login request received with email:", email);
+
+  const admin = await Admin.findOne({ where: { email } });
+  if (!admin) {
+    return res.status(400).json({ message: "Invalid email" });
+  }
+
+  console.log("Admin Login - Entered Password:", password);
+  console.log("Admin Login - Stored Hashed Password:", admin.password);
+
+  const validPassword = await comparePassword(password, admin.password);
+  console.log("Admin Login - Password Match:", validPassword);
+  if (!validPassword) {
+    return res.status(400).json({ message: "Invalid password" });
+  }
+
+  const token = generateToken({
+    id: admin.id,
+    username: admin.email,
+    role: "admin",
+  });
+  res.json({ token });
+});
+
 // Proponents registration
 router.post("/register/proponent", async (req: Request, res: Response) => {
   const {
@@ -83,96 +154,51 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
   }
 });
 
-// Proponents login
-router.post("/login/proponents", async (req: Request, res: Response) => {
-  const { userName, password } = req.body;
-
-  if (!userName || !password) {
-    return res
-      .status(400)
-      .json({ message: "username and password are required" });
-  }
-
-  console.log("Login request received with username:", userName);
-
-  const proponent = await Proponents.findOne({ where: { userName } });
-  if (!proponent) {
-    return res.status(400).json({ message: "Invalid email or password" });
-  }
-
-  if (proponent.proponentStatus === "Pending") {
-    return res.status(400).json({ message: "Account approval is pending" });
-  } else if (proponent.proponentStatus === "Rejected") {
-    return res.status(403).json({
-      message:
-        "Your account has been rejected. Please contact the administrator for further assistance.",
-    });
-  }
-
-  const validPassword = await comparePassword(password, proponent.password);
-  if (!validPassword) {
-    return res.status(400).json({ message: "Invalid username or password" });
-  }
-
-  const token = generateToken({
-    id: proponent.id,
-    username: proponent.userName,
-    role: "proponent",
-  });
-  res.json({ token });
-});
-
 // Admin registration
 router.post("/register/admin", async (req: Request, res: Response) => {
   const { fullName, email, password } = req.body;
 
-  if (!fullName || !email || !password) {
-    return res
-      .status(400)
-      .json({ message: "fullName, email and password are required" });
+  const missingFields = [];
+  if (!fullName) missingFields.push("fullName");
+  if (!email) missingFields.push("email");
+  if (!password) missingFields.push("password");
+
+  if (missingFields.length > 0) {
+    return res.status(400).json({
+      message: `${missingFields.join(", ")} are required`,
+    });
   }
 
-  const foundAdmin = await Admin.findOne({ where: { email } });
-  if (foundAdmin) {
-    return res
-      .status(400)
-      .json({ message: "email already registered, use another email" });
+  try {
+    const foundAdmin = await Admin.findOne({ where: { email } });
+    if (foundAdmin) {
+      return res
+        .status(400)
+        .json({ message: "Email already registered, use another email" });
+    }
+
+    const hashedPassword = await hashPassword(password);
+    console.log("Admin Registration - Hashed Password:", hashedPassword);
+
+    const lastAdmin = await Admin.findOne({ order: [["id", "DESC"]] });
+    const newAdminId = lastAdmin
+      ? `A-${String(lastAdmin.id + 1).padStart(4, "0")}`
+      : "A-0001";
+
+    const newAdmin = await Admin.create({
+      adminId: newAdminId,
+      fullName,
+      email,
+      password: hashedPassword,
+    });
+
+    res.status(201).json(newAdmin);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res
+      .status(500)
+      .json({ error: "Error creating admin", messageDetails: errorMessage });
   }
-
-  const hashedPassword = await hashPassword(password);
-  const admin = await Admin.create({
-    fullName,
-    email,
-    password: hashedPassword,
-  });
-
-  res.status(201).json({ message: "Admin registered successfully", admin });
-});
-
-// Admin login
-router.post("/login/admin", async (req: Request, res: Response) => {
-  const { email, password } = req.body;
-
-  if (!email || !password) {
-    return res.status(400).json({ message: "email and password are required" });
-  }
-
-  const admin = await Admin.findOne({ where: { email } });
-  if (!admin) {
-    return res.status(400).json({ message: "Invalid email" });
-  }
-
-  // const validPassword = await comparePassword(password, admin.password);
-  // if (!validPassword) {
-  //   return res.status(400).json({ message: "Invalid password" });
-  // }
-
-  const token = generateToken({
-    id: admin.id,
-    username: admin.email,
-    role: "admin",
-  });
-  res.json({ token });
 });
 
 router.post("/register/evaluator", async (req: Request, res: Response) => {
