@@ -27,11 +27,12 @@ const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Replace with your frontend's origin
+    origin: "*", // This allows all origins (use carefully)
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
 );
+
 app.use(express.json());
 
 app.use("/api", AuthRoutes);
