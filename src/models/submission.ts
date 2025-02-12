@@ -93,7 +93,7 @@ Submission.init(
   },
   {
     sequelize,
-    tableName: "Submission",
+    tableName: "submission",
     timestamps: false,
   }
 );
