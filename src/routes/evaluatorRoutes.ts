@@ -9,7 +9,7 @@ import {
 
 const router = Router();
 
-router.get("/evaluator", GetEvaluatorsWithDetails);
+router.get("/evaluators", GetEvaluatorsWithDetails);
 router.post("/evaluator", CreateEvaluator);
 
 export default router;
