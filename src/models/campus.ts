@@ -30,7 +30,7 @@ Campus.init(
   },
   {
     sequelize,
-    tableName: "Campus",
+    tableName: "campus",
     timestamps: false,
   }
 );

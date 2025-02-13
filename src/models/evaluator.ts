@@ -66,7 +66,7 @@ Evaluator.init(
   },
   {
     sequelize,
-    tableName: "Evaluator",
+    tableName: "evaluator",
     timestamps: false,
   }
 );

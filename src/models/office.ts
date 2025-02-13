@@ -38,7 +38,7 @@ Office.init(
   },
   {
     sequelize,
-    tableName: "Office",
+    tableName: "office",
     timestamps: false,
   }
 );

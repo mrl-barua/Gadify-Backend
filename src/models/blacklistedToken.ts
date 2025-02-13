@@ -31,7 +31,7 @@ BlacklistedToken.init(
   },
   {
     sequelize,
-    tableName: "BlacklistedToken",
+    tableName: "blacklistedToken",
     timestamps: false,
   }
 );

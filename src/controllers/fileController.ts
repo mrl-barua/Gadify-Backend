@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 
     // Replace spaces with hyphens and remove special characters
     const sanitizedFileName = baseName
-    .trim()
+      .trim()
       .replace(/\s+/g, "-")
       .replace(/[^a-zA-Z0-9-_]/g, "");
 
@@ -60,6 +60,7 @@ export const getFile = (req: Request, res: Response) => {
   const filePath = path.join(__dirname, "../../uploadedFiles", filename);
 
   if (fs.existsSync(filePath)) {
+    res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
     res.sendFile(filePath);
   } else {
     res.status(404).send({ error: "File not found." });
