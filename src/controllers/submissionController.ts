@@ -414,12 +414,7 @@ export const AssignEvaluatorsToSubmission = async (
 ) => {
   const { submissionId, evaluatorIds } = req.body;
 
-  if (
-    !submissionId ||
-    !evaluatorIds ||
-    !Array.isArray(evaluatorIds) ||
-    evaluatorIds.length === 0
-  ) {
+  if (!submissionId || !evaluatorIds || !Array.isArray(evaluatorIds)) {
     return res.status(400).json({
       message: "submissionId and evaluatorIds are required",
     });
@@ -438,33 +433,49 @@ export const AssignEvaluatorsToSubmission = async (
 
     const now = new Date();
 
-    // Prevent duplicate entries by filtering out existing records
+    // Fetch currently assigned evaluators
     const existingEvaluators = await SubmissionEvaluators.findAll({
-      where: { submissionId, evaluatorId: evaluatorIds },
+      where: { submissionId },
       attributes: ["evaluatorId"],
     });
 
     const existingEvaluatorIds = existingEvaluators.map((e) => e.evaluatorId);
 
-    // Filter out evaluators that are already assigned
+    // Identify evaluators to be **added**
     const newEvaluators = evaluatorIds
       .filter((id: number) => !existingEvaluatorIds.includes(id))
       .map((evaluatorId: number) => ({
-        submissionId: submission.id,
+        submissionId,
         evaluatorId,
         createdAt: now,
         updatedAt: now,
       }));
 
+    // Identify evaluators to be **removed**
+    const evaluatorsToRemove = existingEvaluatorIds.filter(
+      (id) => !evaluatorIds.includes(id)
+    );
+
+    // Remove evaluators that are no longer assigned
+    if (evaluatorsToRemove.length > 0) {
+      await SubmissionEvaluators.destroy({
+        where: {
+          submissionId,
+          evaluatorId: evaluatorsToRemove,
+        },
+      });
+    }
+
+    // Add new evaluators
     if (newEvaluators.length > 0) {
       await SubmissionEvaluators.bulkCreate(newEvaluators);
     }
 
     res.status(200).json({
-      message: "Evaluators assigned successfully",
+      message: "Evaluators updated successfully",
     });
   } catch (error) {
-    console.error("Error assigning evaluators:", error);
+    console.error("Error updating evaluators:", error);
 
     if (error instanceof Error) {
       if (error.name === "SequelizeUniqueConstraintError") {
