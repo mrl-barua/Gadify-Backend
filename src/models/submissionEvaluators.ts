@@ -1,16 +1,17 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/db";
-export class SubmissionProponents extends Model {
+
+export class SubmissionEvaluators extends Model {
   public id!: number;
   public submissionId!: number;
-  public proponentsId!: number;
+  public evaluatorId!: number;
 
   // timestamps
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
 
-SubmissionProponents.init(
+SubmissionEvaluators.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -21,13 +22,14 @@ SubmissionProponents.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    proponentsId: {
+    evaluatorId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
   {
     sequelize,
-    tableName: "submission_proponents",
+    tableName: "submissionevaluator",
+    timestamps: false,
   }
 );

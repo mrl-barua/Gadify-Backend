@@ -6,6 +6,8 @@ import {
   AddSubmissionRemarks,
   GetSubmissionById,
   GetSubmissionsByProponentId,
+  AssignEvaluatorsToSubmission,
+  GetEvaluatorsBySubmission,
 } from "../controllers/submissionController";
 
 const router = Router();
@@ -14,5 +16,8 @@ router.get("/submissions", GetAllSubmissions);
 router.post("/submission", CreateSubmission);
 router.post("/submissionById", GetSubmissionById);
 router.post("/submissionByProponentId", GetSubmissionsByProponentId);
+router.post("/submissionRemarks", AddSubmissionRemarks);
+router.post("/assignEvaluators", AssignEvaluatorsToSubmission);
+router.post("/getEvaluators", GetEvaluatorsBySubmission);
 
 export default router;

@@ -1,11 +1,13 @@
 import { Request, Response } from "express";
 import { Submission } from "../models/submission";
+import { SubmissionEvaluators } from "../models/submissionEvaluators";
 import { Proponents } from "../models/proponents";
 import { Evaluator } from "../models/evaluator";
 import { Remarks } from "../models/remarks";
 import { Department } from "../models/department";
 import { Campus } from "../models/campus";
 import { Office } from "../models/office";
+import { Op } from "sequelize";
 
 export const GetAllSubmissions = async (req: Request, res: Response) => {
   try {
@@ -402,6 +404,150 @@ export const GetSubmissionById = async (req: Request, res: Response) => {
     res.status(500).json({
       error: "Error getting submission",
       messageDetails: errorMessage,
+    });
+  }
+};
+
+export const AssignEvaluatorsToSubmission = async (
+  req: Request,
+  res: Response
+) => {
+  const { submissionId, evaluatorIds } = req.body;
+
+  if (
+    !submissionId ||
+    !evaluatorIds ||
+    !Array.isArray(evaluatorIds) ||
+    evaluatorIds.length === 0
+  ) {
+    return res.status(400).json({
+      message: "submissionId and evaluatorIds are required",
+    });
+  }
+
+  try {
+    const submission = await Submission.findOne({
+      where: { id: submissionId },
+    });
+
+    if (!submission) {
+      return res.status(404).json({
+        message: "Submission not found",
+      });
+    }
+
+    const now = new Date();
+
+    // Prevent duplicate entries by filtering out existing records
+    const existingEvaluators = await SubmissionEvaluators.findAll({
+      where: { submissionId, evaluatorId: evaluatorIds },
+      attributes: ["evaluatorId"],
+    });
+
+    const existingEvaluatorIds = existingEvaluators.map((e) => e.evaluatorId);
+
+    // Filter out evaluators that are already assigned
+    const newEvaluators = evaluatorIds
+      .filter((id: number) => !existingEvaluatorIds.includes(id))
+      .map((evaluatorId: number) => ({
+        submissionId: submission.id,
+        evaluatorId,
+        createdAt: now,
+        updatedAt: now,
+      }));
+
+    if (newEvaluators.length > 0) {
+      await SubmissionEvaluators.bulkCreate(newEvaluators);
+    }
+
+    res.status(200).json({
+      message: "Evaluators assigned successfully",
+    });
+  } catch (error) {
+    console.error("Error assigning evaluators:", error);
+
+    if (error instanceof Error) {
+      if (error.name === "SequelizeUniqueConstraintError") {
+        return res.status(400).json({
+          error: "Unique Constraint Error",
+          messageDetails:
+            "This evaluator is already assigned to the submission.",
+        });
+      } else if (error.name === "SequelizeValidationError") {
+        return res.status(400).json({
+          error: "Validation Error",
+          messageDetails: error.message,
+        });
+      }
+    }
+
+    res.status(500).json({
+      error: "Unknown Server Error",
+      messageDetails: (error as Error).message,
+    });
+  }
+};
+
+export const GetEvaluatorsBySubmission = async (
+  req: Request,
+  res: Response
+) => {
+  const { submissionId } = req.body;
+
+  if (!submissionId) {
+    return res.status(400).json({
+      message: "Submission ID is required",
+    });
+  }
+
+  try {
+    // Fetch submission
+    const submission = await Submission.findOne({
+      where: { id: submissionId },
+    });
+
+    if (!submission) {
+      return res.status(404).json({
+        message: "Submission not found",
+      });
+    }
+
+    // Fetch assigned evaluators
+    const submissionEvaluators = await SubmissionEvaluators.findAll({
+      where: { submissionId },
+      attributes: ["evaluatorId", "createdAt", "updatedAt"],
+    });
+
+    if (submissionEvaluators.length === 0) {
+      return res.status(404).json({
+        message: "No evaluators found for this submission",
+      });
+    }
+
+    // Extract evaluator IDs
+    const evaluatorIds = submissionEvaluators.map((se) => se.evaluatorId);
+
+    // Fetch evaluator details
+    const evaluators = await Evaluator.findAll({
+      where: { id: { [Op.in]: evaluatorIds } },
+    });
+
+    // Format response
+    const response = {
+      id: submission.id,
+      submission,
+      evaluatorsId: evaluatorIds,
+      evaluators,
+      createdAt: submissionEvaluators[0].createdAt,
+      updatedAt: submissionEvaluators[0].updatedAt,
+    };
+
+    res.status(200).json(response);
+  } catch (error) {
+    console.error("Error fetching evaluators:", error);
+    res.status(500).json({
+      error: "Error fetching evaluators",
+      messageDetails: (error as Error).message,
     });
   }
 };
