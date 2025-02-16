@@ -433,7 +433,6 @@ export const AssignEvaluatorsToSubmission = async (
 
     const now = new Date();
 
-    // Fetch currently assigned evaluators
     const existingEvaluators = await SubmissionEvaluators.findAll({
       where: { submissionId },
       attributes: ["evaluatorId"],
@@ -441,7 +440,6 @@ export const AssignEvaluatorsToSubmission = async (
 
     const existingEvaluatorIds = existingEvaluators.map((e) => e.evaluatorId);
 
-    // Identify evaluators to be **added**
     const newEvaluators = evaluatorIds
       .filter((id: number) => !existingEvaluatorIds.includes(id))
       .map((evaluatorId: number) => ({
@@ -451,12 +449,10 @@ export const AssignEvaluatorsToSubmission = async (
         updatedAt: now,
       }));
 
-    // Identify evaluators to be **removed**
     const evaluatorsToRemove = existingEvaluatorIds.filter(
       (id) => !evaluatorIds.includes(id)
     );
 
-    // Remove evaluators that are no longer assigned
     if (evaluatorsToRemove.length > 0) {
       await SubmissionEvaluators.destroy({
         where: {
@@ -466,7 +462,6 @@ export const AssignEvaluatorsToSubmission = async (
       });
     }
 
-    // Add new evaluators
     if (newEvaluators.length > 0) {
       await SubmissionEvaluators.bulkCreate(newEvaluators);
     }

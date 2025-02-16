@@ -7,7 +7,7 @@ import {
 
 const router = Router();
 
-router.get("/department", GetAllDepartments);
+router.get("/departments", GetAllDepartments);
 router.post("/department", CreateDepartment);
 
 export default router;
