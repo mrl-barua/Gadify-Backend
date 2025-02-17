@@ -9,7 +9,7 @@ import e from "express";
 const router = express.Router();
 
 /* Proponent Login */
-router.post("/login/proponents", async (req: Request, res: Response) => {
+router.post("/login/proponent", async (req: Request, res: Response) => {
   const { userName, password } = req.body;
 
   if (!userName || !password) {
