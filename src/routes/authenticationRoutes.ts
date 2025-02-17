@@ -10,17 +10,15 @@ const router = express.Router();
 
 /* Proponent Login */
 router.post("/login/proponent", async (req: Request, res: Response) => {
-  const { userName, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!userName || !password) {
-    return res
-      .status(400)
-      .json({ message: "username and password are required" });
+  if (!email || !password) {
+    return res.status(400).json({ message: "email and password are required" });
   }
 
-  console.log("Login request received with username:", userName);
+  console.log("Login request received with email:", email);
 
-  const proponent = await Proponents.findOne({ where: { userName } });
+  const proponent = await Proponents.findOne({ where: { email } });
   if (!proponent) {
     return res.status(400).json({ message: "Invalid email or password" });
   }
