@@ -40,54 +40,6 @@ export const GetAllSubmissions = async (req: Request, res: Response) => {
           ],
         },
         {
-          model: Evaluator,
-          as: "evaluator",
-          attributes: [
-            "evaluatorId",
-            "campusId",
-            "departmentId",
-            "officeId",
-            "fullName",
-            "email",
-          ],
-          include: [
-            {
-              model: Campus,
-              as: "campus",
-              attributes: ["campusId", "campusName", "campusAddress"],
-            },
-            {
-              model: Office,
-              as: "office",
-              attributes: [
-                "officeId",
-                "campusId",
-                "departmentId",
-                "officeName",
-              ],
-              include: [
-                {
-                  model: Campus,
-                  as: "campus",
-                  attributes: ["campusId", "campusName", "campusAddress"],
-                },
-                {
-                  model: Department,
-                  as: "department",
-                  attributes: ["departmentId", "campusId", "departmentName"],
-                  include: [
-                    {
-                      model: Campus,
-                      as: "campus",
-                      attributes: ["campusId", "campusName", "campusAddress"],
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
           model: Remarks,
           as: "remarks",
           attributes: ["remarksId", "remarks"],
@@ -141,54 +93,6 @@ export const GetSubmissionsByProponentId = async (
           ],
         },
         {
-          model: Evaluator,
-          as: "evaluator",
-          attributes: [
-            "evaluatorId",
-            "campusId",
-            "departmentId",
-            "officeId",
-            "fullName",
-            "email",
-          ],
-          include: [
-            {
-              model: Campus,
-              as: "campus",
-              attributes: ["campusId", "campusName", "campusAddress"],
-            },
-            {
-              model: Office,
-              as: "office",
-              attributes: [
-                "officeId",
-                "campusId",
-                "departmentId",
-                "officeName",
-              ],
-              include: [
-                {
-                  model: Campus,
-                  as: "campus",
-                  attributes: ["campusId", "campusName", "campusAddress"],
-                },
-                {
-                  model: Department,
-                  as: "department",
-                  attributes: ["departmentId", "campusId", "departmentName"],
-                  include: [
-                    {
-                      model: Campus,
-                      as: "campus",
-                      attributes: ["campusId", "campusName", "campusAddress"],
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
           model: Remarks,
           as: "remarks",
           attributes: ["remarksId", "remarks"],
@@ -208,7 +112,6 @@ export const GetSubmissionsByProponentId = async (
 export const CreateSubmission = async (req: Request, res: Response) => {
   const {
     proponentId,
-    evaluatorId,
     fileType,
     proposalTitle,
     proposalDescription,
@@ -220,7 +123,6 @@ export const CreateSubmission = async (req: Request, res: Response) => {
   // Input validation
   const missingFields = [];
   if (!proponentId) missingFields.push("proponentId");
-  if (!evaluatorId) missingFields.push("evaluatorId");
   if (!fileType) missingFields.push("fileType");
   if (!proposalTitle) missingFields.push("proposalTitle");
   if (!submissionStatus) missingFields.push("submissionStatus");
@@ -249,7 +151,6 @@ export const CreateSubmission = async (req: Request, res: Response) => {
     const newSubmission = await Submission.create({
       submissionId: newSubmissionId,
       proponentId,
-      evaluatorId,
       fileType,
       proposalTitle,
       proposalDescription,
@@ -331,54 +232,6 @@ export const GetSubmissionById = async (req: Request, res: Response) => {
                   model: Campus,
                   as: "campus",
                   attributes: ["campusId", "campusName", "campusAddress"],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          model: Evaluator,
-          as: "evaluator",
-          attributes: [
-            "evaluatorId",
-            "campusId",
-            "departmentId",
-            "officeId",
-            "fullName",
-            "email",
-          ],
-          include: [
-            {
-              model: Campus,
-              as: "campus",
-              attributes: ["campusId", "campusName", "campusAddress"],
-            },
-            {
-              model: Office,
-              as: "office",
-              attributes: [
-                "officeId",
-                "campusId",
-                "departmentId",
-                "officeName",
-              ],
-              include: [
-                {
-                  model: Campus,
-                  as: "campus",
-                  attributes: ["campusId", "campusName", "campusAddress"],
-                },
-                {
-                  model: Department,
-                  as: "department",
-                  attributes: ["departmentId", "campusId", "departmentName"],
-                  include: [
-                    {
-                      model: Campus,
-                      as: "campus",
-                      attributes: ["campusId", "campusName", "campusAddress"],
-                    },
-                  ],
                 },
               ],
             },
