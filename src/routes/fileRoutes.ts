@@ -1,10 +1,10 @@
 import { Router } from "express";
 
-import { getFile, uploadFile } from "../controllers/fileController";
+import { getFile, uploadFiles } from "../controllers/fileController";
 
 const router = Router();
 
-router.post("/uploadFile", uploadFile);
+router.post("/uploadFiles", uploadFiles);
 router.get("/file/:filename", getFile);
 
 export default router;

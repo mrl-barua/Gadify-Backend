@@ -44,14 +44,17 @@ const upload = multer({
   },
 });
 
-export const uploadFile = [
-  upload.single("file"),
+export const uploadFiles = [
+  upload.array("file", 10), // Accept up to 10 files
   (req: Request, res: Response) => {
-    if (!req.file) {
-      return res.status(400).send({ error: "No file uploaded." });
+    if (!req.files || (req.files as Express.Multer.File[]).length === 0) {
+      return res.status(400).send({ error: "No files uploaded." });
     }
 
-    res.status(200).send({ file: req.file.filename });
+    const uploadedFiles = (req.files as Express.Multer.File[]).map(
+      (file) => file.filename
+    );
+    res.status(200).send({ files: uploadedFiles });
   },
 ];
 
