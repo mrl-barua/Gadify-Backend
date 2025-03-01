@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { Admin } from "../models/admin";
 import { Proponents, ProponentStatus } from "../models/proponents";
+import { approveAccountMail } from "../service/mail-templates/approveAccountMail";
+import { rejectAccountMail } from "../service/mail-templates/rejectAccountMail";
 
 export const GetAllAdmin = async (req: Request, res: Response) => {
   try {
@@ -65,6 +67,12 @@ export const ApproveProponent = async (req: Request, res: Response) => {
     proponent.proponentStatus = ProponentStatus.Approved;
     await proponent.save();
 
+    try {
+      approveAccountMail(proponent.email, proponent.fullName);
+    } catch (error: any) {
+      console.log(error);
+    }
+
     res.status(200).json(proponent);
   } catch (error) {
     const errorMessage = (error as Error).message;
@@ -90,6 +98,8 @@ export const RejectProponent = async (req: Request, res: Response) => {
 
     proponent.proponentStatus = ProponentStatus.Rejected;
     await proponent.save();
+
+    rejectAccountMail(proponent.email, proponent.fullName);
 
     res.status(200).json(proponent);
   } catch (error) {

@@ -39,7 +39,7 @@ router.post("/login/proponent", async (req: Request, res: Response) => {
 
   const token = generateToken({
     id: proponent.id,
-    username: proponent.userName,
+    username: proponent.fullName,
     role: "proponent",
   });
   res.json({ token });
@@ -146,7 +146,7 @@ router.post("/login/admin", async (req: Request, res: Response) => {
 
   const token = generateToken({
     id: admin.id,
-    username: admin.email,
+    username: admin.fullName,
     role: "admin",
   });
   res.json({ token });
@@ -219,7 +219,7 @@ router.post("/login/evaluator", async (req: Request, res: Response) => {
 
   const token = generateToken({
     id: evaluator.id,
-    username: evaluator.email,
+    username: evaluator.fullName,
     role: "evaluator",
   });
   res.json({ token });

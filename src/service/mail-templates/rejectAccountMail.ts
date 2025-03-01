@@ -1,4 +1,3 @@
-import { response } from "express";
 import { sendMail } from "../mailService";
 
 export const rejectAccountMail = async (to: string, username: string) => {
@@ -67,8 +66,7 @@ export const rejectAccountMail = async (to: string, username: string) => {
 
   try {
     const info = await sendMail(to, subjectString, subjectString, htmlString);
-    response.status(200).json({ message: "Email sent", info });
   } catch (error) {
-    response.status(500).json({ message: "Error sending email", error });
+    console.log(error);
   }
 };
