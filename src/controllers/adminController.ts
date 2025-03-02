@@ -110,3 +110,21 @@ export const RejectProponent = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const GetAdminById = async (req: Request, res: Response) => {
+  const { id } = req.body;
+
+  try {
+    const admin = await Admin.findByPk(id);
+    if (!admin) {
+      return res.status(404).json({ message: "Admin not found" });
+    }
+    res.json(admin);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error getting admin",
+      messageDetails: errorMessage,
+    });
+  }
+};
