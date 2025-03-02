@@ -6,6 +6,7 @@ import {
   ApproveProponent,
   RejectProponent,
   GetAdminById,
+  UpdateAdmin,
 } from "../controllers/adminController";
 
 const router = Router();
@@ -15,5 +16,6 @@ router.post("/admin", CreateAdmin);
 router.post("/admin/approve-proponent", ApproveProponent);
 router.post("/admin/reject-proponent", RejectProponent);
 router.post("/getAdminById", GetAdminById);
+router.put("/updateAdmin", UpdateAdmin);
 
 export default router;

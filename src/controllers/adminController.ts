@@ -128,3 +128,51 @@ export const GetAdminById = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const UpdateAdmin = async (req: Request, res: Response) => {
+  const { id, adminId, fullName, email } = req.body;
+
+  const missingFields = [];
+  if (!id) missingFields.push("id");
+  if (!adminId) missingFields.push("adminId");
+  if (!fullName) missingFields.push("fullName");
+  if (!email) missingFields.push("email");
+
+  if (missingFields.length > 0) {
+    return res.status(400).json({
+      message: `${missingFields.join(", ")} are required`,
+    });
+  }
+
+  try {
+    const admin = await Admin.findByPk(id);
+    if (!admin) {
+      return res.status(404).json({
+        message: "Admin not found " + id,
+      });
+    }
+
+    const adminUserNameExist = await Admin.findOne({
+      where: { email },
+    });
+    if (adminUserNameExist && adminUserNameExist.id !== Number(id)) {
+      return res.status(400).json({
+        message: "Email already exist in the database, please use another",
+      });
+    }
+
+    await admin.update({
+      id,
+      adminId,
+      fullName,
+      email,
+    });
+    res.json(admin);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error updating proponents",
+      messageDetails: errorMessage,
+    });
+  }
+};
