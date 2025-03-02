@@ -6,7 +6,6 @@ import { Evaluator } from "../models/evaluator";
 import { Remarks } from "../models/remarks";
 import { Department } from "../models/department";
 import { Campus } from "../models/campus";
-import { Office } from "../models/office";
 import { Op } from "sequelize";
 
 export const GetAllSubmissions = async (req: Request, res: Response) => {
