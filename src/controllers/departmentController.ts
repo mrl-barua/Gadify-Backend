@@ -1,9 +1,18 @@
 import { Request, Response } from "express";
 import { Department } from "../models/department";
+import { Campus } from "../models/campus";
 
 export const GetAllDepartments = async (req: Request, res: Response) => {
   try {
-    const departments = await Department.findAll();
+    const departments = await Department.findAll({
+      include: [
+        {
+          model: Campus,
+          as: "campus",
+          attributes: ["campusId", "campusName", "campusAddress"],
+        },
+      ],
+    });
     res.json(departments);
   } catch (error) {
     const errorMessage = (error as Error).message;
@@ -16,7 +25,6 @@ export const GetAllDepartments = async (req: Request, res: Response) => {
 export const CreateDepartment = async (req: Request, res: Response) => {
   const { campusId, departmentName } = req.body;
 
-  // Input validation
   const missingFields = [];
   if (!campusId) missingFields.push("campusId");
   if (!departmentName) missingFields.push("departmentName");
