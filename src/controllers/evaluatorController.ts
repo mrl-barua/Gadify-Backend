@@ -187,3 +187,49 @@ export const AddEvaluatorSignature = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const GetEvaluatorById = async (req: Request, res: Response) => {
+  const { id } = req.body;
+
+  try {
+    const evaluator = await Evaluator.findByPk(id, {
+      include: [
+        {
+          model: Campus,
+          as: "campus",
+          attributes: ["campusId", "campusName", "campusAddress"],
+        },
+        {
+          model: Department,
+          as: "department",
+          attributes: ["departmentId", "departmentName", "campusId"],
+          include: [
+            {
+              model: Campus,
+              as: "campus",
+              attributes: ["campusId", "campusName", "campusAddress"],
+            },
+          ],
+        },
+
+        {
+          model: Office,
+          as: "office",
+          attributes: ["officeId", "officeName"],
+        },
+      ],
+    });
+    if (!evaluator) {
+      return res.status(404).json({
+        message: "Evaluator not found",
+      });
+    }
+    res.json(evaluator);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error getting evaluator",
+      messageDetails: errorMessage,
+    });
+  }
+};

@@ -19,7 +19,6 @@ export const GetAllAdmin = async (req: Request, res: Response) => {
 export const CreateAdmin = async (req: Request, res: Response) => {
   const { fullName, email, password } = req.body;
 
-  // Input validation
   const missingFields = [];
   if (!fullName) missingFields.push("FullName");
   if (!email) missingFields.push("Email");
