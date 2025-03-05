@@ -4,14 +4,13 @@ import {
   AddEvaluatorSignature,
   GetAllEvaluators,
   CreateEvaluator,
-  GetEvaluatorsWithDetails,
   GetEvaluatorById,
   UpdateEvaluator,
 } from "../controllers/evaluatorController";
 
 const router = Router();
 
-router.get("/evaluators", GetEvaluatorsWithDetails);
+router.get("/evaluators", GetAllEvaluators);
 router.post("/evaluator", CreateEvaluator);
 router.post("/getEvaluatorById", GetEvaluatorById);
 router.put("/updateEvaluator", UpdateEvaluator);
