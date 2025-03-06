@@ -27,7 +27,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: "*", // This allows all origins (use carefully)
+    origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
@@ -53,7 +53,6 @@ sequelize
   .then(() => {
     console.log("Connection has been established successfully.");
 
-    // Sync the models with the database (optional, use { force: true } for dev mode to reset tables)
     sequelize
       .sync({ force: false })
       .then(() => {
@@ -63,7 +62,6 @@ sequelize
         console.error("Error synchronizing database:", err);
       });
 
-    // Start the server only after the database connection is successful
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}`);
     });

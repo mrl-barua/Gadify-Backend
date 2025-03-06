@@ -38,12 +38,9 @@ export const GetAllEvaluators = async (req: Request, res: Response) => {
 };
 
 export const CreateEvaluator = async (req: Request, res: Response) => {
-  const { campusId, departmentId, officeId, fullName, email, password } =
-    req.body;
+  const { departmentId, officeId, fullName, email, password } = req.body;
 
-  // Input validation
   const missingFields = [];
-  if (!campusId) missingFields.push("campusId");
   if (!departmentId) missingFields.push("departmentId");
   if (!officeId) missingFields.push("officeId");
   if (!fullName) missingFields.push("fullName");
@@ -76,7 +73,6 @@ export const CreateEvaluator = async (req: Request, res: Response) => {
 
     const newEvaluator = await Evaluator.create({
       evaluatorId: newEvaluatorId,
-      campusId,
       departmentId,
       officeId,
       fullName,
@@ -94,10 +90,9 @@ export const CreateEvaluator = async (req: Request, res: Response) => {
 };
 
 export const UpdateEvaluator = async (req: Request, res: Response) => {
-  const { id, campusId, departmentId, officeId, fullName, email } = req.body;
+  const { id, departmentId, officeId, fullName, email } = req.body;
 
   const missingFields = [];
-  if (!campusId) missingFields.push("campusId");
   if (!departmentId) missingFields.push("departmentId");
   if (!officeId) missingFields.push("officeId");
   if (!fullName) missingFields.push("fullName");
@@ -116,8 +111,6 @@ export const UpdateEvaluator = async (req: Request, res: Response) => {
         message: "Evaluator not found",
       });
     }
-
-    evaluator.campusId = campusId;
     evaluator.departmentId = departmentId;
     evaluator.officeId = officeId;
     evaluator.fullName = fullName;

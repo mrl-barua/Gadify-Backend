@@ -56,3 +56,36 @@ export const CreateDepartment = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const UpdateDepartment = async (req: Request, res: Response) => {
+  const { id, campusId, departmentName } = req.body;
+
+  const missingFields = [];
+  if (!campusId) missingFields.push("campusId");
+  if (!departmentName) missingFields.push("departmentName");
+
+  if (missingFields.length > 0) {
+    return res.status(400).json({
+      message: `${missingFields.join(", ")} are required`,
+    });
+  }
+
+  try {
+    const department = await Department.findOne({ where: { id } });
+    if (!department) {
+      return res.status(404).json({ message: "Department not found" });
+    }
+
+    department.campusId = campusId;
+    department.departmentName = departmentName;
+    await department.save();
+
+    res.json(department);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error updating department",
+      messageDetails: errorMessage,
+    });
+  }
+};
