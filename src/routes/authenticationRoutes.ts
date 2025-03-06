@@ -227,11 +227,10 @@ router.post("/login/evaluator", async (req: Request, res: Response) => {
 
 /* Evaluator Register */
 router.post("/register/evaluator", async (req: Request, res: Response) => {
-  const { departmentId, officeId, fullName, email, password } = req.body;
+  const { officeId, fullName, email, password } = req.body;
 
   // Input validation
   const missingFields = [];
-  if (!departmentId) missingFields.push("departmentId");
   if (!officeId) missingFields.push("officeId");
   if (!fullName) missingFields.push("fullName");
   if (!email) missingFields.push("email");
@@ -264,7 +263,6 @@ router.post("/register/evaluator", async (req: Request, res: Response) => {
     const hashedPassword = await hashPassword(password);
     const newEvaluator = await Evaluator.create({
       evaluatorId: newEvaluatorId,
-      departmentId,
       officeId,
       fullName,
       email,

@@ -9,21 +9,23 @@ export const GetAllEvaluators = async (req: Request, res: Response) => {
     const evaluators = await Evaluator.findAll({
       include: [
         {
-          model: Department,
-          as: "department",
-          attributes: ["departmentId", "departmentName", "campusId"],
-          include: [
-            {
-              model: Campus,
-              as: "campus",
-              attributes: ["campusId", "campusName", "campusAddress"],
-            },
-          ],
-        },
-        {
           model: Office,
           as: "office",
           attributes: ["officeId", "officeName"],
+          include: [
+            {
+              model: Department,
+              as: "department",
+              attributes: ["departmentId", "departmentName", "campusId"],
+              include: [
+                {
+                  model: Campus,
+                  as: "campus",
+                  attributes: ["campusId", "campusName", "campusAddress"],
+                },
+              ],
+            },
+          ],
         },
       ],
     });
@@ -41,7 +43,6 @@ export const CreateEvaluator = async (req: Request, res: Response) => {
   const { departmentId, officeId, fullName, email, password } = req.body;
 
   const missingFields = [];
-  if (!departmentId) missingFields.push("departmentId");
   if (!officeId) missingFields.push("officeId");
   if (!fullName) missingFields.push("fullName");
   if (!email) missingFields.push("email");
@@ -73,7 +74,6 @@ export const CreateEvaluator = async (req: Request, res: Response) => {
 
     const newEvaluator = await Evaluator.create({
       evaluatorId: newEvaluatorId,
-      departmentId,
       officeId,
       fullName,
       email,
@@ -90,10 +90,9 @@ export const CreateEvaluator = async (req: Request, res: Response) => {
 };
 
 export const UpdateEvaluator = async (req: Request, res: Response) => {
-  const { id, departmentId, officeId, fullName, email } = req.body;
+  const { id, officeId, fullName, email } = req.body;
 
   const missingFields = [];
-  if (!departmentId) missingFields.push("departmentId");
   if (!officeId) missingFields.push("officeId");
   if (!fullName) missingFields.push("fullName");
   if (!email) missingFields.push("email");
@@ -111,7 +110,6 @@ export const UpdateEvaluator = async (req: Request, res: Response) => {
         message: "Evaluator not found",
       });
     }
-    evaluator.departmentId = departmentId;
     evaluator.officeId = officeId;
     evaluator.fullName = fullName;
     evaluator.email = email;
@@ -171,27 +169,23 @@ export const GetEvaluatorById = async (req: Request, res: Response) => {
     const evaluator = await Evaluator.findByPk(id, {
       include: [
         {
-          model: Campus,
-          as: "campus",
-          attributes: ["campusId", "campusName", "campusAddress"],
-        },
-        {
-          model: Department,
-          as: "department",
-          attributes: ["departmentId", "departmentName", "campusId"],
-          include: [
-            {
-              model: Campus,
-              as: "campus",
-              attributes: ["campusId", "campusName", "campusAddress"],
-            },
-          ],
-        },
-
-        {
           model: Office,
           as: "office",
           attributes: ["officeId", "officeName"],
+          include: [
+            {
+              model: Department,
+              as: "department",
+              attributes: ["departmentId", "departmentName", "campusId"],
+              include: [
+                {
+                  model: Campus,
+                  as: "campus",
+                  attributes: ["campusId", "campusName", "campusAddress"],
+                },
+              ],
+            },
+          ],
         },
       ],
     });
