@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Submission } from "../models/submission";
+import { Submission, SubmissionFiles } from "../models/submission";
 import { SubmissionEvaluators } from "../models/submissionEvaluators";
 import { Proponents } from "../models/proponents";
 import { Evaluator } from "../models/evaluator";
@@ -42,6 +42,11 @@ export const GetAllSubmissions = async (req: Request, res: Response) => {
           model: Remarks,
           as: "remarks",
           attributes: ["remarksId", "remarks"],
+        },
+        {
+          model: SubmissionFiles,
+          as: "submissionFiles",
+          attributes: ["resourcesLink"],
         },
       ],
     });
@@ -96,6 +101,11 @@ export const GetSubmissionsByProponentId = async (
           as: "remarks",
           attributes: ["remarksId", "remarks"],
         },
+        {
+          model: SubmissionFiles,
+          as: "submissionFiles",
+          attributes: ["resourcesLink"],
+        },
       ],
     });
     res.json(submissions);
@@ -114,9 +124,9 @@ export const CreateSubmission = async (req: Request, res: Response) => {
     fileType,
     proposalTitle,
     proposalDescription,
-    resourcesLink,
     submissionStatus,
     remarksId,
+    submissionFiles,
   } = req.body;
 
   const missingFields = [];
@@ -152,11 +162,30 @@ export const CreateSubmission = async (req: Request, res: Response) => {
       fileType,
       proposalTitle,
       proposalDescription,
-      resourcesLink,
       submissionStatus,
       remarksId,
     });
-    res.status(201).json(newSubmission);
+
+    if (submissionFiles && Array.isArray(submissionFiles)) {
+      const fileRecords = submissionFiles.map((file) => ({
+        submissionId: newSubmission.id,
+        resourcesLink: file,
+      }));
+
+      await SubmissionFiles.bulkCreate(fileRecords);
+    }
+    const submissionWithFiles = await Submission.findOne({
+      where: { id: newSubmission.id },
+      include: [
+        {
+          model: SubmissionFiles,
+          as: "submissionFiles",
+          attributes: ["resourcesLink"],
+        },
+      ],
+    });
+
+    res.status(201).json(submissionWithFiles);
   } catch (error) {
     const errorMessage = (error as Error).message;
     res.status(500).json({
@@ -239,6 +268,11 @@ export const GetSubmissionById = async (req: Request, res: Response) => {
           model: Remarks,
           as: "remarks",
           attributes: ["remarksId", "remarks"],
+        },
+        {
+          model: SubmissionFiles,
+          as: "submissionFiles",
+          attributes: ["resourcesLink"],
         },
       ],
     });

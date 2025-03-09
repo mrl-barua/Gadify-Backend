@@ -11,10 +11,17 @@ export class Submission extends Model {
   public fileType!: "Link" | "File";
   public proposalTitle!: string;
   public proposalDescription!: string;
-  public resourcesLink!: string;
   public submissionStatus!: "Pending" | "Approved" | "Rejected";
   public remarksId!: number;
   public createdAt!: Date;
+}
+
+export class SubmissionFiles extends Model {
+  public id!: number;
+  public submissionId!: number;
+  public resourcesLink!: string;
+  public createdAt!: Date;
+  public updatedAt!: Date;
 }
 
 Submission.init(
@@ -51,10 +58,7 @@ Submission.init(
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    resourcesLink: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
+
     submissionStatus: {
       type: DataTypes.ENUM(
         "OnHold",
@@ -87,8 +91,49 @@ Submission.init(
   }
 );
 
+SubmissionFiles.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    submissionId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    resourcesLink: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize,
+    tableName: "submissionfiles",
+    timestamps: true,
+  }
+);
+
 Submission.belongsTo(Proponents, {
   foreignKey: "proponentId",
   as: "proponent",
 });
 Submission.belongsTo(Remarks, { foreignKey: "remarksId", as: "remarks" });
+Submission.hasMany(SubmissionFiles, {
+  foreignKey: "submissionId",
+  as: "submissionFiles",
+});
+SubmissionFiles.belongsTo(Submission, {
+  foreignKey: "submissionId",
+  as: "submission",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
