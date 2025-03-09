@@ -4,8 +4,7 @@ import { Proponents } from "../models/proponents";
 import { Admin } from "../models/admin";
 import { Evaluator } from "../models/evaluator";
 import { BlacklistedToken } from "../models/blacklistedToken";
-import jwt, { JwtPayload } from "jsonwebtoken";
-import e from "express";
+import jwt from "jsonwebtoken";
 const router = express.Router();
 
 /* Proponent Login */
