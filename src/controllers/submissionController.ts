@@ -119,7 +119,6 @@ export const CreateSubmission = async (req: Request, res: Response) => {
     remarksId,
   } = req.body;
 
-  // Input validation
   const missingFields = [];
   if (!proponentId) missingFields.push("proponentId");
   if (!fileType) missingFields.push("fileType");

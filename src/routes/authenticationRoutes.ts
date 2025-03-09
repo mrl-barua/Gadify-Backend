@@ -228,7 +228,6 @@ router.post("/login/evaluator", async (req: Request, res: Response) => {
 router.post("/register/evaluator", async (req: Request, res: Response) => {
   const { officeId, fullName, email, password } = req.body;
 
-  // Input validation
   const missingFields = [];
   if (!officeId) missingFields.push("officeId");
   if (!fullName) missingFields.push("fullName");

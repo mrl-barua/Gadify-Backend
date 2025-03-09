@@ -16,7 +16,6 @@ export const GetAllCampus = async (req: Request, res: Response) => {
 export const CreateCampus = async (req: Request, res: Response) => {
   const { campusName, campusAddress } = req.body;
 
-  // Input validation
   const missingFields = [];
   if (!campusName) missingFields.push("Name");
   if (!campusAddress) missingFields.push("Location");

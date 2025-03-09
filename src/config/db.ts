@@ -1,7 +1,6 @@
 import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
 
-// Load environment variables
 dotenv.config();
 
 const isProduction = process.env.IS_PRODUCTION === "true";

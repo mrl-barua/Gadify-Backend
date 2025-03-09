@@ -15,19 +15,27 @@ const storage = multer.diskStorage({
     const fileExt = path.extname(file.originalname).toLowerCase();
     const baseName = path.basename(file.originalname, fileExt);
 
-    // Replace spaces with hyphens and remove special characters
     const sanitizedFileName = baseName
       .trim()
       .replace(/\s+/g, "-")
       .replace(/[^a-zA-Z0-9-_]/g, "");
 
-    cb(null, `${sanitizedFileName}${fileExt}`);
+    const uploadPath = path.join(__dirname, "../../uploadedFiles");
+    let newFileName = `${sanitizedFileName}${fileExt}`;
+    let counter = 1;
+
+    while (fs.existsSync(path.join(uploadPath, newFileName))) {
+      newFileName = `${sanitizedFileName}(${counter})${fileExt}`;
+      counter++;
+    }
+
+    cb(null, newFileName);
   },
 });
 
 const upload = multer({
   storage,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB file size limit
+  limits: { fileSize: 10 * 1024 * 1024 },
   fileFilter: (_req, file, cb) => {
     const allowedMimeTypes = [
       "application/pdf",
@@ -45,7 +53,7 @@ const upload = multer({
 });
 
 export const uploadFiles = [
-  upload.array("file", 10), // Accept up to 10 files
+  upload.array("file", 10),
   (req: Request, res: Response) => {
     if (!req.files || (req.files as Express.Multer.File[]).length === 0) {
       return res.status(400).send({ error: "No files uploaded." });

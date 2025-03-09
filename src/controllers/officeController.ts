@@ -33,7 +33,6 @@ export const GetAllOffices = async (req: Request, res: Response) => {
 export const CreateOffice = async (req: Request, res: Response) => {
   const { campusId, departmentId, officeName } = req.body;
 
-  // Input validation
   const missingFields = [];
   if (!campusId) missingFields.push("campusId");
   if (!departmentId) missingFields.push("departmentId");

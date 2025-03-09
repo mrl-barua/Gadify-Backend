@@ -16,7 +16,6 @@ export const GetAllRemarks = async (req: Request, res: Response) => {
 export const CreateRemark = async (req: Request, res: Response) => {
   const { remarks } = req.body;
 
-  // Input validation
   if (!remarks) {
     return res.status(400).json({
       message: "Remarks are required",
