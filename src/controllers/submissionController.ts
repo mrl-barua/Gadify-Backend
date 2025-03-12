@@ -6,6 +6,11 @@ import { Evaluator } from "../models/evaluator";
 import { Remarks } from "../models/remarks";
 import { Department } from "../models/department";
 import { Campus } from "../models/campus";
+import { SubmissionEvaluation } from "../models/submissionEvaluation";
+import {
+  GenderEvaluationAssessment,
+  GenderEvaluationSection,
+} from "../models/genderEvaluation";
 import { Op } from "sequelize";
 
 export const GetAllSubmissions = async (req: Request, res: Response) => {
@@ -440,5 +445,64 @@ export const GetEvaluatorsBySubmission = async (
       error: "Error fetching evaluators",
       messageDetails: (error as Error).message,
     });
+  }
+};
+
+export const GetSubmissionEvaluation = async (submissionId: number) => {
+  try {
+    const evaluation = await SubmissionEvaluation.findOne({
+      where: { submissionId },
+      include: [
+        {
+          model: Submission,
+          as: "submission",
+          attributes: [
+            "id",
+            "submissionId",
+            "proponentId",
+            "fileType",
+            "proposalTitle",
+            "proposalDescription",
+            "submissionStatus",
+            "remarksId",
+          ],
+        },
+        {
+          model: Evaluator,
+          as: "evaluator",
+          attributes: ["id", "officeId", "fullName", "email"],
+        },
+        {
+          model: GenderEvaluationAssessment,
+          as: "assessments",
+          attributes: [
+            "id",
+            "sectionId",
+            "submissionEvaluationId",
+            "doneNo",
+            "donePartly",
+            "doneYes",
+            "score",
+            "comments",
+          ],
+          include: [
+            {
+              model: GenderEvaluationSection,
+              as: "section",
+              attributes: ["id", "element", "isMainSection"],
+            },
+          ],
+        },
+      ],
+    });
+
+    if (!evaluation) {
+      console.error("Evaluation not found");
+    }
+
+    return evaluation ? evaluation.toJSON() : null;
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    console.error("Error fetching submission evaluation:", errorMessage);
   }
 };

@@ -1,6 +1,5 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/db";
-import { SubmissionEvaluation } from "./submissionEvaluation";
 
 export class GenderEvaluationSection extends Model {
   public id!: number;
@@ -95,12 +94,4 @@ GenderEvaluationAssessment.init(
   }
 );
 
-GenderEvaluationAssessment.belongsTo(GenderEvaluationSection, {
-  foreignKey: "sectionId",
-  as: "section",
-});
-
-GenderEvaluationAssessment.belongsTo(SubmissionEvaluation, {
-  foreignKey: "submissionEvaluationId",
-  as: "submissionEvaluation",
-});
+export default GenderEvaluationAssessment;

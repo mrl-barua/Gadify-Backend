@@ -2,6 +2,7 @@ import express from "express";
 import sequelize from "./config/db";
 import cors from "cors";
 import { authenticateJWT } from "./middleware/auth";
+import { setupAssociations } from "./config/associations";
 import Admin from "./routes/adminRoutes";
 import Proponents from "./routes/proponentsRoutes";
 import Department from "./routes/departmentRoutes";
@@ -18,6 +19,7 @@ import ReportRoutes from "./routes/reportRoutes";
 const jsreport = require("jsreport");
 
 const app = express();
+setupAssociations();
 const PORT = process.env.PORT || 3000;
 app.use(
   cors({

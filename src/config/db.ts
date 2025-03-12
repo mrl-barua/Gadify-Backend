@@ -21,4 +21,4 @@ const sequelize = isProduction
       }
     );
 
-export default sequelize;
+export default sequelize; 

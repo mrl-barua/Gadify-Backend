@@ -56,25 +56,4 @@ SubmissionEvaluation.init(
   }
 );
 
-Submission.hasMany(SubmissionEvaluation, {
-  foreignKey: "submissionId",
-  as: "evaluations",
-});
-Evaluator.hasMany(SubmissionEvaluation, {
-  foreignKey: "evaluatorId",
-  as: "evaluations",
-});
-SubmissionEvaluation.belongsTo(Submission, {
-  foreignKey: "submissionId",
-  as: "submission",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
-});
-SubmissionEvaluation.belongsTo(Evaluator, {
-  foreignKey: "evaluatorId",
-  as: "evaluator",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
-});
-
 export default SubmissionEvaluation;

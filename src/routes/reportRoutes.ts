@@ -1,10 +1,12 @@
 import { Router, Request, Response } from "express";
 import GadifyChecklist from "../utils/reportjs/gadify_checklist";
 import GadifyMockData from "../utils/reportjs/gadify_mockdata";
+import { GetSubmissionEvaluation } from "../controllers/submissionController";
 
 const router = Router();
 
-router.get("/generate-report", async (req: Request, res: Response) => {
+router.post("/generate-report", async (req: Request, res: Response) => {
+  const { submissionId } = req.body;
   try {
     const jsreportInstance = req.app.locals.jsreportInstance;
 
@@ -12,13 +14,15 @@ router.get("/generate-report", async (req: Request, res: Response) => {
       throw new Error("jsreportInstance is not initialized.");
     }
 
+    const SubmissionData = await GetSubmissionEvaluation(submissionId);
+
     const report = await jsreportInstance.render({
       template: {
         content: GadifyChecklist,
         engine: "handlebars",
         recipe: "chrome-pdf",
       },
-      data: GadifyMockData,
+      data: SubmissionData,
     });
 
     res.setHeader("Content-Type", "application/pdf");

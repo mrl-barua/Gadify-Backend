@@ -81,7 +81,7 @@ export const gadify_checklist = `<!DOCTYPE html>
         </header>
         <main>
             <div class="project_title">
-                <p><strong>PROJECT TITLE:</strong> {{projectTitle}}</p>
+                <p><strong>PROJECT TITLE:</strong> {{submission.proposalTitle}}</p>
             </div>
             <div class="summary_checklist">
                 <p><strong>Box 7.</strong> Summary checklist for the assessment of proposed projects</p>
@@ -102,18 +102,18 @@ export const gadify_checklist = `<!DOCTYPE html>
                         </tr>
                     </thead>
                     <tbody>
-                    {{#each table}}
+                    {{#each assessments}}
                         <tr>
-                        {{#if isMainSection}}
-                            <td><strong>{{element}}</strong></td>
+                        {{#if section.isMainSection}}
+                            <td><strong>{{section.element}}</strong></td>
                         {{else}}
                             <td style="padding-left: 20px;">
-                            <em>{{element}}</em>
+                            <em>{{section.element}}</em>
                             </td>
                         {{/if}}
-                        <td>{{#if done.no}}✔{{/if}}</td>
-                        <td>{{#if done.partly}}✔{{/if}}</td>
-                        <td>{{#if done.yes}}✔{{/if}}</td>
+                        <td>{{#if doneNo}}✔{{/if}}</td>
+                        <td>{{#if donePartly}}✔{{/if}}</td>
+                        <td>{{#if doneYes}}✔{{/if}}</td>
                         {{#if isMainSection}}
                             <td style="border: 5px solid black; background-color: #d3d3d3;">{{score}}</td>
                         {{else}}
