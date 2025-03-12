@@ -28,7 +28,6 @@ app.use(
 );
 app.use(express.json());
 
-// Initialize jsreport and store in app.locals
 const jsreportInstance = jsreport();
 app.locals.jsreportInstance = jsreportInstance;
 
@@ -40,7 +39,7 @@ sequelize
   })
   .then(() => {
     console.log("Database synchronized.");
-    return jsreportInstance.init(); // Initialize jsreport before starting the server
+    return jsreportInstance.init();
   })
   .then(() => {
     app.listen(PORT, () => {
