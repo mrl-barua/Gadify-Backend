@@ -3971,3 +3971,6 @@ Error: Error when evaluating engine handlebars for template /gadify_checklist
 2025-03-12T13:44:48.198Z - info: 2 worker threads initialized in 527ms
 2025-03-12T13:44:48.198Z - info: Starting temp files cleanup with 180000ms threshold
 2025-03-12T13:44:48.199Z - info: reporter initialized
+2025-03-12T13:45:05.500Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-12T13:45:05.503Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-12T13:45:05.507Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\

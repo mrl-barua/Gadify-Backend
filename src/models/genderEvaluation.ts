@@ -1,7 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/db";
 import { SubmissionEvaluation } from "./submissionEvaluation";
-import { Submission } from "./submission";
 
 export class GenderEvaluationSection extends Model {
   public id!: number;
