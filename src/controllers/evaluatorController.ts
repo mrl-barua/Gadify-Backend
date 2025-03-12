@@ -3,6 +3,12 @@ import { Evaluator } from "../models/evaluator";
 import { Department } from "../models/department";
 import { Campus } from "../models/campus";
 import { Office } from "../models/office";
+import { Submission } from "../models/submission";
+import { SubmissionEvaluation } from "../models/submissionEvaluation";
+import {
+  GenderEvaluationAssessment,
+  GenderEvaluationSection,
+} from "../models/genderEvaluation";
 
 export const GetAllEvaluators = async (req: Request, res: Response) => {
   try {
@@ -200,6 +206,80 @@ export const GetEvaluatorById = async (req: Request, res: Response) => {
     res.status(500).json({
       error: "Error getting evaluator",
       messageDetails: errorMessage,
+    });
+  }
+};
+
+export const EvaluateSubmission = async (req: Request, res: Response) => {
+  const { submissionId, evaluatorId, sectionId, assessmentId } = req.body;
+
+  if (!submissionId || !evaluatorId || !sectionId || !assessmentId) {
+    return res.status(400).json({
+      message:
+        "submissionId, evaluatorId, projectId, sectionId, and assessmentId are required",
+    });
+  }
+
+  try {
+    // Check if submission exists
+    const submission = await Submission.findByPk(submissionId);
+    if (!submission) {
+      return res.status(404).json({
+        message: "Submission not found",
+      });
+    }
+
+    // Check if evaluator exists
+    const evaluator = await Evaluator.findByPk(evaluatorId);
+    if (!evaluator) {
+      return res.status(404).json({
+        message: "Evaluator not found",
+      });
+    }
+
+    // Check if Gender Evaluation Section exists
+    const section = await GenderEvaluationSection.findByPk(sectionId);
+    if (!section) {
+      return res.status(404).json({
+        message: "Gender Evaluation Section not found",
+      });
+    }
+
+    // Check if Gender Evaluation Assessment exists
+    const assessment = await GenderEvaluationAssessment.findByPk(assessmentId);
+    if (!assessment) {
+      return res.status(404).json({
+        message: "Gender Evaluation Assessment not found",
+      });
+    }
+
+    // Check if evaluation already exists
+    const existingEvaluation = await SubmissionEvaluation.findOne({
+      where: { submissionId, evaluatorId },
+    });
+
+    if (existingEvaluation) {
+      return res.status(400).json({
+        message: "This submission has already been evaluated by this evaluator",
+      });
+    }
+
+    // Create new evaluation entry
+    const evaluation = await SubmissionEvaluation.create({
+      submissionId,
+      evaluatorId,
+      sectionId,
+      assessmentId,
+    });
+
+    res.status(201).json({
+      message: "Submission evaluated successfully",
+      evaluation,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: "Error evaluating submission",
+      messageDetails: (error as Error).message,
     });
   }
 };
