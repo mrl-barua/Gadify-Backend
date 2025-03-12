@@ -1,0 +1,26 @@
+2025-03-12T12:16:49.073Z - error: Error when processing render request 1
+(because) folder with shortid "kx_IBDA" does not exists
+Error: Folder with shortid "kx_IBDA" does not exists
+  at resolveEntityPath (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-core\lib\shared\folders\resolveEntityPath.js:22:15)
+  at async executeScript (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-scripts\lib\executeScript.js:9:18)
+  at async Scripts._runScript (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-scripts\lib\worker.js:140:30)
+  at async Scripts.handleBeforeRender (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-scripts\lib\worker.js:64:7)
+  at async ListenerCollection.fire (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+  at async beforeRender (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-core\lib\worker\render\render.js:24:5)
+  at async WorkerReporter._render (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-core\lib\worker\render\render.js:147:7)
+  at async C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-core\lib\worker\reporter.js:232:24
+  at async processAndResponse (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\advanced-workers\lib\workerHandler.js:41:17) rootId=ske1qvr40vg6v4o, id=ske1qvr40vg6v4o
+2025-03-12T12:16:49.073Z - error: Rendering request 1 finished with error in 27 ms rootId=ske1qvr40vg6v4o, id=ske1qvr40vg6v4o
+2025-03-12T12:16:49.816Z - error: Error when processing render request 2
+(because) folder with shortid "kx_IBDA" does not exists
+Error: Folder with shortid "kx_IBDA" does not exists
+  at resolveEntityPath (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-core\lib\shared\folders\resolveEntityPath.js:22:15)
+  at async executeScript (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-scripts\lib\executeScript.js:9:18)
+  at async Scripts._runScript (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-scripts\lib\worker.js:140:30)
+  at async Scripts.handleBeforeRender (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-scripts\lib\worker.js:64:7)
+  at async ListenerCollection.fire (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+  at async beforeRender (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-core\lib\worker\render\render.js:24:5)
+  at async WorkerReporter._render (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-core\lib\worker\render\render.js:147:7)
+  at async C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-core\lib\worker\reporter.js:232:24
+  at async processAndResponse (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\advanced-workers\lib\workerHandler.js:41:17) rootId=hslxecnn50cmki3, id=hslxecnn50cmki3
+2025-03-12T12:16:49.816Z - error: Rendering request 2 finished with error in 11 ms rootId=hslxecnn50cmki3, id=hslxecnn50cmki3

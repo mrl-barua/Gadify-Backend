@@ -1,13 +1,7 @@
 import express from "express";
-import { Request, Response } from "express";
 import sequelize from "./config/db";
-const cors = require("cors");
-import { json } from "body-parser";
-import {
-  authenticateJWT,
-  blacklistToken,
-  checkBlacklist,
-} from "./middleware/auth";
+import cors from "cors";
+import { authenticateJWT } from "./middleware/auth";
 import Admin from "./routes/adminRoutes";
 import Proponents from "./routes/proponentsRoutes";
 import Department from "./routes/departmentRoutes";
@@ -19,12 +13,12 @@ import Submission from "./routes/submissionRoutes";
 import AuthRoutes from "./routes/authenticationRoutes";
 import ImageRoutes from "./routes/imageRoutes";
 import FileRoutes from "./routes/fileRoutes";
-
-import mailRoutes from "./routes/mailRoutes";
+import MailRoutes from "./routes/mailRoutes";
+import ReportRoutes from "./routes/reportRoutes";
+const jsreport = require("jsreport");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 app.use(
   cors({
     origin: "*",
@@ -32,11 +26,32 @@ app.use(
     credentials: true,
   })
 );
-
 app.use(express.json());
 
+// Initialize jsreport and store in app.locals
+const jsreportInstance = jsreport();
+app.locals.jsreportInstance = jsreportInstance;
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Database connection established.");
+    return sequelize.sync({ force: false });
+  })
+  .then(() => {
+    console.log("Database synchronized.");
+    return jsreportInstance.init(); // Initialize jsreport before starting the server
+  })
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((err: Error) => {
+    console.error("Error during initialization:", err);
+  });
+
 app.use("/api", AuthRoutes);
-app.use("/mail", authenticateJWT, mailRoutes);
 app.use("/api", authenticateJWT, Admin);
 app.use("/api", authenticateJWT, Proponents);
 app.use("/api", authenticateJWT, Department);
@@ -47,25 +62,7 @@ app.use("/api", authenticateJWT, Remarks);
 app.use("/api", authenticateJWT, Submission);
 app.use("/api", authenticateJWT, ImageRoutes);
 app.use("/api", authenticateJWT, FileRoutes);
+app.use("/mail", authenticateJWT, MailRoutes);
+app.use("/report", authenticateJWT, ReportRoutes);
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Connection has been established successfully.");
-
-    sequelize
-      .sync({ force: false })
-      .then(() => {
-        console.log("Database synchronized");
-      })
-      .catch((err: Error) => {
-        console.error("Error synchronizing database:", err);
-      });
-
-    app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
-    });
-  })
-  .catch((err: Error) => {
-    console.error("Unable to connect to the database:", err);
-  });
+export default app;
