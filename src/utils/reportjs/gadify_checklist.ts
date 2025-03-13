@@ -6,7 +6,7 @@ export const gadify_checklist = `<html lang="en">
     <title>Checklist</title>
     <style>
         @page {
-            size: A4; /* Standard PDF page size */
+            size: A4; 
             margin-top: 1in;
             margin-bottom: 1in;
         }
@@ -18,7 +18,48 @@ export const gadify_checklist = `<html lang="en">
             padding: 0;
         }
 
-        .report_body {
+        .certificate_header_table_head th {
+            text-align: center; 
+            vertical-align: middle;
+            padding: 10px;
+        }
+
+        .university_logo {
+            width: 20%; 
+        }
+
+        .university_details {
+            width: 96.7%;
+        }
+
+        .university_details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+        }
+
+        .university_details h1 {
+            font-size: 0.8em; 
+        }
+
+        .university_details p {
+            margin: 2px 0;
+            font-size: 0.5em; 
+        }
+
+        .certificate_header th,
+        .certificate_header td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .certificate_header th {
+            background-color: #FFFFFF;
+        }
+
+        .report_body, .certificate_header {
             margin: 0;
             padding: 0.5in;
         }
@@ -102,6 +143,32 @@ export const gadify_checklist = `<html lang="en">
 </head>
 
 <body>
+    <section class="certificate_header">
+        <div class="certificate_header_table_body">
+           <table width="100%">
+                <thead class="certificate_header_table_head">
+                    <tr>
+                        <th class="university_logo">
+                            <img src="logo.png" alt="University Logo" width="100">
+                        </th>
+                        <th class="university_details">
+                            <p>Republic of the Philippines</p>
+                            <h1>University of Southeastern Philippines</h1>
+                            <p>Iñigo St., Bo. Obrero, Davao City 8000</p>
+                            <p>Telephone: (082) 227-8192</p>
+                            <p>Website: <a href="https://www.usep.edu.ph">www.usep.edu.ph</a></p>
+                            <p>Email: <a href="mailto:president@usep.edu.ph">president@usep.edu.ph</a></p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2">GENDER MAINSTREAMING REVIEW FORM</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
     <section class="report_body">
         <header>
             <h5 class="checklist_header">Summary checklist for the assessment of proposed projec</h1>
