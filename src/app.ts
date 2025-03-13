@@ -20,7 +20,9 @@ const jsreport = require("jsreport");
 
 const app = express();
 setupAssociations();
+
 const PORT = process.env.PORT || 3000;
+
 app.use(
   cors({
     origin: "*",
@@ -30,7 +32,9 @@ app.use(
 );
 app.use(express.json());
 
-const jsreportInstance = jsreport();
+const jsreportInstance = jsreport({
+  httpPort: 5488,
+});
 app.locals.jsreportInstance = jsreportInstance;
 
 sequelize
