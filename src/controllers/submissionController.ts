@@ -448,6 +448,79 @@ export const GetEvaluatorsBySubmission = async (
   }
 };
 
+export const GetSubmissionEvaluationById = async (
+  req: Request,
+  res: Response
+) => {
+  const { submissionId } = req.body;
+
+  if (!submissionId) {
+    return res.status(400).json({
+      message: "Submission ID is required",
+    });
+  }
+
+  try {
+    const evaluation = await SubmissionEvaluation.findOne({
+      where: { submissionId },
+      include: [
+        {
+          model: Submission,
+          as: "submission",
+          attributes: [
+            "id",
+            "submissionId",
+            "proponentId",
+            "fileType",
+            "proposalTitle",
+            "proposalDescription",
+            "submissionStatus",
+            "remarksId",
+          ],
+        },
+        {
+          model: Evaluator,
+          as: "evaluator",
+          attributes: ["id", "officeId", "fullName", "email"],
+        },
+        {
+          model: GenderEvaluationAssessment,
+          as: "assessments",
+          attributes: [
+            "id",
+            "sectionId",
+            "submissionEvaluationId",
+            "doneNo",
+            "donePartly",
+            "doneYes",
+            "score",
+            "comments",
+          ],
+          include: [
+            {
+              model: GenderEvaluationSection,
+              as: "section",
+              attributes: ["id", "element", "isMainSection"],
+            },
+          ],
+        },
+      ],
+    });
+
+    if (!evaluation) {
+      console.error("Evaluation not found");
+    }
+
+    res.status(200).json(evaluation);
+  } catch (error) {
+    console.error("Error fetching submission evaluation:", error);
+    res.status(500).json({
+      error: "Error fetching submission evaluation",
+      messageDetails: (error as Error).message,
+    });
+  }
+};
+
 export const GetSubmissionEvaluation = async (submissionId: number) => {
   try {
     const evaluation = await SubmissionEvaluation.findOne({

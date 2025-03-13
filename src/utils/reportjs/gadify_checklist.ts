@@ -1,5 +1,4 @@
-export const gadify_checklist = `<!DOCTYPE html>
-<html lang="en">
+export const gadify_checklist = `<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -21,7 +20,7 @@ export const gadify_checklist = `<!DOCTYPE html>
 
         .report_body {
             margin: 0;
-            padding: 1in;
+            padding: 0.5in;
         }
 
         .checklist_header {
@@ -53,13 +52,7 @@ export const gadify_checklist = `<!DOCTYPE html>
         }
 
         .table_body th {
-            background-color: #f2f2f2;
-        }
-
-        .ending_details {
-            padding: 50px;
-            margin-top: 50px;
-            background-color: gray;
+            background-color: #BEBEBE;
         }
 
         /* Ensures each table row does not split across pages */
@@ -71,13 +64,47 @@ export const gadify_checklist = `<!DOCTYPE html>
         .page-break {
             page-break-before: always;
         }
+
+        .ending_details {
+            padding: 10px;
+            margin-top: 50px;
+            background-color: #BEBEBE;
+        }
+
+        .ending_details_header{
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;}
+                .flex-container {
+            display: flex;
+            flex-direction: column; 
+            gap: 10px;
+        }
+
+        .flex-row {
+            display: flex;
+            justify-content: space-between; 
+            align-items: left; 
+        }
+
+        .score {
+            font-weight: bold;
+            text-align: left;
+            width: 15%; 
+        }
+
+        .description {
+            text-align: left;
+            width: 80%; 
+        }
+
     </style>
 </head>
 
 <body>
     <section class="report_body">
         <header>
-            <h1 class="checklist_header">GAD CHECKLIST</h1>
+            <h5 class="checklist_header">Summary checklist for the assessment of proposed projec</h1>
         </header>
         <main>
             <div class="project_title">
@@ -114,7 +141,7 @@ export const gadify_checklist = `<!DOCTYPE html>
                         <td>{{#if doneNo}}✔{{/if}}</td>
                         <td>{{#if donePartly}}✔{{/if}}</td>
                         <td>{{#if doneYes}}✔{{/if}}</td>
-                        {{#if isMainSection}}
+                        {{#if section.isMainSection}}
                             <td style="border: 5px solid black; background-color: #d3d3d3;">{{score}}</td>
                         {{else}}
                              <td>{{score}}</td>
@@ -126,7 +153,46 @@ export const gadify_checklist = `<!DOCTYPE html>
                 </table>
             </div>
             <div class="page-break"></div> <!-- Ensures content after the table starts on a new page -->
-            <div class="ending_details"></div>
+            <div class="ending_details">
+                <p class="ending_details_header">Interpretation of the GAD Score</p>
+               <div class="flex-container">
+                <div class="flex-row">
+                    <div class="score">0-3.9</div>
+                    <div class="description">GAD is invisible in the project (proposal is returned).</div>
+                </div>
+                
+                <div class="flex-row">
+                    <div class="score">4.0-7.9</div>
+                    <div class="description">Proposed project has promising GAD prospects (proposal earns a 'conditional pass').</div>
+                </div>
+
+                <div class="flex-row">
+                    <div class="score"></div>
+                    <div class="description">pending identification of gender issue/s and strategies and activities to address these, </div>
+                </div>
+
+                <div class="flex-row">
+                    <div class="score"></div>
+                    <div class="description">and inclusion of the collection of sex-disaggregated data in the monitoring and</div>
+                </div>
+
+                    <div class="flex-row">
+                    <div class="score"></div>
+                    <div class="description">valuation plan).</div>
+                </div>
+
+                <div class="flex-row">
+                    <div class="score">8.0-14.9</div>
+                    <div class="description">Proposed project is <strong>gender-sensitive</strong> (proposal passes the GAD test).</div>
+                </div>
+
+                    <div class="flex-row">
+                        <div class="score">15.0-20.0</div>
+                        <div class="description">Proposed project is <strong>gender-responsive</strong> (proponent is commended).</div>
+                    </div>
+                </div>
+                <br/>
+            </div>
         </main>
     </section>
 </body>

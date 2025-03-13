@@ -9,6 +9,7 @@ import {
   AssignEvaluatorsToSubmission,
   GetEvaluatorsBySubmission,
   GetSubmissionEvaluation,
+  GetSubmissionEvaluationById,
 } from "../controllers/submissionController";
 
 const router = Router();
@@ -20,6 +21,6 @@ router.post("/submissionByProponentId", GetSubmissionsByProponentId);
 router.post("/submissionRemarks", AddSubmissionRemarks);
 router.post("/assignEvaluators", AssignEvaluatorsToSubmission);
 router.post("/getEvaluators", GetEvaluatorsBySubmission);
-router.post("/getSubmissionEvaluation", GetSubmissionEvaluation);
+router.post("/getSubmissionEvaluation", GetSubmissionEvaluationById);
 
 export default router;
