@@ -34,6 +34,11 @@ app.use(express.json());
 
 const jsreportInstance = jsreport({
   httpPort: 5488,
+  chrome: {
+    launchOptions: {
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    },
+  },
 });
 app.locals.jsreportInstance = jsreportInstance;
 
