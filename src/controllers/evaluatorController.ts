@@ -289,49 +289,25 @@ export const GetEvaluatorById = async (req: Request, res: Response) => {
 };
 
 export const EvaluateSubmission = async (req: Request, res: Response) => {
-  const { submissionId, evaluatorId, sectionId, assessmentId } = req.body;
+  const { submissionId, evaluatorId, genderAssessments } = req.body;
 
-  if (!submissionId || !evaluatorId || !sectionId || !assessmentId) {
+  if (!submissionId || !evaluatorId || !Array.isArray(genderAssessments)) {
     return res.status(400).json({
-      message:
-        "submissionId, evaluatorId, projectId, sectionId, and assessmentId are required",
+      message: "submissionId, evaluatorId, and genderAssessments are required",
     });
   }
 
   try {
-    // Check if submission exists
     const submission = await Submission.findByPk(submissionId);
     if (!submission) {
-      return res.status(404).json({
-        message: "Submission not found",
-      });
+      return res.status(404).json({ message: "Submission not found" });
     }
 
-    // Check if evaluator exists
     const evaluator = await Evaluator.findByPk(evaluatorId);
     if (!evaluator) {
-      return res.status(404).json({
-        message: "Evaluator not found",
-      });
+      return res.status(404).json({ message: "Evaluator not found" });
     }
 
-    // Check if Gender Evaluation Section exists
-    const section = await GenderEvaluationSection.findByPk(sectionId);
-    if (!section) {
-      return res.status(404).json({
-        message: "Gender Evaluation Section not found",
-      });
-    }
-
-    // Check if Gender Evaluation Assessment exists
-    const assessment = await GenderEvaluationAssessment.findByPk(assessmentId);
-    if (!assessment) {
-      return res.status(404).json({
-        message: "Gender Evaluation Assessment not found",
-      });
-    }
-
-    // Check if evaluation already exists
     const existingEvaluation = await SubmissionEvaluation.findOne({
       where: { submissionId, evaluatorId },
     });
@@ -342,17 +318,39 @@ export const EvaluateSubmission = async (req: Request, res: Response) => {
       });
     }
 
-    // Create new evaluation entry
     const evaluation = await SubmissionEvaluation.create({
       submissionId,
       evaluatorId,
-      sectionId,
-      assessmentId,
     });
+
+    const assessmentRecords = await Promise.all(
+      genderAssessments.map(async (assessment) => {
+        const { sectionId, doneNo, donePartly, doneYes, score, comments } =
+          assessment;
+
+        const section = await GenderEvaluationSection.findByPk(sectionId);
+        if (!section) {
+          throw new Error(
+            `Gender Evaluation Section with ID ${sectionId} not found`
+          );
+        }
+
+        return await GenderEvaluationAssessment.create({
+          submissionEvaluationId: evaluation.id,
+          sectionId,
+          doneNo,
+          donePartly,
+          doneYes,
+          score,
+          comments,
+        });
+      })
+    );
 
     res.status(201).json({
       message: "Submission evaluated successfully",
       evaluation,
+      genderAssessments: assessmentRecords,
     });
   } catch (error) {
     res.status(500).json({
