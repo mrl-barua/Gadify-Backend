@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { Submission, SubmissionFiles } from "../models/submission";
+import { Submission } from "../models/submission";
 import { SubmissionEvaluators } from "../models/submissionEvaluators";
+import { SubmissionFiles } from "../models/submissionFiles";
 import { Proponents } from "../models/proponents";
 import { Evaluator } from "../models/evaluator";
 import { Remarks } from "../models/remarks";
@@ -397,7 +398,6 @@ export const GetEvaluatorsBySubmission = async (
   }
 
   try {
-    // Fetch submission
     const submission = await Submission.findOne({
       where: { id: submissionId },
     });
@@ -408,7 +408,6 @@ export const GetEvaluatorsBySubmission = async (
       });
     }
 
-    // Fetch assigned evaluators
     const submissionEvaluators = await SubmissionEvaluators.findAll({
       where: { submissionId },
       attributes: ["evaluatorId", "createdAt", "updatedAt"],
@@ -420,15 +419,12 @@ export const GetEvaluatorsBySubmission = async (
       });
     }
 
-    // Extract evaluator IDs
     const evaluatorIds = submissionEvaluators.map((se) => se.evaluatorId);
 
-    // Fetch evaluator details
     const evaluators = await Evaluator.findAll({
       where: { id: { [Op.in]: evaluatorIds } },
     });
 
-    // Format response
     const response = {
       id: submission.id,
       submission,
@@ -466,7 +462,7 @@ export const GetSubmissionEvaluationById = async (
       include: [
         {
           model: Submission,
-          as: "submission",
+          as: "evaluatedSubmission",
           attributes: [
             "id",
             "submissionId",

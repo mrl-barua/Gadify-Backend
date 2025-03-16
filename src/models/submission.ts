@@ -16,14 +16,6 @@ export class Submission extends Model {
   public createdAt!: Date;
 }
 
-export class SubmissionFiles extends Model {
-  public id!: number;
-  public submissionId!: number;
-  public resourcesLink!: string;
-  public createdAt!: Date;
-  public updatedAt!: Date;
-}
-
 Submission.init(
   {
     id: {
@@ -90,50 +82,3 @@ Submission.init(
     timestamps: false,
   }
 );
-
-SubmissionFiles.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    submissionId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    resourcesLink: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-  },
-  {
-    sequelize,
-    tableName: "submissionfiles",
-    timestamps: true,
-  }
-);
-
-Submission.belongsTo(Proponents, {
-  foreignKey: "proponentId",
-  as: "proponent",
-});
-Submission.belongsTo(Remarks, { foreignKey: "remarksId", as: "remarks" });
-Submission.hasMany(SubmissionFiles, {
-  foreignKey: "submissionId",
-  as: "submissionFiles",
-});
-SubmissionFiles.belongsTo(Submission, {
-  foreignKey: "submissionId",
-  as: "submission",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
-});

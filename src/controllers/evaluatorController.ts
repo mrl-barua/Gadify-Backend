@@ -5,6 +5,10 @@ import { Campus } from "../models/campus";
 import { Office } from "../models/office";
 import { Submission } from "../models/submission";
 import { SubmissionEvaluation } from "../models/submissionEvaluation";
+import { SubmissionEvaluators } from "../models/submissionEvaluators";
+import { SubmissionFiles } from "../models/submissionFiles";
+import { Proponents } from "../models/proponents";
+import { Remarks } from "../models/remarks";
 import {
   GenderEvaluationAssessment,
   GenderEvaluationSection,
@@ -163,6 +167,80 @@ export const AddEvaluatorSignature = async (req: Request, res: Response) => {
     const errorMessage = (error as Error).message;
     res.status(500).json({
       error: "Error adding signature",
+      messageDetails: errorMessage,
+    });
+  }
+};
+
+export const GetSubmissionToBeEvaluated = async (
+  req: Request,
+  res: Response
+) => {
+  const { evaluatorId } = req.body;
+  try {
+    const evaluationToBeEvaluated = await SubmissionEvaluators.findAll({
+      where: { evaluatorId },
+      include: [
+        {
+          model: Submission,
+          as: "submission",
+          attributes: [
+            "id",
+            "submissionId",
+            "proponentId",
+            "fileType",
+            "proposalTitle",
+            "submissionStatus",
+            "remarksId",
+            "createdAt",
+          ],
+          include: [
+            {
+              model: Proponents,
+              as: "proponent",
+              attributes: [
+                "proponentId",
+                "departmentId",
+                "proponentType",
+                "proponentStatus",
+                "fullName",
+                "userName",
+              ],
+              include: [
+                {
+                  model: Department,
+                  as: "department",
+                  attributes: ["departmentId", "campusId", "departmentName"],
+                  include: [
+                    {
+                      model: Campus,
+                      as: "campus",
+                      attributes: ["campusId", "campusName", "campusAddress"],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              model: Remarks,
+              as: "remarks",
+              attributes: ["remarksId", "remarks"],
+            },
+            {
+              model: SubmissionFiles,
+              as: "submissionFiles",
+              attributes: ["resourcesLink"],
+            },
+          ],
+        },
+      ],
+    });
+
+    res.json(evaluationToBeEvaluated);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error getting submission to be evaluated",
       messageDetails: errorMessage,
     });
   }
