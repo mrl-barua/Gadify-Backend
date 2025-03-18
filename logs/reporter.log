@@ -12377,3 +12377,493 @@ Error: Unable to parse request data
 2025-03-18T13:20:44.325Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
 2025-03-18T13:20:44.328Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
 2025-03-18T13:20:44.332Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-18T13:20:44.408Z - info: Found 35 extension(s)
+2025-03-18T13:20:44.438Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-18T13:20:44.441Z - debug: Discovered 35 extensions
+2025-03-18T13:20:44.485Z - info: Using extension authentication@4.2.3
+2025-03-18T13:20:44.651Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-18T13:20:44.652Z - info: Using extension base@4.0.0
+2025-03-18T13:20:44.655Z - info: Using extension child-templates@4.1.0
+2025-03-18T13:20:44.657Z - info: Using extension cli@4.1.0
+2025-03-18T13:20:44.667Z - info: Using extension components@4.0.2
+2025-03-18T13:20:44.669Z - info: Using extension data@4.1.0
+2025-03-18T13:20:44.670Z - info: Using extension express@4.2.0
+2025-03-18T13:20:44.913Z - info: Using extension freeze@4.0.0
+2025-03-18T13:20:44.915Z - info: Using extension fs-store@4.1.0
+2025-03-18T13:20:45.039Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-18T13:20:45.040Z - info: Using extension handlebars@4.0.1
+2025-03-18T13:20:45.041Z - info: Using extension import-export@4.0.6
+2025-03-18T13:20:45.059Z - info: Using extension jsrender@4.0.0
+2025-03-18T13:20:45.061Z - info: Using extension licensing@4.0.4
+2025-03-18T13:20:45.095Z - info: Using extension localization@4.0.1
+2025-03-18T13:20:45.096Z - info: Using extension npm@4.0.0
+2025-03-18T13:20:45.101Z - info: Using extension pdf-utils@4.3.0
+2025-03-18T13:20:45.103Z - info: Using extension reports@4.1.3
+2025-03-18T13:20:45.106Z - info: Using extension tags@4.0.1
+2025-03-18T13:20:45.108Z - info: Using extension text@4.0.2
+2025-03-18T13:20:45.109Z - info: Using extension version-control@4.1.0
+2025-03-18T13:20:45.121Z - info: Using extension assets@4.2.1
+2025-03-18T13:20:45.138Z - info: Using extension authorization@4.1.0
+2025-03-18T13:20:45.142Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-18T13:20:45.143Z - info: Using extension browser-client@4.1.0
+2025-03-18T13:20:45.145Z - info: Using extension chrome-pdf@4.1.1
+2025-03-18T13:20:45.148Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-18T13:20:45.149Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-18T13:20:45.149Z - info: Using extension docx@4.7.0
+2025-03-18T13:20:45.152Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-18T13:20:45.363Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-18T13:20:45.363Z - info: Using extension pptx@4.4.0
+2025-03-18T13:20:45.366Z - info: Using extension scheduling@4.1.0
+2025-03-18T13:20:45.393Z - info: Using extension scripts@4.2.0
+2025-03-18T13:20:45.395Z - info: Using extension static-pdf@4.1.0
+2025-03-18T13:20:45.396Z - info: Using extension studio@4.3.0
+2025-03-18T13:20:45.472Z - info: Using extension xlsx@4.4.0
+2025-03-18T13:20:45.474Z - info: Using extension public-templates@4.0.0
+2025-03-18T13:20:45.476Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-18T13:20:45.477Z - info: Using extension sample-template@4.0.1
+2025-03-18T13:20:45.479Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-18T13:20:45.480Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-18T13:20:45.481Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-18T13:20:45.494Z - debug: studio default theme is: light
+2025-03-18T13:20:45.498Z - info: Creating default express app.
+2025-03-18T13:20:45.518Z - info: jsreport server successfully started on http port: 5488
+2025-03-18T13:20:45.520Z - info: Verifying license key free
+2025-03-18T13:20:45.521Z - info: Using free license
+2025-03-18T13:20:45.527Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-18T13:20:45.528Z - info: Migration successful
+2025-03-18T13:20:45.529Z - debug: Creating samples is disabled
+2025-03-18T13:20:45.530Z - info: Initializing worker threads
+2025-03-18T13:20:45.530Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-18T13:20:46.141Z - info: 2 worker threads initialized in 611ms
+2025-03-18T13:20:46.142Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-18T13:20:46.143Z - info: reporter initialized
+2025-03-18T13:27:12.111Z - info: Render request 1 queued for execution and waiting for available worker rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:12.122Z - info: Starting rendering request 1 rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:12.123Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: handlebars } rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:12.123Z - debug: Data item not defined for this template. rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:12.125Z - debug: Base url not specified, skipping its injection. rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:12.125Z - debug: Rendering engine handlebars rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:12.688Z - debug: Executing recipe chrome-pdf rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:13.864Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:13.917Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/610bb904-5642-4392-b1d9-cc43b6d2adb8-chrome-pdf.html rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:13.951Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/610bb904-5642-4392-b1d9-cc43b6d2adb8-chrome-pdf.html rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:13.952Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:13.953Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:13.953Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:13.975Z - debug: Running chrome with params {"timeout":59414,"margin":{},"printBackground":true} rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:14.208Z - debug: Skipping storing report. rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:14.208Z - info: Rendering request 1 finished in 2099 ms rootId=biawpbavp9f2wpt, id=biawpbavp9f2wpt
+2025-03-18T13:27:25.887Z - info: Render request 2 queued for execution and waiting for available worker rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:25.890Z - info: Starting rendering request 2 rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:25.890Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: handlebars } rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:25.891Z - debug: Data item not defined for this template. rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:25.892Z - debug: Base url not specified, skipping its injection. rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:25.893Z - debug: Rendering engine handlebars rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:26.314Z - debug: Executing recipe chrome-pdf rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:26.642Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:26.695Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/7c7bf60e-e1a8-4600-8d82-0dae3708292d-chrome-pdf.html rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:26.708Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/7c7bf60e-e1a8-4600-8d82-0dae3708292d-chrome-pdf.html rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:26.709Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:26.710Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:26.711Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:26.732Z - debug: Running chrome with params {"timeout":59557,"margin":{},"printBackground":true} rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:26.981Z - debug: Skipping storing report. rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:27:26.981Z - info: Rendering request 2 finished in 1102 ms rootId=2njcppqcsy5lyie, id=2njcppqcsy5lyie
+2025-03-18T13:28:05.923Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-18T13:28:05.926Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-18T13:28:05.931Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-18T13:28:06.021Z - info: Found 35 extension(s)
+2025-03-18T13:28:06.049Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-18T13:28:06.051Z - debug: Discovered 35 extensions
+2025-03-18T13:28:06.088Z - info: Using extension authentication@4.2.3
+2025-03-18T13:28:06.261Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-18T13:28:06.262Z - info: Using extension base@4.0.0
+2025-03-18T13:28:06.265Z - info: Using extension child-templates@4.1.0
+2025-03-18T13:28:06.267Z - info: Using extension cli@4.1.0
+2025-03-18T13:28:06.268Z - info: Using extension components@4.0.2
+2025-03-18T13:28:06.270Z - info: Using extension data@4.1.0
+2025-03-18T13:28:06.272Z - info: Using extension express@4.2.0
+2025-03-18T13:28:06.586Z - info: Using extension freeze@4.0.0
+2025-03-18T13:28:06.588Z - info: Using extension fs-store@4.1.0
+2025-03-18T13:28:06.697Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-18T13:28:06.698Z - info: Using extension handlebars@4.0.1
+2025-03-18T13:28:06.699Z - info: Using extension import-export@4.0.6
+2025-03-18T13:28:06.717Z - info: Using extension jsrender@4.0.0
+2025-03-18T13:28:06.718Z - info: Using extension licensing@4.0.4
+2025-03-18T13:28:06.721Z - info: Using extension localization@4.0.1
+2025-03-18T13:28:06.722Z - info: Using extension npm@4.0.0
+2025-03-18T13:28:06.727Z - info: Using extension pdf-utils@4.3.0
+2025-03-18T13:28:06.730Z - info: Using extension reports@4.1.3
+2025-03-18T13:28:06.734Z - info: Using extension tags@4.0.1
+2025-03-18T13:28:06.739Z - info: Using extension text@4.0.2
+2025-03-18T13:28:06.741Z - info: Using extension version-control@4.1.0
+2025-03-18T13:28:06.753Z - info: Using extension assets@4.2.1
+2025-03-18T13:28:06.766Z - info: Using extension authorization@4.1.0
+2025-03-18T13:28:06.770Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-18T13:28:06.771Z - info: Using extension browser-client@4.1.0
+2025-03-18T13:28:06.773Z - info: Using extension chrome-pdf@4.1.1
+2025-03-18T13:28:06.776Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-18T13:28:06.776Z - debug: Chrome custom launch options are protocolTimeout=60000
+2025-03-18T13:28:06.777Z - info: Using extension docx@4.7.0
+2025-03-18T13:28:06.779Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-18T13:28:06.976Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-18T13:28:06.977Z - info: Using extension pptx@4.4.0
+2025-03-18T13:28:06.979Z - info: Using extension scheduling@4.1.0
+2025-03-18T13:28:07.001Z - info: Using extension scripts@4.2.0
+2025-03-18T13:28:07.002Z - info: Using extension static-pdf@4.1.0
+2025-03-18T13:28:07.003Z - info: Using extension studio@4.3.0
+2025-03-18T13:28:07.077Z - info: Using extension xlsx@4.4.0
+2025-03-18T13:28:07.079Z - info: Using extension public-templates@4.0.0
+2025-03-18T13:28:07.081Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-18T13:28:07.082Z - info: Using extension sample-template@4.0.1
+2025-03-18T13:28:07.084Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-18T13:28:07.087Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-18T13:28:07.087Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-18T13:28:07.098Z - debug: studio default theme is: light
+2025-03-18T13:28:07.104Z - info: Creating default express app.
+2025-03-18T13:28:07.122Z - info: jsreport server successfully started on http port: 5488
+2025-03-18T13:28:07.126Z - info: Verifying license key free
+2025-03-18T13:28:07.128Z - info: Using free license
+2025-03-18T13:28:07.134Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-18T13:28:07.135Z - info: Migration successful
+2025-03-18T13:28:07.135Z - debug: Creating samples is disabled
+2025-03-18T13:28:07.136Z - info: Initializing worker threads
+2025-03-18T13:28:07.136Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-18T13:28:07.662Z - info: 2 worker threads initialized in 526ms
+2025-03-18T13:28:07.662Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-18T13:28:07.663Z - info: reporter initialized
+2025-03-18T13:28:16.539Z - debug: OData query on templates
+2025-03-18T13:28:16.547Z - debug: OData query on settings
+2025-03-18T13:28:16.555Z - debug: OData query on folders
+2025-03-18T13:28:16.562Z - debug: OData query on components
+2025-03-18T13:28:16.575Z - debug: OData query on data
+2025-03-18T13:28:16.585Z - debug: OData query on tags
+2025-03-18T13:28:16.598Z - debug: OData query on assets
+2025-03-18T13:28:16.605Z - debug: OData query on scripts
+2025-03-18T13:28:16.610Z - debug: OData query on schedules
+2025-03-18T13:28:16.652Z - debug: OData query on templates
+2025-03-18T13:28:16.677Z - debug: OData query on profiles
+2025-03-18T13:28:16.698Z - debug: OData query on profiles
+2025-03-18T13:28:16.712Z - debug: OData query on profiles
+2025-03-18T13:28:16.718Z - debug: OData query on profiles
+2025-03-18T13:28:16.727Z - debug: OData query on profiles
+2025-03-18T13:28:16.734Z - debug: OData query on profiles
+2025-03-18T13:28:16.739Z - debug: OData query on templates
+2025-03-18T13:29:01.635Z - info: Render request 1 queued for execution and waiting for available worker rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:01.649Z - info: Starting rendering request 1 rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:01.649Z - info: Rendering template { name: dasdasdasd, recipe: chrome-pdf, engine: handlebars, preview: true } rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:01.649Z - debug: Inline data specified. rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:01.651Z - debug: Base url not specified, skipping its injection. rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:01.653Z - debug: Rendering engine handlebars rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:02.112Z - debug: Executing recipe chrome-pdf rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:02.462Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:02.527Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/989fc3bd-0957-4d7b-b30a-ab92adde1ed6-chrome-pdf.html rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:02.556Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/989fc3bd-0957-4d7b-b30a-ab92adde1ed6-chrome-pdf.html rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:02.557Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:02.558Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:02.558Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:02.601Z - debug: Running chrome with params {"printBackground":true,"timeout":59513,"margin":{}} rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:03.050Z - debug: Skipping storing report. rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:29:03.050Z - info: Rendering request 1 finished in 1418 ms rootId=bz9p5j27vlefshi, id=bz9p5j27vlefshi
+2025-03-18T13:31:38.658Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-18T13:31:38.661Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-18T13:31:38.667Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-18T13:31:38.752Z - info: Found 35 extension(s)
+2025-03-18T13:31:38.781Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-18T13:31:38.783Z - debug: Discovered 35 extensions
+2025-03-18T13:31:38.823Z - info: Using extension authentication@4.2.3
+2025-03-18T13:31:38.998Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-18T13:31:38.999Z - info: Using extension base@4.0.0
+2025-03-18T13:31:39.002Z - info: Using extension child-templates@4.1.0
+2025-03-18T13:31:39.003Z - info: Using extension cli@4.1.0
+2025-03-18T13:31:39.012Z - info: Using extension components@4.0.2
+2025-03-18T13:31:39.014Z - info: Using extension data@4.1.0
+2025-03-18T13:31:39.015Z - info: Using extension express@4.2.0
+2025-03-18T13:31:39.271Z - info: Using extension freeze@4.0.0
+2025-03-18T13:31:39.273Z - info: Using extension fs-store@4.1.0
+2025-03-18T13:31:39.398Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-18T13:31:39.399Z - info: Using extension handlebars@4.0.1
+2025-03-18T13:31:39.400Z - info: Using extension import-export@4.0.6
+2025-03-18T13:31:39.418Z - info: Using extension jsrender@4.0.0
+2025-03-18T13:31:39.419Z - info: Using extension licensing@4.0.4
+2025-03-18T13:31:39.454Z - info: Using extension localization@4.0.1
+2025-03-18T13:31:39.455Z - info: Using extension npm@4.0.0
+2025-03-18T13:31:39.460Z - info: Using extension pdf-utils@4.3.0
+2025-03-18T13:31:39.462Z - info: Using extension reports@4.1.3
+2025-03-18T13:31:39.464Z - info: Using extension tags@4.0.1
+2025-03-18T13:31:39.466Z - info: Using extension text@4.0.2
+2025-03-18T13:31:39.467Z - info: Using extension version-control@4.1.0
+2025-03-18T13:31:39.479Z - info: Using extension assets@4.2.1
+2025-03-18T13:31:39.493Z - info: Using extension authorization@4.1.0
+2025-03-18T13:31:39.497Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-18T13:31:39.497Z - info: Using extension browser-client@4.1.0
+2025-03-18T13:31:39.500Z - info: Using extension chrome-pdf@4.1.1
+2025-03-18T13:31:39.503Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-18T13:31:39.503Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-18T13:31:39.504Z - info: Using extension docx@4.7.0
+2025-03-18T13:31:39.506Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-18T13:31:39.695Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-18T13:31:39.695Z - info: Using extension pptx@4.4.0
+2025-03-18T13:31:39.697Z - info: Using extension scheduling@4.1.0
+2025-03-18T13:31:39.721Z - info: Using extension scripts@4.2.0
+2025-03-18T13:31:39.722Z - info: Using extension static-pdf@4.1.0
+2025-03-18T13:31:39.723Z - info: Using extension studio@4.3.0
+2025-03-18T13:31:39.807Z - info: Using extension xlsx@4.4.0
+2025-03-18T13:31:39.811Z - info: Using extension public-templates@4.0.0
+2025-03-18T13:31:39.812Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-18T13:31:39.813Z - info: Using extension sample-template@4.0.1
+2025-03-18T13:31:39.815Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-18T13:31:39.817Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-18T13:31:39.817Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-18T13:31:39.829Z - debug: studio default theme is: light
+2025-03-18T13:31:39.833Z - info: Creating default express app.
+2025-03-18T13:31:39.854Z - info: jsreport server successfully started on http port: 5488
+2025-03-18T13:31:39.856Z - info: Verifying license key free
+2025-03-18T13:31:39.857Z - info: Using free license
+2025-03-18T13:31:39.863Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-18T13:31:39.864Z - info: Migration successful
+2025-03-18T13:31:39.866Z - debug: Creating samples is disabled
+2025-03-18T13:31:39.866Z - info: Initializing worker threads
+2025-03-18T13:31:39.867Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-18T13:31:40.407Z - info: 2 worker threads initialized in 541ms
+2025-03-18T13:31:40.407Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-18T13:31:40.408Z - info: reporter initialized
+2025-03-18T13:31:59.457Z - info: Render request 1 queued for execution and waiting for available worker rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:31:59.470Z - info: Starting rendering request 1 rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:31:59.471Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: handlebars } rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:31:59.471Z - debug: Inline data specified. rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:31:59.473Z - debug: Base url not specified, skipping its injection. rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:31:59.474Z - debug: Rendering engine handlebars rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:31:59.947Z - debug: Executing recipe chrome-pdf rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:32:00.261Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:32:00.316Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/296039a0-742c-4d5c-a140-037cca037051-chrome-pdf.html rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:32:00.343Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/296039a0-742c-4d5c-a140-037cca037051-chrome-pdf.html rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:32:00.344Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:32:00.345Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:32:00.346Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:32:00.381Z - debug: Running chrome with params {"timeout":59498,"margin":{},"printBackground":true} rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:32:00.801Z - debug: Skipping storing report. rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:32:00.801Z - info: Rendering request 1 finished in 1346 ms rootId=gxo4txbx55r8aye, id=gxo4txbx55r8aye
+2025-03-18T13:32:17.134Z - info: Render request 2 queued for execution and waiting for available worker rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:17.137Z - info: Starting rendering request 2 rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:17.138Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: handlebars } rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:17.138Z - debug: Data item not defined for this template. rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:17.139Z - debug: Base url not specified, skipping its injection. rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:17.140Z - debug: Rendering engine handlebars rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:17.619Z - debug: Executing recipe chrome-pdf rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:17.927Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:17.979Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/926d0002-3027-4ea9-af8f-17efd038875e-chrome-pdf.html rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:17.991Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/926d0002-3027-4ea9-af8f-17efd038875e-chrome-pdf.html rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:17.992Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:17.993Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:17.994Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:18.019Z - debug: Running chrome with params {"timeout":59505,"margin":{},"printBackground":true} rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:18.264Z - debug: Skipping storing report. rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:18.264Z - info: Rendering request 2 finished in 1131 ms rootId=2ini6zrachklxo0, id=2ini6zrachklxo0
+2025-03-18T13:32:21.728Z - info: Render request 3 queued for execution and waiting for available worker rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:21.729Z - info: Starting rendering request 3 rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:21.729Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: handlebars } rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:21.729Z - debug: Inline data specified. rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:21.731Z - debug: Base url not specified, skipping its injection. rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:21.732Z - debug: Rendering engine handlebars rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:21.740Z - debug: Executing recipe chrome-pdf rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:21.742Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:21.964Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/dbdf8c1e-1307-4a61-b3c6-f011a9b1cb3d-chrome-pdf.html rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:21.993Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/dbdf8c1e-1307-4a61-b3c6-f011a9b1cb3d-chrome-pdf.html rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:21.994Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:22.042Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:22.042Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:22.045Z - debug: Running chrome with params {"timeout":59985,"margin":{},"printBackground":true} rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:22.364Z - debug: Skipping storing report. rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:32:22.364Z - info: Rendering request 3 finished in 638 ms rootId=qq0lbg7ns4skmie, id=qq0lbg7ns4skmie
+2025-03-18T13:33:25.003Z - info: Render request 4 queued for execution and waiting for available worker rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.004Z - info: Starting rendering request 4 rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.004Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: handlebars } rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.004Z - debug: Data item not defined for this template. rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.005Z - debug: Base url not specified, skipping its injection. rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.005Z - debug: Rendering engine handlebars rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.013Z - debug: Executing recipe chrome-pdf rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.016Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.226Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/895da580-39ff-4901-9995-c422c476f0f6-chrome-pdf.html rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.241Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/895da580-39ff-4901-9995-c422c476f0f6-chrome-pdf.html rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.241Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.268Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.268Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.270Z - debug: Running chrome with params {"timeout":59987,"margin":{},"printBackground":true} rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.473Z - debug: Skipping storing report. rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:33:25.473Z - info: Rendering request 4 finished in 471 ms rootId=r2wsnno1j5d206r, id=r2wsnno1j5d206r
+2025-03-18T13:35:21.301Z - info: Render request 5 queued for execution and waiting for available worker rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.302Z - info: Starting rendering request 5 rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.303Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: handlebars } rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.303Z - debug: Inline data specified. rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.303Z - debug: Base url not specified, skipping its injection. rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.304Z - debug: Rendering engine handlebars rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.309Z - debug: Executing recipe chrome-pdf rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.312Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.386Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/a1a5248b-de9a-4362-b40e-4a31a091c195-chrome-pdf.html rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.424Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/a1a5248b-de9a-4362-b40e-4a31a091c195-chrome-pdf.html rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.425Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.463Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.463Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.470Z - debug: Running chrome with params {"timeout":59989,"margin":{},"printBackground":true} rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.801Z - debug: Skipping storing report. rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:35:21.801Z - info: Rendering request 5 finished in 501 ms rootId=pcyhqim4ona2j2b, id=pcyhqim4ona2j2b
+2025-03-18T13:38:48.761Z - info: Render request 6 queued for execution and waiting for available worker rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:48.763Z - info: Starting rendering request 6 rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:48.763Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: handlebars } rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:48.763Z - debug: Inline data specified. rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:48.764Z - debug: Base url not specified, skipping its injection. rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:48.764Z - debug: Rendering engine handlebars rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:48.772Z - debug: Executing recipe chrome-pdf rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:48.774Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:48.822Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/1e904b3f-4e48-4f54-9b39-e768b9b595c8-chrome-pdf.html rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:48.850Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/1e904b3f-4e48-4f54-9b39-e768b9b595c8-chrome-pdf.html rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:48.850Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:48.907Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:48.907Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:48.915Z - debug: Running chrome with params {"timeout":59986,"margin":{},"printBackground":true} rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:49.231Z - debug: Skipping storing report. rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:38:49.231Z - info: Rendering request 6 finished in 472 ms rootId=ppknqj9fy8pga1v, id=ppknqj9fy8pga1v
+2025-03-18T13:42:45.053Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-18T13:42:45.057Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-18T13:42:45.062Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-18T13:42:45.150Z - info: Found 35 extension(s)
+2025-03-18T13:42:45.178Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-18T13:42:45.180Z - debug: Discovered 35 extensions
+2025-03-18T13:42:45.215Z - info: Using extension authentication@4.2.3
+2025-03-18T13:42:45.390Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-18T13:42:45.391Z - info: Using extension base@4.0.0
+2025-03-18T13:42:45.394Z - info: Using extension child-templates@4.1.0
+2025-03-18T13:42:45.396Z - info: Using extension cli@4.1.0
+2025-03-18T13:42:45.398Z - info: Using extension components@4.0.2
+2025-03-18T13:42:45.405Z - info: Using extension data@4.1.0
+2025-03-18T13:42:45.407Z - info: Using extension express@4.2.0
+2025-03-18T13:42:45.669Z - info: Using extension freeze@4.0.0
+2025-03-18T13:42:45.671Z - info: Using extension fs-store@4.1.0
+2025-03-18T13:42:45.803Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-18T13:42:45.803Z - info: Using extension handlebars@4.0.1
+2025-03-18T13:42:45.805Z - info: Using extension import-export@4.0.6
+2025-03-18T13:42:45.824Z - info: Using extension jsrender@4.0.0
+2025-03-18T13:42:45.826Z - info: Using extension licensing@4.0.4
+2025-03-18T13:42:45.864Z - info: Using extension localization@4.0.1
+2025-03-18T13:42:45.866Z - info: Using extension npm@4.0.0
+2025-03-18T13:42:45.871Z - info: Using extension pdf-utils@4.3.0
+2025-03-18T13:42:45.874Z - info: Using extension reports@4.1.3
+2025-03-18T13:42:45.877Z - info: Using extension tags@4.0.1
+2025-03-18T13:42:45.878Z - info: Using extension text@4.0.2
+2025-03-18T13:42:45.879Z - info: Using extension version-control@4.1.0
+2025-03-18T13:42:45.892Z - info: Using extension assets@4.2.1
+2025-03-18T13:42:45.906Z - info: Using extension authorization@4.1.0
+2025-03-18T13:42:45.910Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-18T13:42:45.911Z - info: Using extension browser-client@4.1.0
+2025-03-18T13:42:45.914Z - info: Using extension chrome-pdf@4.1.1
+2025-03-18T13:42:45.917Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-18T13:42:45.917Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-18T13:42:45.918Z - info: Using extension docx@4.7.0
+2025-03-18T13:42:45.920Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-18T13:42:46.120Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-18T13:42:46.120Z - info: Using extension pptx@4.4.0
+2025-03-18T13:42:46.122Z - info: Using extension scheduling@4.1.0
+2025-03-18T13:42:46.145Z - info: Using extension scripts@4.2.0
+2025-03-18T13:42:46.147Z - info: Using extension static-pdf@4.1.0
+2025-03-18T13:42:46.148Z - info: Using extension studio@4.3.0
+2025-03-18T13:42:46.217Z - info: Using extension xlsx@4.4.0
+2025-03-18T13:42:46.220Z - info: Using extension public-templates@4.0.0
+2025-03-18T13:42:46.221Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-18T13:42:46.222Z - info: Using extension sample-template@4.0.1
+2025-03-18T13:42:46.223Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-18T13:42:46.225Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-18T13:42:46.225Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-18T13:42:46.234Z - debug: studio default theme is: light
+2025-03-18T13:42:46.238Z - info: Creating default express app.
+2025-03-18T13:42:46.255Z - info: jsreport server successfully started on http port: 5488
+2025-03-18T13:42:46.256Z - info: Verifying license key free
+2025-03-18T13:42:46.257Z - info: Using free license
+2025-03-18T13:42:46.263Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-18T13:42:46.264Z - info: Migration successful
+2025-03-18T13:42:46.264Z - debug: Creating samples is disabled
+2025-03-18T13:42:46.265Z - info: Initializing worker threads
+2025-03-18T13:42:46.265Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-18T13:42:46.798Z - info: 2 worker threads initialized in 533ms
+2025-03-18T13:42:46.799Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-18T13:42:46.799Z - info: reporter initialized
+2025-03-18T13:43:48.359Z - info: Render request 1 queued for execution and waiting for available worker rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:48.370Z - info: Starting rendering request 1 rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:48.371Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: handlebars } rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:48.371Z - debug: Data item not defined for this template. rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:48.373Z - debug: Base url not specified, skipping its injection. rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:48.374Z - debug: Rendering engine handlebars rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:48.834Z - debug: Executing recipe chrome-pdf rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:49.269Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:49.339Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/f11a3e7b-a036-4cc9-baca-dbbb081c8e38-chrome-pdf.html rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:49.354Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/f11a3e7b-a036-4cc9-baca-dbbb081c8e38-chrome-pdf.html rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:49.355Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:49.356Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:49.356Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:49.385Z - debug: Running chrome with params {"timeout":59515,"margin":{},"printBackground":true} rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:49.623Z - debug: Skipping storing report. rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:49.623Z - info: Rendering request 1 finished in 1266 ms rootId=86kejgj5j49rkd4, id=86kejgj5j49rkd4
+2025-03-18T13:43:52.628Z - info: Render request 2 queued for execution and waiting for available worker rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:52.631Z - info: Starting rendering request 2 rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:52.631Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: handlebars } rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:52.632Z - debug: Inline data specified. rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:52.633Z - debug: Base url not specified, skipping its injection. rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:52.634Z - debug: Rendering engine handlebars rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:53.072Z - debug: Executing recipe chrome-pdf rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:53.402Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:53.454Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/c70b05e1-198c-4157-9311-0c57b5fdb304-chrome-pdf.html rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:53.480Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/c70b05e1-198c-4157-9311-0c57b5fdb304-chrome-pdf.html rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:53.481Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:53.482Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:53.483Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:53.522Z - debug: Running chrome with params {"timeout":59548,"margin":{},"printBackground":true} rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:53.959Z - debug: Skipping storing report. rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:43:53.959Z - info: Rendering request 2 finished in 1332 ms rootId=ua6kphe2aewngac, id=ua6kphe2aewngac
+2025-03-18T13:44:24.710Z - info: Render request 3 queued for execution and waiting for available worker rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:24.712Z - info: Starting rendering request 3 rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:24.712Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: handlebars } rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:24.712Z - debug: Inline data specified. rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:24.713Z - debug: Base url not specified, skipping its injection. rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:24.713Z - debug: Rendering engine handlebars rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:24.726Z - debug: Executing recipe chrome-pdf rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:24.729Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:24.899Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/b2b87d87-c504-42b1-8bda-80126a5d7f31-chrome-pdf.html rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:24.922Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/b2b87d87-c504-42b1-8bda-80126a5d7f31-chrome-pdf.html rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:24.923Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:24.926Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:24.926Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:24.961Z - debug: Running chrome with params {"timeout":59980,"margin":{},"printBackground":true} rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:25.275Z - debug: Skipping storing report. rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:44:25.275Z - info: Rendering request 3 finished in 567 ms rootId=23j22pqapusyoin, id=23j22pqapusyoin
+2025-03-18T13:48:23.108Z - info: Render request 4 queued for execution and waiting for available worker rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.110Z - info: Starting rendering request 4 rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.110Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: handlebars } rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.110Z - debug: Inline data specified. rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.111Z - debug: Base url not specified, skipping its injection. rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.111Z - debug: Rendering engine handlebars rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.120Z - debug: Executing recipe chrome-pdf rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.122Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.283Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/dae6a7ce-f66c-4274-a4a1-f33c7ba6af18-chrome-pdf.html rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.318Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/dae6a7ce-f66c-4274-a4a1-f33c7ba6af18-chrome-pdf.html rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.319Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.367Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.367Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.370Z - debug: Running chrome with params {"timeout":59986,"margin":{},"printBackground":true} rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.767Z - debug: Skipping storing report. rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:48:23.767Z - info: Rendering request 4 finished in 660 ms rootId=fzp8kpat3vnl13t, id=fzp8kpat3vnl13t
+2025-03-18T13:49:47.703Z - info: Render request 5 queued for execution and waiting for available worker rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:47.705Z - info: Starting rendering request 5 rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:47.705Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: handlebars } rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:47.705Z - debug: Inline data specified. rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:47.706Z - debug: Base url not specified, skipping its injection. rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:47.706Z - debug: Rendering engine handlebars rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:47.710Z - debug: Executing recipe chrome-pdf rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:47.712Z - debug: Converting with chrome Chrome/133.0.6943.126 using chrome-pool strategy rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:47.764Z - debug: Page request: GET (document) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/e270817f-3f50-48f2-8117-8b6dbd2fa11e-chrome-pdf.html rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:47.793Z - debug: Page request finished: GET (document) 200 file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/e270817f-3f50-48f2-8117-8b6dbd2fa11e-chrome-pdf.html rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:47.794Z - debug: Page request: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:47.795Z - warn: Page request failed: GET (image) file:///C:/Users/barua/AppData/Local/Temp/jsreport/autocleanup/logo.png, failure: net::ERR_ACCESS_DENIED rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:47.795Z - debug: [36m(console:error) Failed to load resource: net::ERR_ACCESS_DENIED[39m userLevel=true, rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:47.833Z - debug: Running chrome with params {"timeout":59991,"margin":{},"printBackground":true} rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:48.204Z - debug: Skipping storing report. rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6
+2025-03-18T13:49:48.204Z - info: Rendering request 5 finished in 502 ms rootId=8s24gwa562qvnp6, id=8s24gwa562qvnp6

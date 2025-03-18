@@ -526,7 +526,7 @@ export const GetSubmissionEvaluation = async (submissionId: number) => {
       include: [
         {
           model: Submission,
-          as: "submission",
+          as: "evaluatedSubmission",
           attributes: [
             "id",
             "submissionId",
