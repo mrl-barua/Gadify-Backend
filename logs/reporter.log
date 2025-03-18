@@ -12374,3 +12374,6 @@ Error: Unable to parse request data
 2025-03-16T07:56:06.084Z - info: 2 worker threads initialized in 821ms
 2025-03-16T07:56:06.085Z - info: Starting temp files cleanup with 180000ms threshold
 2025-03-16T07:56:06.087Z - info: reporter initialized
+2025-03-18T13:20:44.325Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-18T13:20:44.328Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-18T13:20:44.332Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
