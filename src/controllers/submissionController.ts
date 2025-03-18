@@ -459,6 +459,7 @@ export const GetSubmissionEvaluationById = async (
   try {
     const evaluation = await SubmissionEvaluation.findOne({
       where: { submissionId },
+      order: [["assessments", "sectionId", "ASC"]],
       include: [
         {
           model: Submission,
