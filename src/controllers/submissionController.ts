@@ -577,3 +577,108 @@ export const GetSubmissionEvaluation = async (submissionId: number) => {
     console.error("Error fetching submission evaluation:", errorMessage);
   }
 };
+
+export const ApproveSubmission = async (req: Request, res: Response) => {
+  const { submissionId } = req.body;
+
+  if (!submissionId) {
+    return res.status(400).json({
+      message: "submissionId is required",
+    });
+  }
+
+  try {
+    const submission = await Submission.findOne({
+      where: { id: submissionId },
+    });
+
+    if (!submission) {
+      return res.status(404).json({
+        message: "Submission not found",
+      });
+    }
+
+    submission.submissionStatus = "Completed";
+    await submission.save();
+
+    res.status(200).json({
+      message: "Submission approved successfully",
+    });
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error approving submission",
+      messageDetails: errorMessage,
+    });
+  }
+};
+
+export const ForCorrectionSubmission = async (req: Request, res: Response) => {
+  const { submissionId } = req.body;
+
+  if (!submissionId) {
+    return res.status(400).json({
+      message: "submissionId is required",
+    });
+  }
+
+  try {
+    const submission = await Submission.findOne({
+      where: { id: submissionId },
+    });
+
+    if (!submission) {
+      return res.status(404).json({
+        message: "Submission not found",
+      });
+    }
+
+    submission.submissionStatus = "ForCorrection";
+    await submission.save();
+
+    res.status(200).json({
+      message: "Submission marked for correction successfully",
+    });
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error marking submission for correction",
+      messageDetails: errorMessage,
+    });
+  }
+};
+
+export const ForEvaluationSubmission = async (req: Request, res: Response) => {
+  const { submissionId } = req.body;
+
+  if (!submissionId) {
+    return res.status(400).json({
+      message: "submissionId is required",
+    });
+  }
+
+  try {
+    const submission = await Submission.findOne({
+      where: { id: submissionId },
+    });
+
+    if (!submission) {
+      return res.status(404).json({
+        message: "Submission not found",
+      });
+    }
+
+    submission.submissionStatus = "Evaluation";
+    await submission.save();
+
+    res.status(200).json({
+      message: "Submission marked for evaluation successfully",
+    });
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error marking submission for evaluation",
+      messageDetails: errorMessage,
+    });
+  }
+};

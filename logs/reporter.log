@@ -13686,3 +13686,1108 @@ Error: Unable to parse request data
 2025-03-19T13:13:57.539Z - info: 2 worker threads initialized in 525ms
 2025-03-19T13:13:57.539Z - info: Starting temp files cleanup with 180000ms threshold
 2025-03-19T13:13:57.540Z - info: reporter initialized
+2025-03-19T13:55:59.353Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T13:55:59.356Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:55:59.361Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:55:59.456Z - info: Found 35 extension(s)
+2025-03-19T13:55:59.495Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T13:55:59.497Z - debug: Discovered 35 extensions
+2025-03-19T13:55:59.536Z - info: Using extension authentication@4.2.3
+2025-03-19T13:55:59.764Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T13:55:59.765Z - info: Using extension base@4.0.0
+2025-03-19T13:55:59.768Z - info: Using extension child-templates@4.1.0
+2025-03-19T13:55:59.770Z - info: Using extension cli@4.1.0
+2025-03-19T13:55:59.773Z - info: Using extension components@4.0.2
+2025-03-19T13:55:59.776Z - info: Using extension data@4.1.0
+2025-03-19T13:55:59.777Z - info: Using extension express@4.2.0
+2025-03-19T13:56:00.129Z - info: Using extension freeze@4.0.0
+2025-03-19T13:56:00.132Z - info: Using extension fs-store@4.1.0
+2025-03-19T13:56:00.314Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T13:56:00.315Z - info: Using extension handlebars@4.0.1
+2025-03-19T13:56:00.317Z - info: Using extension import-export@4.0.6
+2025-03-19T13:56:00.340Z - info: Using extension jsrender@4.0.0
+2025-03-19T13:56:00.342Z - info: Using extension licensing@4.0.4
+2025-03-19T13:56:00.385Z - info: Using extension localization@4.0.1
+2025-03-19T13:56:00.387Z - info: Using extension npm@4.0.0
+2025-03-19T13:56:00.392Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T13:56:00.395Z - info: Using extension reports@4.1.3
+2025-03-19T13:56:00.398Z - info: Using extension tags@4.0.1
+2025-03-19T13:56:00.400Z - info: Using extension text@4.0.2
+2025-03-19T13:56:00.401Z - info: Using extension version-control@4.1.0
+2025-03-19T13:56:00.416Z - info: Using extension assets@4.2.1
+2025-03-19T13:56:00.435Z - info: Using extension authorization@4.1.0
+2025-03-19T13:56:00.444Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T13:56:00.445Z - info: Using extension browser-client@4.1.0
+2025-03-19T13:56:00.449Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T13:56:00.454Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T13:56:00.455Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T13:56:00.455Z - info: Using extension docx@4.7.0
+2025-03-19T13:56:00.460Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T13:56:00.737Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T13:56:00.738Z - info: Using extension pptx@4.4.0
+2025-03-19T13:56:00.741Z - info: Using extension scheduling@4.1.0
+2025-03-19T13:56:00.772Z - info: Using extension scripts@4.2.0
+2025-03-19T13:56:00.773Z - info: Using extension static-pdf@4.1.0
+2025-03-19T13:56:00.774Z - info: Using extension studio@4.3.0
+2025-03-19T13:56:00.869Z - info: Using extension xlsx@4.4.0
+2025-03-19T13:56:00.871Z - info: Using extension public-templates@4.0.0
+2025-03-19T13:56:00.873Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T13:56:00.873Z - info: Using extension sample-template@4.0.1
+2025-03-19T13:56:00.876Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T13:56:00.877Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T13:56:00.878Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T13:56:00.889Z - debug: studio default theme is: light
+2025-03-19T13:56:00.893Z - info: Creating default express app.
+2025-03-19T13:56:00.921Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T13:56:00.923Z - info: Verifying license key free
+2025-03-19T13:56:00.924Z - info: Using free license
+2025-03-19T13:56:00.932Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T13:56:00.933Z - info: Migration successful
+2025-03-19T13:56:00.934Z - debug: Creating samples is disabled
+2025-03-19T13:56:00.935Z - info: Initializing worker threads
+2025-03-19T13:56:00.935Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T13:56:01.582Z - info: 2 worker threads initialized in 647ms
+2025-03-19T13:56:01.582Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T13:56:01.583Z - info: reporter initialized
+2025-03-19T13:58:12.875Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T13:58:12.878Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:58:12.882Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:58:12.962Z - info: Found 35 extension(s)
+2025-03-19T13:58:12.988Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T13:58:12.990Z - debug: Discovered 35 extensions
+2025-03-19T13:58:13.025Z - info: Using extension authentication@4.2.3
+2025-03-19T13:58:13.204Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T13:58:13.205Z - info: Using extension base@4.0.0
+2025-03-19T13:58:13.210Z - info: Using extension child-templates@4.1.0
+2025-03-19T13:58:13.213Z - info: Using extension cli@4.1.0
+2025-03-19T13:58:13.217Z - info: Using extension components@4.0.2
+2025-03-19T13:58:13.219Z - info: Using extension data@4.1.0
+2025-03-19T13:58:13.220Z - info: Using extension express@4.2.0
+2025-03-19T13:58:13.479Z - info: Using extension freeze@4.0.0
+2025-03-19T13:58:13.482Z - info: Using extension fs-store@4.1.0
+2025-03-19T13:58:13.615Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T13:58:13.615Z - info: Using extension handlebars@4.0.1
+2025-03-19T13:58:13.617Z - info: Using extension import-export@4.0.6
+2025-03-19T13:58:13.634Z - info: Using extension jsrender@4.0.0
+2025-03-19T13:58:13.635Z - info: Using extension licensing@4.0.4
+2025-03-19T13:58:13.676Z - info: Using extension localization@4.0.1
+2025-03-19T13:58:13.677Z - info: Using extension npm@4.0.0
+2025-03-19T13:58:13.683Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T13:58:13.685Z - info: Using extension reports@4.1.3
+2025-03-19T13:58:13.688Z - info: Using extension tags@4.0.1
+2025-03-19T13:58:13.689Z - info: Using extension text@4.0.2
+2025-03-19T13:58:13.690Z - info: Using extension version-control@4.1.0
+2025-03-19T13:58:13.703Z - info: Using extension assets@4.2.1
+2025-03-19T13:58:13.718Z - info: Using extension authorization@4.1.0
+2025-03-19T13:58:13.722Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T13:58:13.723Z - info: Using extension browser-client@4.1.0
+2025-03-19T13:58:13.726Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T13:58:13.728Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T13:58:13.729Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T13:58:13.729Z - info: Using extension docx@4.7.0
+2025-03-19T13:58:13.731Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T13:58:13.935Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T13:58:13.936Z - info: Using extension pptx@4.4.0
+2025-03-19T13:58:13.938Z - info: Using extension scheduling@4.1.0
+2025-03-19T13:58:13.960Z - info: Using extension scripts@4.2.0
+2025-03-19T13:58:13.962Z - info: Using extension static-pdf@4.1.0
+2025-03-19T13:58:13.963Z - info: Using extension studio@4.3.0
+2025-03-19T13:58:14.041Z - info: Using extension xlsx@4.4.0
+2025-03-19T13:58:14.044Z - info: Using extension public-templates@4.0.0
+2025-03-19T13:58:14.045Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T13:58:14.046Z - info: Using extension sample-template@4.0.1
+2025-03-19T13:58:14.048Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T13:58:14.049Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T13:58:14.050Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T13:58:14.061Z - debug: studio default theme is: light
+2025-03-19T13:58:14.065Z - info: Creating default express app.
+2025-03-19T13:58:14.085Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T13:58:14.087Z - info: Verifying license key free
+2025-03-19T13:58:14.088Z - info: Using free license
+2025-03-19T13:58:14.095Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T13:58:14.096Z - info: Migration successful
+2025-03-19T13:58:14.097Z - debug: Creating samples is disabled
+2025-03-19T13:58:14.097Z - info: Initializing worker threads
+2025-03-19T13:58:14.098Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T13:58:14.669Z - info: 2 worker threads initialized in 572ms
+2025-03-19T13:58:14.670Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T13:58:14.671Z - info: reporter initialized
+2025-03-19T13:58:35.882Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T13:58:35.885Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:58:35.890Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:58:35.970Z - info: Found 35 extension(s)
+2025-03-19T13:58:35.997Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T13:58:35.999Z - debug: Discovered 35 extensions
+2025-03-19T13:58:36.031Z - info: Using extension authentication@4.2.3
+2025-03-19T13:58:36.182Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T13:58:36.183Z - info: Using extension base@4.0.0
+2025-03-19T13:58:36.186Z - info: Using extension child-templates@4.1.0
+2025-03-19T13:58:36.187Z - info: Using extension cli@4.1.0
+2025-03-19T13:58:36.190Z - info: Using extension components@4.0.2
+2025-03-19T13:58:36.192Z - info: Using extension data@4.1.0
+2025-03-19T13:58:36.193Z - info: Using extension express@4.2.0
+2025-03-19T13:58:36.416Z - info: Using extension freeze@4.0.0
+2025-03-19T13:58:36.417Z - info: Using extension fs-store@4.1.0
+2025-03-19T13:58:36.534Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T13:58:36.534Z - info: Using extension handlebars@4.0.1
+2025-03-19T13:58:36.536Z - info: Using extension import-export@4.0.6
+2025-03-19T13:58:36.552Z - info: Using extension jsrender@4.0.0
+2025-03-19T13:58:36.553Z - info: Using extension licensing@4.0.4
+2025-03-19T13:58:36.588Z - info: Using extension localization@4.0.1
+2025-03-19T13:58:36.589Z - info: Using extension npm@4.0.0
+2025-03-19T13:58:36.594Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T13:58:36.596Z - info: Using extension reports@4.1.3
+2025-03-19T13:58:36.599Z - info: Using extension tags@4.0.1
+2025-03-19T13:58:36.601Z - info: Using extension text@4.0.2
+2025-03-19T13:58:36.602Z - info: Using extension version-control@4.1.0
+2025-03-19T13:58:36.613Z - info: Using extension assets@4.2.1
+2025-03-19T13:58:36.626Z - info: Using extension authorization@4.1.0
+2025-03-19T13:58:36.630Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T13:58:36.630Z - info: Using extension browser-client@4.1.0
+2025-03-19T13:58:36.632Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T13:58:36.635Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T13:58:36.636Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T13:58:36.636Z - info: Using extension docx@4.7.0
+2025-03-19T13:58:36.640Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T13:58:36.830Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T13:58:36.831Z - info: Using extension pptx@4.4.0
+2025-03-19T13:58:36.833Z - info: Using extension scheduling@4.1.0
+2025-03-19T13:58:36.857Z - info: Using extension scripts@4.2.0
+2025-03-19T13:58:36.858Z - info: Using extension static-pdf@4.1.0
+2025-03-19T13:58:36.859Z - info: Using extension studio@4.3.0
+2025-03-19T13:58:36.926Z - info: Using extension xlsx@4.4.0
+2025-03-19T13:58:36.928Z - info: Using extension public-templates@4.0.0
+2025-03-19T13:58:36.930Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T13:58:36.930Z - info: Using extension sample-template@4.0.1
+2025-03-19T13:58:36.932Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T13:58:36.934Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T13:58:36.934Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T13:58:36.943Z - debug: studio default theme is: light
+2025-03-19T13:58:36.947Z - info: Creating default express app.
+2025-03-19T13:58:36.963Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T13:58:36.965Z - info: Verifying license key free
+2025-03-19T13:58:36.965Z - info: Using free license
+2025-03-19T13:58:36.972Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T13:58:36.973Z - info: Migration successful
+2025-03-19T13:58:36.974Z - debug: Creating samples is disabled
+2025-03-19T13:58:36.974Z - info: Initializing worker threads
+2025-03-19T13:58:36.974Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T13:58:37.496Z - info: 2 worker threads initialized in 522ms
+2025-03-19T13:58:37.497Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T13:58:37.498Z - info: reporter initialized
+2025-03-19T13:58:42.397Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T13:58:42.400Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:58:42.404Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:58:42.480Z - info: Found 35 extension(s)
+2025-03-19T13:58:42.507Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T13:58:42.508Z - debug: Discovered 35 extensions
+2025-03-19T13:58:42.543Z - info: Using extension authentication@4.2.3
+2025-03-19T13:58:42.699Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T13:58:42.700Z - info: Using extension base@4.0.0
+2025-03-19T13:58:42.703Z - info: Using extension child-templates@4.1.0
+2025-03-19T13:58:42.704Z - info: Using extension cli@4.1.0
+2025-03-19T13:58:42.707Z - info: Using extension components@4.0.2
+2025-03-19T13:58:42.708Z - info: Using extension data@4.1.0
+2025-03-19T13:58:42.709Z - info: Using extension express@4.2.0
+2025-03-19T13:58:42.938Z - info: Using extension freeze@4.0.0
+2025-03-19T13:58:42.940Z - info: Using extension fs-store@4.1.0
+2025-03-19T13:58:43.061Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T13:58:43.062Z - info: Using extension handlebars@4.0.1
+2025-03-19T13:58:43.063Z - info: Using extension import-export@4.0.6
+2025-03-19T13:58:43.081Z - info: Using extension jsrender@4.0.0
+2025-03-19T13:58:43.082Z - info: Using extension licensing@4.0.4
+2025-03-19T13:58:43.117Z - info: Using extension localization@4.0.1
+2025-03-19T13:58:43.119Z - info: Using extension npm@4.0.0
+2025-03-19T13:58:43.124Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T13:59:10.395Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T13:59:10.398Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:59:10.402Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:59:10.481Z - info: Found 35 extension(s)
+2025-03-19T13:59:10.507Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T13:59:10.509Z - debug: Discovered 35 extensions
+2025-03-19T13:59:10.546Z - info: Using extension authentication@4.2.3
+2025-03-19T13:59:10.699Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T13:59:10.700Z - info: Using extension base@4.0.0
+2025-03-19T13:59:10.704Z - info: Using extension child-templates@4.1.0
+2025-03-19T13:59:10.705Z - info: Using extension cli@4.1.0
+2025-03-19T13:59:10.707Z - info: Using extension components@4.0.2
+2025-03-19T13:59:10.709Z - info: Using extension data@4.1.0
+2025-03-19T13:59:10.710Z - info: Using extension express@4.2.0
+2025-03-19T13:59:10.944Z - info: Using extension freeze@4.0.0
+2025-03-19T13:59:10.946Z - info: Using extension fs-store@4.1.0
+2025-03-19T13:59:11.071Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T13:59:11.071Z - info: Using extension handlebars@4.0.1
+2025-03-19T13:59:11.073Z - info: Using extension import-export@4.0.6
+2025-03-19T13:59:11.092Z - info: Using extension jsrender@4.0.0
+2025-03-19T13:59:11.093Z - info: Using extension licensing@4.0.4
+2025-03-19T13:59:11.128Z - info: Using extension localization@4.0.1
+2025-03-19T13:59:11.130Z - info: Using extension npm@4.0.0
+2025-03-19T13:59:11.134Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T13:59:11.136Z - info: Using extension reports@4.1.3
+2025-03-19T13:59:11.139Z - info: Using extension tags@4.0.1
+2025-03-19T13:59:11.140Z - info: Using extension text@4.0.2
+2025-03-19T13:59:11.141Z - info: Using extension version-control@4.1.0
+2025-03-19T13:59:11.153Z - info: Using extension assets@4.2.1
+2025-03-19T13:59:11.166Z - info: Using extension authorization@4.1.0
+2025-03-19T13:59:11.170Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T13:59:11.170Z - info: Using extension browser-client@4.1.0
+2025-03-19T13:59:11.173Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T13:59:11.176Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T13:59:11.176Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T13:59:11.177Z - info: Using extension docx@4.7.0
+2025-03-19T13:59:11.179Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T13:59:11.370Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T13:59:11.371Z - info: Using extension pptx@4.4.0
+2025-03-19T13:59:11.373Z - info: Using extension scheduling@4.1.0
+2025-03-19T13:59:11.396Z - info: Using extension scripts@4.2.0
+2025-03-19T13:59:11.397Z - info: Using extension static-pdf@4.1.0
+2025-03-19T13:59:11.398Z - info: Using extension studio@4.3.0
+2025-03-19T13:59:11.464Z - info: Using extension xlsx@4.4.0
+2025-03-19T13:59:11.467Z - info: Using extension public-templates@4.0.0
+2025-03-19T13:59:11.468Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T13:59:11.468Z - info: Using extension sample-template@4.0.1
+2025-03-19T13:59:11.470Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T13:59:11.471Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T13:59:11.472Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T13:59:11.482Z - debug: studio default theme is: light
+2025-03-19T13:59:11.486Z - info: Creating default express app.
+2025-03-19T13:59:11.503Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T13:59:11.505Z - info: Verifying license key free
+2025-03-19T13:59:11.506Z - info: Using free license
+2025-03-19T13:59:11.511Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T13:59:11.512Z - info: Migration successful
+2025-03-19T13:59:11.513Z - debug: Creating samples is disabled
+2025-03-19T13:59:11.513Z - info: Initializing worker threads
+2025-03-19T13:59:11.513Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T13:59:12.053Z - info: 2 worker threads initialized in 539ms
+2025-03-19T13:59:12.053Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T13:59:12.054Z - info: reporter initialized
+2025-03-19T13:59:15.717Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T13:59:15.720Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:59:15.725Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:59:15.796Z - info: Found 35 extension(s)
+2025-03-19T13:59:15.821Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T13:59:15.823Z - debug: Discovered 35 extensions
+2025-03-19T13:59:15.859Z - info: Using extension authentication@4.2.3
+2025-03-19T13:59:16.025Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T13:59:16.026Z - info: Using extension base@4.0.0
+2025-03-19T13:59:16.031Z - info: Using extension child-templates@4.1.0
+2025-03-19T13:59:16.033Z - info: Using extension cli@4.1.0
+2025-03-19T13:59:16.035Z - info: Using extension components@4.0.2
+2025-03-19T13:59:16.037Z - info: Using extension data@4.1.0
+2025-03-19T13:59:16.038Z - info: Using extension express@4.2.0
+2025-03-19T13:59:16.315Z - info: Using extension freeze@4.0.0
+2025-03-19T13:59:16.317Z - info: Using extension fs-store@4.1.0
+2025-03-19T13:59:16.439Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T13:59:16.440Z - info: Using extension handlebars@4.0.1
+2025-03-19T13:59:16.441Z - info: Using extension import-export@4.0.6
+2025-03-19T13:59:16.461Z - info: Using extension jsrender@4.0.0
+2025-03-19T13:59:16.462Z - info: Using extension licensing@4.0.4
+2025-03-19T13:59:16.497Z - info: Using extension localization@4.0.1
+2025-03-19T13:59:16.498Z - info: Using extension npm@4.0.0
+2025-03-19T13:59:16.503Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T13:59:16.505Z - info: Using extension reports@4.1.3
+2025-03-19T13:59:16.508Z - info: Using extension tags@4.0.1
+2025-03-19T13:59:16.510Z - info: Using extension text@4.0.2
+2025-03-19T13:59:16.511Z - info: Using extension version-control@4.1.0
+2025-03-19T13:59:16.522Z - info: Using extension assets@4.2.1
+2025-03-19T13:59:16.536Z - info: Using extension authorization@4.1.0
+2025-03-19T13:59:16.540Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T13:59:16.540Z - info: Using extension browser-client@4.1.0
+2025-03-19T13:59:16.543Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T13:59:16.545Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T13:59:16.545Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T13:59:16.546Z - info: Using extension docx@4.7.0
+2025-03-19T13:59:16.548Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T13:59:16.741Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T13:59:16.742Z - info: Using extension pptx@4.4.0
+2025-03-19T13:59:16.744Z - info: Using extension scheduling@4.1.0
+2025-03-19T13:59:16.766Z - info: Using extension scripts@4.2.0
+2025-03-19T13:59:16.767Z - info: Using extension static-pdf@4.1.0
+2025-03-19T13:59:16.768Z - info: Using extension studio@4.3.0
+2025-03-19T13:59:16.836Z - info: Using extension xlsx@4.4.0
+2025-03-19T13:59:16.838Z - info: Using extension public-templates@4.0.0
+2025-03-19T13:59:16.840Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T13:59:16.840Z - info: Using extension sample-template@4.0.1
+2025-03-19T13:59:16.842Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T13:59:16.844Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T13:59:16.844Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T13:59:16.854Z - debug: studio default theme is: light
+2025-03-19T13:59:16.858Z - info: Creating default express app.
+2025-03-19T13:59:16.874Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T13:59:16.876Z - info: Verifying license key free
+2025-03-19T13:59:16.877Z - info: Using free license
+2025-03-19T13:59:16.882Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T13:59:16.883Z - info: Migration successful
+2025-03-19T13:59:16.884Z - debug: Creating samples is disabled
+2025-03-19T13:59:16.885Z - info: Initializing worker threads
+2025-03-19T13:59:16.885Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T13:59:31.489Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T13:59:31.492Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:59:31.496Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T13:59:31.575Z - info: Found 35 extension(s)
+2025-03-19T13:59:31.606Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T13:59:31.607Z - debug: Discovered 35 extensions
+2025-03-19T13:59:31.645Z - info: Using extension authentication@4.2.3
+2025-03-19T13:59:31.809Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T13:59:31.809Z - info: Using extension base@4.0.0
+2025-03-19T13:59:31.812Z - info: Using extension child-templates@4.1.0
+2025-03-19T13:59:31.814Z - info: Using extension cli@4.1.0
+2025-03-19T13:59:31.816Z - info: Using extension components@4.0.2
+2025-03-19T13:59:31.818Z - info: Using extension data@4.1.0
+2025-03-19T13:59:31.818Z - info: Using extension express@4.2.0
+2025-03-19T13:59:32.054Z - info: Using extension freeze@4.0.0
+2025-03-19T13:59:32.056Z - info: Using extension fs-store@4.1.0
+2025-03-19T13:59:32.178Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T13:59:32.179Z - info: Using extension handlebars@4.0.1
+2025-03-19T13:59:32.181Z - info: Using extension import-export@4.0.6
+2025-03-19T13:59:32.198Z - info: Using extension jsrender@4.0.0
+2025-03-19T13:59:32.199Z - info: Using extension licensing@4.0.4
+2025-03-19T13:59:32.232Z - info: Using extension localization@4.0.1
+2025-03-19T13:59:32.234Z - info: Using extension npm@4.0.0
+2025-03-19T13:59:32.239Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T13:59:32.241Z - info: Using extension reports@4.1.3
+2025-03-19T13:59:32.243Z - info: Using extension tags@4.0.1
+2025-03-19T13:59:32.245Z - info: Using extension text@4.0.2
+2025-03-19T13:59:32.246Z - info: Using extension version-control@4.1.0
+2025-03-19T13:59:32.258Z - info: Using extension assets@4.2.1
+2025-03-19T13:59:32.271Z - info: Using extension authorization@4.1.0
+2025-03-19T13:59:32.277Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T13:59:32.277Z - info: Using extension browser-client@4.1.0
+2025-03-19T13:59:32.280Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T13:59:32.282Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T13:59:32.283Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T13:59:32.285Z - info: Using extension docx@4.7.0
+2025-03-19T13:59:32.288Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T13:59:32.494Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T13:59:32.494Z - info: Using extension pptx@4.4.0
+2025-03-19T13:59:32.496Z - info: Using extension scheduling@4.1.0
+2025-03-19T13:59:32.521Z - info: Using extension scripts@4.2.0
+2025-03-19T13:59:32.523Z - info: Using extension static-pdf@4.1.0
+2025-03-19T13:59:32.524Z - info: Using extension studio@4.3.0
+2025-03-19T13:59:32.593Z - info: Using extension xlsx@4.4.0
+2025-03-19T13:59:32.595Z - info: Using extension public-templates@4.0.0
+2025-03-19T13:59:32.597Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T13:59:32.597Z - info: Using extension sample-template@4.0.1
+2025-03-19T13:59:32.599Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T13:59:32.600Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T13:59:32.601Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T13:59:32.611Z - debug: studio default theme is: light
+2025-03-19T13:59:32.615Z - info: Creating default express app.
+2025-03-19T13:59:32.632Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T13:59:32.634Z - info: Verifying license key free
+2025-03-19T13:59:32.635Z - info: Using free license
+2025-03-19T13:59:32.640Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T13:59:32.641Z - info: Migration successful
+2025-03-19T13:59:32.642Z - debug: Creating samples is disabled
+2025-03-19T13:59:32.643Z - info: Initializing worker threads
+2025-03-19T13:59:32.643Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T13:59:33.186Z - info: 2 worker threads initialized in 543ms
+2025-03-19T13:59:33.187Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T13:59:33.187Z - info: reporter initialized
+2025-03-19T14:06:08.779Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T14:06:08.782Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:06:08.787Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:06:08.859Z - info: Found 35 extension(s)
+2025-03-19T14:06:08.885Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T14:06:08.886Z - debug: Discovered 35 extensions
+2025-03-19T14:06:08.919Z - info: Using extension authentication@4.2.3
+2025-03-19T14:06:09.079Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T14:06:09.080Z - info: Using extension base@4.0.0
+2025-03-19T14:06:09.083Z - info: Using extension child-templates@4.1.0
+2025-03-19T14:06:09.084Z - info: Using extension cli@4.1.0
+2025-03-19T14:06:09.087Z - info: Using extension components@4.0.2
+2025-03-19T14:06:09.088Z - info: Using extension data@4.1.0
+2025-03-19T14:06:09.089Z - info: Using extension express@4.2.0
+2025-03-19T14:06:09.338Z - info: Using extension freeze@4.0.0
+2025-03-19T14:06:09.340Z - info: Using extension fs-store@4.1.0
+2025-03-19T14:06:09.498Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T14:06:09.498Z - info: Using extension handlebars@4.0.1
+2025-03-19T14:06:09.500Z - info: Using extension import-export@4.0.6
+2025-03-19T14:06:09.516Z - info: Using extension jsrender@4.0.0
+2025-03-19T14:06:09.517Z - info: Using extension licensing@4.0.4
+2025-03-19T14:06:09.551Z - info: Using extension localization@4.0.1
+2025-03-19T14:06:09.553Z - info: Using extension npm@4.0.0
+2025-03-19T14:06:09.558Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T14:06:09.559Z - info: Using extension reports@4.1.3
+2025-03-19T14:06:09.562Z - info: Using extension tags@4.0.1
+2025-03-19T14:06:09.564Z - info: Using extension text@4.0.2
+2025-03-19T14:06:09.565Z - info: Using extension version-control@4.1.0
+2025-03-19T14:06:09.576Z - info: Using extension assets@4.2.1
+2025-03-19T14:06:09.590Z - info: Using extension authorization@4.1.0
+2025-03-19T14:06:09.594Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T14:06:09.594Z - info: Using extension browser-client@4.1.0
+2025-03-19T14:06:09.596Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T14:06:09.599Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T14:06:09.600Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T14:06:09.600Z - info: Using extension docx@4.7.0
+2025-03-19T14:06:09.603Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T14:06:09.781Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T14:06:09.782Z - info: Using extension pptx@4.4.0
+2025-03-19T14:06:09.784Z - info: Using extension scheduling@4.1.0
+2025-03-19T14:06:09.806Z - info: Using extension scripts@4.2.0
+2025-03-19T14:06:09.807Z - info: Using extension static-pdf@4.1.0
+2025-03-19T14:06:09.808Z - info: Using extension studio@4.3.0
+2025-03-19T14:06:09.873Z - info: Using extension xlsx@4.4.0
+2025-03-19T14:06:09.875Z - info: Using extension public-templates@4.0.0
+2025-03-19T14:06:09.876Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T14:06:09.877Z - info: Using extension sample-template@4.0.1
+2025-03-19T14:06:09.878Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T14:06:09.880Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T14:06:09.880Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T14:06:09.891Z - debug: studio default theme is: light
+2025-03-19T14:06:09.895Z - info: Creating default express app.
+2025-03-19T14:06:09.912Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T14:06:09.913Z - info: Verifying license key free
+2025-03-19T14:06:09.914Z - info: Using free license
+2025-03-19T14:06:09.920Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T14:06:09.921Z - info: Migration successful
+2025-03-19T14:06:09.922Z - debug: Creating samples is disabled
+2025-03-19T14:06:09.922Z - info: Initializing worker threads
+2025-03-19T14:06:09.923Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T14:06:10.450Z - info: 2 worker threads initialized in 528ms
+2025-03-19T14:06:10.451Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T14:06:10.451Z - info: reporter initialized
+2025-03-19T14:06:27.245Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T14:06:27.248Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:06:27.252Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:06:27.324Z - info: Found 35 extension(s)
+2025-03-19T14:06:27.347Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T14:06:27.349Z - debug: Discovered 35 extensions
+2025-03-19T14:06:27.381Z - info: Using extension authentication@4.2.3
+2025-03-19T14:06:27.537Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T14:06:27.538Z - info: Using extension base@4.0.0
+2025-03-19T14:06:27.542Z - info: Using extension child-templates@4.1.0
+2025-03-19T14:06:27.543Z - info: Using extension cli@4.1.0
+2025-03-19T14:06:27.546Z - info: Using extension components@4.0.2
+2025-03-19T14:06:27.547Z - info: Using extension data@4.1.0
+2025-03-19T14:06:27.548Z - info: Using extension express@4.2.0
+2025-03-19T14:06:27.777Z - info: Using extension freeze@4.0.0
+2025-03-19T14:06:27.779Z - info: Using extension fs-store@4.1.0
+2025-03-19T14:06:27.893Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T14:06:27.894Z - info: Using extension handlebars@4.0.1
+2025-03-19T14:06:27.895Z - info: Using extension import-export@4.0.6
+2025-03-19T14:06:27.912Z - info: Using extension jsrender@4.0.0
+2025-03-19T14:06:27.913Z - info: Using extension licensing@4.0.4
+2025-03-19T14:06:27.946Z - info: Using extension localization@4.0.1
+2025-03-19T14:06:27.947Z - info: Using extension npm@4.0.0
+2025-03-19T14:06:27.952Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T14:06:27.954Z - info: Using extension reports@4.1.3
+2025-03-19T14:06:27.957Z - info: Using extension tags@4.0.1
+2025-03-19T14:06:27.959Z - info: Using extension text@4.0.2
+2025-03-19T14:06:27.960Z - info: Using extension version-control@4.1.0
+2025-03-19T14:06:27.970Z - info: Using extension assets@4.2.1
+2025-03-19T14:06:27.983Z - info: Using extension authorization@4.1.0
+2025-03-19T14:06:27.987Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T14:06:27.987Z - info: Using extension browser-client@4.1.0
+2025-03-19T14:06:27.990Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T14:06:27.992Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T14:06:27.992Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T14:06:27.993Z - info: Using extension docx@4.7.0
+2025-03-19T14:06:27.995Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T14:06:28.174Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T14:06:28.174Z - info: Using extension pptx@4.4.0
+2025-03-19T14:06:28.176Z - info: Using extension scheduling@4.1.0
+2025-03-19T14:06:28.198Z - info: Using extension scripts@4.2.0
+2025-03-19T14:06:28.199Z - info: Using extension static-pdf@4.1.0
+2025-03-19T14:06:28.200Z - info: Using extension studio@4.3.0
+2025-03-19T14:06:28.265Z - info: Using extension xlsx@4.4.0
+2025-03-19T14:06:28.267Z - info: Using extension public-templates@4.0.0
+2025-03-19T14:06:28.269Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T14:06:28.269Z - info: Using extension sample-template@4.0.1
+2025-03-19T14:06:28.272Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T14:06:28.273Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T14:06:28.273Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T14:06:28.283Z - debug: studio default theme is: light
+2025-03-19T14:06:28.287Z - info: Creating default express app.
+2025-03-19T14:06:28.305Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T14:06:28.306Z - info: Verifying license key free
+2025-03-19T14:06:28.308Z - info: Using free license
+2025-03-19T14:06:28.313Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T14:06:28.314Z - info: Migration successful
+2025-03-19T14:06:28.314Z - debug: Creating samples is disabled
+2025-03-19T14:06:28.315Z - info: Initializing worker threads
+2025-03-19T14:06:28.315Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T14:06:28.882Z - info: 2 worker threads initialized in 567ms
+2025-03-19T14:06:28.883Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T14:06:28.884Z - info: reporter initialized
+2025-03-19T14:06:34.525Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T14:06:34.528Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:06:34.532Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:06:34.611Z - info: Found 35 extension(s)
+2025-03-19T14:06:34.635Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T14:06:34.636Z - debug: Discovered 35 extensions
+2025-03-19T14:06:34.670Z - info: Using extension authentication@4.2.3
+2025-03-19T14:06:34.821Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T14:06:34.822Z - info: Using extension base@4.0.0
+2025-03-19T14:06:34.825Z - info: Using extension child-templates@4.1.0
+2025-03-19T14:06:34.826Z - info: Using extension cli@4.1.0
+2025-03-19T14:06:34.829Z - info: Using extension components@4.0.2
+2025-03-19T14:06:34.831Z - info: Using extension data@4.1.0
+2025-03-19T14:06:34.831Z - info: Using extension express@4.2.0
+2025-03-19T14:06:35.080Z - info: Using extension freeze@4.0.0
+2025-03-19T14:06:35.082Z - info: Using extension fs-store@4.1.0
+2025-03-19T14:06:35.214Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T14:06:35.215Z - info: Using extension handlebars@4.0.1
+2025-03-19T14:06:35.217Z - info: Using extension import-export@4.0.6
+2025-03-19T14:06:35.234Z - info: Using extension jsrender@4.0.0
+2025-03-19T14:06:35.235Z - info: Using extension licensing@4.0.4
+2025-03-19T14:06:35.271Z - info: Using extension localization@4.0.1
+2025-03-19T14:06:35.272Z - info: Using extension npm@4.0.0
+2025-03-19T14:06:35.277Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T14:06:35.279Z - info: Using extension reports@4.1.3
+2025-03-19T14:06:35.283Z - info: Using extension tags@4.0.1
+2025-03-19T14:06:35.285Z - info: Using extension text@4.0.2
+2025-03-19T14:06:35.286Z - info: Using extension version-control@4.1.0
+2025-03-19T14:06:35.297Z - info: Using extension assets@4.2.1
+2025-03-19T14:06:35.310Z - info: Using extension authorization@4.1.0
+2025-03-19T14:06:35.315Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T14:06:35.315Z - info: Using extension browser-client@4.1.0
+2025-03-19T14:06:35.317Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T14:06:35.321Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T14:06:35.321Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T14:06:35.322Z - info: Using extension docx@4.7.0
+2025-03-19T14:06:35.324Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T14:06:35.519Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T14:06:35.519Z - info: Using extension pptx@4.4.0
+2025-03-19T14:06:35.521Z - info: Using extension scheduling@4.1.0
+2025-03-19T14:06:35.545Z - info: Using extension scripts@4.2.0
+2025-03-19T14:06:35.546Z - info: Using extension static-pdf@4.1.0
+2025-03-19T14:06:35.547Z - info: Using extension studio@4.3.0
+2025-03-19T14:06:35.613Z - info: Using extension xlsx@4.4.0
+2025-03-19T14:06:35.615Z - info: Using extension public-templates@4.0.0
+2025-03-19T14:06:35.617Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T14:06:35.617Z - info: Using extension sample-template@4.0.1
+2025-03-19T14:06:35.619Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T14:06:35.621Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T14:06:35.621Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T14:06:35.632Z - debug: studio default theme is: light
+2025-03-19T14:06:35.637Z - info: Creating default express app.
+2025-03-19T14:06:35.657Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T14:06:35.659Z - info: Verifying license key free
+2025-03-19T14:06:35.660Z - info: Using free license
+2025-03-19T14:06:35.665Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T14:06:35.666Z - info: Migration successful
+2025-03-19T14:06:35.667Z - debug: Creating samples is disabled
+2025-03-19T14:06:35.667Z - info: Initializing worker threads
+2025-03-19T14:06:35.668Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T14:06:36.214Z - info: 2 worker threads initialized in 547ms
+2025-03-19T14:06:36.215Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T14:06:36.216Z - info: reporter initialized
+2025-03-19T14:06:40.163Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T14:06:40.167Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:06:40.173Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:06:40.272Z - info: Found 35 extension(s)
+2025-03-19T14:06:40.296Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T14:06:40.298Z - debug: Discovered 35 extensions
+2025-03-19T14:06:40.336Z - info: Using extension authentication@4.2.3
+2025-03-19T14:06:40.507Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T14:06:40.508Z - info: Using extension base@4.0.0
+2025-03-19T14:06:40.510Z - info: Using extension child-templates@4.1.0
+2025-03-19T14:06:40.512Z - info: Using extension cli@4.1.0
+2025-03-19T14:06:40.515Z - info: Using extension components@4.0.2
+2025-03-19T14:06:40.517Z - info: Using extension data@4.1.0
+2025-03-19T14:06:40.518Z - info: Using extension express@4.2.0
+2025-03-19T14:06:40.752Z - info: Using extension freeze@4.0.0
+2025-03-19T14:06:40.753Z - info: Using extension fs-store@4.1.0
+2025-03-19T14:06:40.869Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T14:06:40.870Z - info: Using extension handlebars@4.0.1
+2025-03-19T14:06:40.871Z - info: Using extension import-export@4.0.6
+2025-03-19T14:06:40.889Z - info: Using extension jsrender@4.0.0
+2025-03-19T14:06:40.890Z - info: Using extension licensing@4.0.4
+2025-03-19T14:06:40.922Z - info: Using extension localization@4.0.1
+2025-03-19T14:06:40.924Z - info: Using extension npm@4.0.0
+2025-03-19T14:06:40.929Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T14:06:40.930Z - info: Using extension reports@4.1.3
+2025-03-19T14:06:40.933Z - info: Using extension tags@4.0.1
+2025-03-19T14:06:40.935Z - info: Using extension text@4.0.2
+2025-03-19T14:06:40.936Z - info: Using extension version-control@4.1.0
+2025-03-19T14:06:40.946Z - info: Using extension assets@4.2.1
+2025-03-19T14:06:40.959Z - info: Using extension authorization@4.1.0
+2025-03-19T14:06:40.962Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T14:06:40.963Z - info: Using extension browser-client@4.1.0
+2025-03-19T14:06:40.965Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T14:06:40.967Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T14:06:40.968Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T14:06:40.968Z - info: Using extension docx@4.7.0
+2025-03-19T14:06:40.970Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T14:06:41.146Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T14:06:41.146Z - info: Using extension pptx@4.4.0
+2025-03-19T14:06:41.148Z - info: Using extension scheduling@4.1.0
+2025-03-19T14:06:41.170Z - info: Using extension scripts@4.2.0
+2025-03-19T14:06:41.171Z - info: Using extension static-pdf@4.1.0
+2025-03-19T14:06:41.172Z - info: Using extension studio@4.3.0
+2025-03-19T14:06:41.235Z - info: Using extension xlsx@4.4.0
+2025-03-19T14:06:41.237Z - info: Using extension public-templates@4.0.0
+2025-03-19T14:06:41.238Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T14:06:41.238Z - info: Using extension sample-template@4.0.1
+2025-03-19T14:06:41.240Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T14:06:41.242Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T14:06:41.242Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T14:06:41.252Z - debug: studio default theme is: light
+2025-03-19T14:06:41.256Z - info: Creating default express app.
+2025-03-19T14:06:41.272Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T14:06:41.274Z - info: Verifying license key free
+2025-03-19T14:06:41.275Z - info: Using free license
+2025-03-19T14:06:41.280Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T14:06:41.281Z - info: Migration successful
+2025-03-19T14:06:41.282Z - debug: Creating samples is disabled
+2025-03-19T14:06:41.282Z - info: Initializing worker threads
+2025-03-19T14:06:41.282Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T14:06:41.792Z - info: 2 worker threads initialized in 510ms
+2025-03-19T14:06:41.792Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T14:06:41.793Z - info: reporter initialized
+2025-03-19T14:06:49.511Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T14:06:49.514Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:06:49.518Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:06:49.592Z - info: Found 35 extension(s)
+2025-03-19T14:06:49.617Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T14:06:49.618Z - debug: Discovered 35 extensions
+2025-03-19T14:06:49.654Z - info: Using extension authentication@4.2.3
+2025-03-19T14:06:49.813Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T14:06:49.814Z - info: Using extension base@4.0.0
+2025-03-19T14:06:49.817Z - info: Using extension child-templates@4.1.0
+2025-03-19T14:06:49.818Z - info: Using extension cli@4.1.0
+2025-03-19T14:06:49.821Z - info: Using extension components@4.0.2
+2025-03-19T14:06:49.823Z - info: Using extension data@4.1.0
+2025-03-19T14:06:49.824Z - info: Using extension express@4.2.0
+2025-03-19T14:06:50.053Z - info: Using extension freeze@4.0.0
+2025-03-19T14:06:50.055Z - info: Using extension fs-store@4.1.0
+2025-03-19T14:06:50.177Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T14:06:50.178Z - info: Using extension handlebars@4.0.1
+2025-03-19T14:06:50.180Z - info: Using extension import-export@4.0.6
+2025-03-19T14:06:50.199Z - info: Using extension jsrender@4.0.0
+2025-03-19T14:06:50.200Z - info: Using extension licensing@4.0.4
+2025-03-19T14:06:50.236Z - info: Using extension localization@4.0.1
+2025-03-19T14:06:50.237Z - info: Using extension npm@4.0.0
+2025-03-19T14:06:50.242Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T14:06:50.244Z - info: Using extension reports@4.1.3
+2025-03-19T14:06:50.247Z - info: Using extension tags@4.0.1
+2025-03-19T14:06:50.249Z - info: Using extension text@4.0.2
+2025-03-19T14:06:50.249Z - info: Using extension version-control@4.1.0
+2025-03-19T14:06:50.260Z - info: Using extension assets@4.2.1
+2025-03-19T14:06:50.273Z - info: Using extension authorization@4.1.0
+2025-03-19T14:06:50.277Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T14:06:50.278Z - info: Using extension browser-client@4.1.0
+2025-03-19T14:06:50.280Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T14:06:50.283Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T14:06:50.283Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T14:06:50.284Z - info: Using extension docx@4.7.0
+2025-03-19T14:06:50.286Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T14:06:50.483Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T14:06:50.483Z - info: Using extension pptx@4.4.0
+2025-03-19T14:06:50.486Z - info: Using extension scheduling@4.1.0
+2025-03-19T14:06:50.508Z - info: Using extension scripts@4.2.0
+2025-03-19T14:06:50.509Z - info: Using extension static-pdf@4.1.0
+2025-03-19T14:06:50.510Z - info: Using extension studio@4.3.0
+2025-03-19T14:06:50.575Z - info: Using extension xlsx@4.4.0
+2025-03-19T14:06:50.577Z - info: Using extension public-templates@4.0.0
+2025-03-19T14:06:50.579Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T14:06:50.580Z - info: Using extension sample-template@4.0.1
+2025-03-19T14:06:50.582Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T14:06:50.584Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T14:06:50.584Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T14:06:50.594Z - debug: studio default theme is: light
+2025-03-19T14:06:50.598Z - info: Creating default express app.
+2025-03-19T14:06:50.615Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T14:06:50.616Z - info: Verifying license key free
+2025-03-19T14:06:50.617Z - info: Using free license
+2025-03-19T14:06:50.623Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T14:06:50.624Z - info: Migration successful
+2025-03-19T14:06:50.625Z - debug: Creating samples is disabled
+2025-03-19T14:06:50.625Z - info: Initializing worker threads
+2025-03-19T14:06:50.625Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T14:06:51.131Z - info: 2 worker threads initialized in 506ms
+2025-03-19T14:06:51.132Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T14:06:51.132Z - info: reporter initialized
+2025-03-19T14:08:37.868Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T14:08:37.871Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:08:37.875Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:08:37.958Z - info: Found 35 extension(s)
+2025-03-19T14:08:37.981Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T14:08:37.983Z - debug: Discovered 35 extensions
+2025-03-19T14:08:38.016Z - info: Using extension authentication@4.2.3
+2025-03-19T14:08:38.167Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T14:08:38.168Z - info: Using extension base@4.0.0
+2025-03-19T14:08:38.171Z - info: Using extension child-templates@4.1.0
+2025-03-19T14:08:38.173Z - info: Using extension cli@4.1.0
+2025-03-19T14:08:38.175Z - info: Using extension components@4.0.2
+2025-03-19T14:08:38.177Z - info: Using extension data@4.1.0
+2025-03-19T14:08:38.178Z - info: Using extension express@4.2.0
+2025-03-19T14:08:38.403Z - info: Using extension freeze@4.0.0
+2025-03-19T14:08:38.404Z - info: Using extension fs-store@4.1.0
+2025-03-19T14:08:38.520Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T14:08:38.520Z - info: Using extension handlebars@4.0.1
+2025-03-19T14:08:38.522Z - info: Using extension import-export@4.0.6
+2025-03-19T14:08:38.539Z - info: Using extension jsrender@4.0.0
+2025-03-19T14:08:38.540Z - info: Using extension licensing@4.0.4
+2025-03-19T14:08:38.572Z - info: Using extension localization@4.0.1
+2025-03-19T14:08:38.574Z - info: Using extension npm@4.0.0
+2025-03-19T14:08:38.579Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T14:08:38.581Z - info: Using extension reports@4.1.3
+2025-03-19T14:08:38.583Z - info: Using extension tags@4.0.1
+2025-03-19T14:08:38.585Z - info: Using extension text@4.0.2
+2025-03-19T14:08:38.586Z - info: Using extension version-control@4.1.0
+2025-03-19T14:08:38.597Z - info: Using extension assets@4.2.1
+2025-03-19T14:08:38.609Z - info: Using extension authorization@4.1.0
+2025-03-19T14:08:38.614Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T14:08:38.615Z - info: Using extension browser-client@4.1.0
+2025-03-19T14:08:38.617Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T14:08:38.619Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T14:08:38.620Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T14:08:38.620Z - info: Using extension docx@4.7.0
+2025-03-19T14:08:38.622Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T14:08:38.799Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T14:08:38.799Z - info: Using extension pptx@4.4.0
+2025-03-19T14:08:38.801Z - info: Using extension scheduling@4.1.0
+2025-03-19T14:08:38.823Z - info: Using extension scripts@4.2.0
+2025-03-19T14:08:38.824Z - info: Using extension static-pdf@4.1.0
+2025-03-19T14:08:38.825Z - info: Using extension studio@4.3.0
+2025-03-19T14:08:38.892Z - info: Using extension xlsx@4.4.0
+2025-03-19T14:08:38.894Z - info: Using extension public-templates@4.0.0
+2025-03-19T14:08:38.895Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T14:08:38.895Z - info: Using extension sample-template@4.0.1
+2025-03-19T14:08:38.897Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T14:08:38.899Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T14:08:38.899Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T14:08:38.910Z - debug: studio default theme is: light
+2025-03-19T14:08:38.914Z - info: Creating default express app.
+2025-03-19T14:08:38.932Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T14:08:38.934Z - info: Verifying license key free
+2025-03-19T14:08:38.935Z - info: Using free license
+2025-03-19T14:08:38.941Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T14:08:38.942Z - info: Migration successful
+2025-03-19T14:08:38.943Z - debug: Creating samples is disabled
+2025-03-19T14:08:38.943Z - info: Initializing worker threads
+2025-03-19T14:08:38.943Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T14:08:39.444Z - info: 2 worker threads initialized in 501ms
+2025-03-19T14:08:39.445Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T14:08:39.445Z - info: reporter initialized
+2025-03-19T14:09:22.204Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T14:09:22.207Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:09:22.212Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:09:22.282Z - info: Found 35 extension(s)
+2025-03-19T14:09:22.309Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T14:09:22.311Z - debug: Discovered 35 extensions
+2025-03-19T14:09:22.345Z - info: Using extension authentication@4.2.3
+2025-03-19T14:09:22.505Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T14:09:22.505Z - info: Using extension base@4.0.0
+2025-03-19T14:09:22.509Z - info: Using extension child-templates@4.1.0
+2025-03-19T14:09:22.510Z - info: Using extension cli@4.1.0
+2025-03-19T14:09:22.513Z - info: Using extension components@4.0.2
+2025-03-19T14:09:22.515Z - info: Using extension data@4.1.0
+2025-03-19T14:09:22.516Z - info: Using extension express@4.2.0
+2025-03-19T14:09:22.752Z - info: Using extension freeze@4.0.0
+2025-03-19T14:09:22.754Z - info: Using extension fs-store@4.1.0
+2025-03-19T14:09:22.876Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T14:09:22.876Z - info: Using extension handlebars@4.0.1
+2025-03-19T14:09:22.878Z - info: Using extension import-export@4.0.6
+2025-03-19T14:09:22.897Z - info: Using extension jsrender@4.0.0
+2025-03-19T14:09:22.899Z - info: Using extension licensing@4.0.4
+2025-03-19T14:09:22.933Z - info: Using extension localization@4.0.1
+2025-03-19T14:09:22.934Z - info: Using extension npm@4.0.0
+2025-03-19T14:09:22.939Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T14:09:22.941Z - info: Using extension reports@4.1.3
+2025-03-19T14:09:22.944Z - info: Using extension tags@4.0.1
+2025-03-19T14:09:22.946Z - info: Using extension text@4.0.2
+2025-03-19T14:09:22.946Z - info: Using extension version-control@4.1.0
+2025-03-19T14:09:22.957Z - info: Using extension assets@4.2.1
+2025-03-19T14:09:22.972Z - info: Using extension authorization@4.1.0
+2025-03-19T14:09:22.975Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T14:09:22.976Z - info: Using extension browser-client@4.1.0
+2025-03-19T14:09:22.978Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T14:09:22.980Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T14:09:22.981Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T14:09:22.981Z - info: Using extension docx@4.7.0
+2025-03-19T14:09:22.984Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T14:09:23.171Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T14:09:23.172Z - info: Using extension pptx@4.4.0
+2025-03-19T14:09:23.174Z - info: Using extension scheduling@4.1.0
+2025-03-19T14:09:23.195Z - info: Using extension scripts@4.2.0
+2025-03-19T14:09:23.197Z - info: Using extension static-pdf@4.1.0
+2025-03-19T14:09:23.198Z - info: Using extension studio@4.3.0
+2025-03-19T14:09:23.262Z - info: Using extension xlsx@4.4.0
+2025-03-19T14:09:23.264Z - info: Using extension public-templates@4.0.0
+2025-03-19T14:09:23.266Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T14:09:23.266Z - info: Using extension sample-template@4.0.1
+2025-03-19T14:09:23.268Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T14:09:23.269Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T14:09:23.270Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T14:09:23.280Z - debug: studio default theme is: light
+2025-03-19T14:09:23.283Z - info: Creating default express app.
+2025-03-19T14:09:23.301Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T14:09:23.303Z - info: Verifying license key free
+2025-03-19T14:09:23.304Z - info: Using free license
+2025-03-19T14:09:23.309Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T14:09:23.310Z - info: Migration successful
+2025-03-19T14:09:23.311Z - debug: Creating samples is disabled
+2025-03-19T14:09:23.311Z - info: Initializing worker threads
+2025-03-19T14:09:23.312Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T14:09:23.854Z - info: 2 worker threads initialized in 543ms
+2025-03-19T14:09:23.855Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T14:09:23.855Z - info: reporter initialized
+2025-03-19T14:12:40.156Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T14:12:40.159Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:12:40.163Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:12:40.232Z - info: Found 35 extension(s)
+2025-03-19T14:12:40.257Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T14:12:40.259Z - debug: Discovered 35 extensions
+2025-03-19T14:12:40.292Z - info: Using extension authentication@4.2.3
+2025-03-19T14:12:40.445Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T14:12:40.446Z - info: Using extension base@4.0.0
+2025-03-19T14:12:40.449Z - info: Using extension child-templates@4.1.0
+2025-03-19T14:12:40.451Z - info: Using extension cli@4.1.0
+2025-03-19T14:12:40.453Z - info: Using extension components@4.0.2
+2025-03-19T14:12:40.455Z - info: Using extension data@4.1.0
+2025-03-19T14:12:40.456Z - info: Using extension express@4.2.0
+2025-03-19T14:12:40.689Z - info: Using extension freeze@4.0.0
+2025-03-19T14:12:40.691Z - info: Using extension fs-store@4.1.0
+2025-03-19T14:12:40.832Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T14:12:40.833Z - info: Using extension handlebars@4.0.1
+2025-03-19T14:12:40.834Z - info: Using extension import-export@4.0.6
+2025-03-19T14:12:40.851Z - info: Using extension jsrender@4.0.0
+2025-03-19T14:12:40.853Z - info: Using extension licensing@4.0.4
+2025-03-19T14:12:40.886Z - info: Using extension localization@4.0.1
+2025-03-19T14:12:40.887Z - info: Using extension npm@4.0.0
+2025-03-19T14:12:40.892Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T14:12:40.894Z - info: Using extension reports@4.1.3
+2025-03-19T14:12:40.897Z - info: Using extension tags@4.0.1
+2025-03-19T14:12:40.898Z - info: Using extension text@4.0.2
+2025-03-19T14:12:40.899Z - info: Using extension version-control@4.1.0
+2025-03-19T14:12:40.910Z - info: Using extension assets@4.2.1
+2025-03-19T14:12:40.924Z - info: Using extension authorization@4.1.0
+2025-03-19T14:12:40.928Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T14:12:40.928Z - info: Using extension browser-client@4.1.0
+2025-03-19T14:12:40.930Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T14:12:40.933Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T14:12:40.934Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T14:12:40.934Z - info: Using extension docx@4.7.0
+2025-03-19T14:12:40.937Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T14:12:41.129Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T14:12:41.129Z - info: Using extension pptx@4.4.0
+2025-03-19T14:12:41.132Z - info: Using extension scheduling@4.1.0
+2025-03-19T14:12:41.156Z - info: Using extension scripts@4.2.0
+2025-03-19T14:12:41.159Z - info: Using extension static-pdf@4.1.0
+2025-03-19T14:12:41.160Z - info: Using extension studio@4.3.0
+2025-03-19T14:12:41.228Z - info: Using extension xlsx@4.4.0
+2025-03-19T14:12:41.230Z - info: Using extension public-templates@4.0.0
+2025-03-19T14:12:41.231Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T14:12:41.232Z - info: Using extension sample-template@4.0.1
+2025-03-19T14:12:41.233Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T14:12:41.234Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T14:12:41.235Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T14:12:41.244Z - debug: studio default theme is: light
+2025-03-19T14:12:41.248Z - info: Creating default express app.
+2025-03-19T14:12:41.266Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T14:12:41.268Z - info: Verifying license key free
+2025-03-19T14:12:41.269Z - info: Using free license
+2025-03-19T14:12:41.274Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T14:12:41.275Z - info: Migration successful
+2025-03-19T14:12:41.276Z - debug: Creating samples is disabled
+2025-03-19T14:12:41.276Z - info: Initializing worker threads
+2025-03-19T14:12:41.276Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T14:12:41.788Z - info: 2 worker threads initialized in 512ms
+2025-03-19T14:12:41.788Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T14:12:41.789Z - info: reporter initialized
+2025-03-19T14:13:06.823Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T14:13:06.826Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:13:06.831Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:13:06.913Z - info: Found 35 extension(s)
+2025-03-19T14:13:06.939Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T14:13:06.940Z - debug: Discovered 35 extensions
+2025-03-19T14:13:06.975Z - info: Using extension authentication@4.2.3
+2025-03-19T14:13:07.145Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T14:13:07.146Z - info: Using extension base@4.0.0
+2025-03-19T14:13:07.150Z - info: Using extension child-templates@4.1.0
+2025-03-19T14:13:07.152Z - info: Using extension cli@4.1.0
+2025-03-19T14:13:07.155Z - info: Using extension components@4.0.2
+2025-03-19T14:13:07.156Z - info: Using extension data@4.1.0
+2025-03-19T14:13:07.158Z - info: Using extension express@4.2.0
+2025-03-19T14:13:07.401Z - info: Using extension freeze@4.0.0
+2025-03-19T14:13:07.403Z - info: Using extension fs-store@4.1.0
+2025-03-19T14:13:07.529Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T14:13:07.529Z - info: Using extension handlebars@4.0.1
+2025-03-19T14:13:07.531Z - info: Using extension import-export@4.0.6
+2025-03-19T14:13:07.547Z - info: Using extension jsrender@4.0.0
+2025-03-19T14:13:07.548Z - info: Using extension licensing@4.0.4
+2025-03-19T14:13:07.582Z - info: Using extension localization@4.0.1
+2025-03-19T14:13:07.584Z - info: Using extension npm@4.0.0
+2025-03-19T14:13:07.589Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T14:13:07.591Z - info: Using extension reports@4.1.3
+2025-03-19T14:13:07.593Z - info: Using extension tags@4.0.1
+2025-03-19T14:13:07.595Z - info: Using extension text@4.0.2
+2025-03-19T14:13:07.596Z - info: Using extension version-control@4.1.0
+2025-03-19T14:13:07.611Z - info: Using extension assets@4.2.1
+2025-03-19T14:13:07.624Z - info: Using extension authorization@4.1.0
+2025-03-19T14:13:07.628Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T14:13:07.629Z - info: Using extension browser-client@4.1.0
+2025-03-19T14:13:07.631Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T14:13:07.635Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T14:13:07.635Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T14:13:07.636Z - info: Using extension docx@4.7.0
+2025-03-19T14:13:07.638Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T14:13:07.834Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T14:13:07.834Z - info: Using extension pptx@4.4.0
+2025-03-19T14:13:07.836Z - info: Using extension scheduling@4.1.0
+2025-03-19T14:13:07.858Z - info: Using extension scripts@4.2.0
+2025-03-19T14:13:07.860Z - info: Using extension static-pdf@4.1.0
+2025-03-19T14:13:07.861Z - info: Using extension studio@4.3.0
+2025-03-19T14:13:07.926Z - info: Using extension xlsx@4.4.0
+2025-03-19T14:13:07.928Z - info: Using extension public-templates@4.0.0
+2025-03-19T14:13:07.929Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T14:13:07.930Z - info: Using extension sample-template@4.0.1
+2025-03-19T14:13:07.932Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T14:13:07.933Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T14:13:07.933Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T14:13:07.945Z - debug: studio default theme is: light
+2025-03-19T14:13:07.949Z - info: Creating default express app.
+2025-03-19T14:13:07.969Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T14:13:07.970Z - info: Verifying license key free
+2025-03-19T14:13:07.971Z - info: Using free license
+2025-03-19T14:13:07.977Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T14:13:07.978Z - info: Migration successful
+2025-03-19T14:13:07.979Z - debug: Creating samples is disabled
+2025-03-19T14:13:07.979Z - info: Initializing worker threads
+2025-03-19T14:13:07.980Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T14:13:08.526Z - info: 2 worker threads initialized in 547ms
+2025-03-19T14:13:08.526Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T14:13:08.527Z - info: reporter initialized
+2025-03-19T14:13:14.150Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T14:13:14.153Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:13:14.157Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:13:14.234Z - info: Found 35 extension(s)
+2025-03-19T14:13:14.262Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T14:13:14.264Z - debug: Discovered 35 extensions
+2025-03-19T14:13:21.208Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T14:13:21.211Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:13:21.215Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:13:21.285Z - info: Found 35 extension(s)
+2025-03-19T14:13:21.309Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T14:13:21.310Z - debug: Discovered 35 extensions
+2025-03-19T14:13:21.344Z - info: Using extension authentication@4.2.3
+2025-03-19T14:13:21.494Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T14:13:21.494Z - info: Using extension base@4.0.0
+2025-03-19T14:13:21.497Z - info: Using extension child-templates@4.1.0
+2025-03-19T14:13:21.499Z - info: Using extension cli@4.1.0
+2025-03-19T14:13:21.501Z - info: Using extension components@4.0.2
+2025-03-19T14:13:21.503Z - info: Using extension data@4.1.0
+2025-03-19T14:13:21.504Z - info: Using extension express@4.2.0
+2025-03-19T14:13:21.751Z - info: Using extension freeze@4.0.0
+2025-03-19T14:13:21.753Z - info: Using extension fs-store@4.1.0
+2025-03-19T14:13:21.875Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T14:13:21.876Z - info: Using extension handlebars@4.0.1
+2025-03-19T14:13:21.878Z - info: Using extension import-export@4.0.6
+2025-03-19T14:13:21.894Z - info: Using extension jsrender@4.0.0
+2025-03-19T14:13:21.895Z - info: Using extension licensing@4.0.4
+2025-03-19T14:13:21.928Z - info: Using extension localization@4.0.1
+2025-03-19T14:13:21.930Z - info: Using extension npm@4.0.0
+2025-03-19T14:13:21.935Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T14:13:21.936Z - info: Using extension reports@4.1.3
+2025-03-19T14:13:21.939Z - info: Using extension tags@4.0.1
+2025-03-19T14:13:21.941Z - info: Using extension text@4.0.2
+2025-03-19T14:13:21.942Z - info: Using extension version-control@4.1.0
+2025-03-19T14:13:21.954Z - info: Using extension assets@4.2.1
+2025-03-19T14:13:21.966Z - info: Using extension authorization@4.1.0
+2025-03-19T14:13:21.970Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T14:13:21.970Z - info: Using extension browser-client@4.1.0
+2025-03-19T14:13:21.973Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T14:13:21.975Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T14:13:21.976Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T14:13:21.976Z - info: Using extension docx@4.7.0
+2025-03-19T14:13:21.978Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T14:13:22.167Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T14:13:22.167Z - info: Using extension pptx@4.4.0
+2025-03-19T14:13:22.169Z - info: Using extension scheduling@4.1.0
+2025-03-19T14:13:22.191Z - info: Using extension scripts@4.2.0
+2025-03-19T14:13:22.193Z - info: Using extension static-pdf@4.1.0
+2025-03-19T14:13:22.193Z - info: Using extension studio@4.3.0
+2025-03-19T14:13:22.260Z - info: Using extension xlsx@4.4.0
+2025-03-19T14:13:22.262Z - info: Using extension public-templates@4.0.0
+2025-03-19T14:13:22.263Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T14:13:22.264Z - info: Using extension sample-template@4.0.1
+2025-03-19T14:13:22.266Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T14:13:22.267Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T14:13:22.267Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T14:13:22.278Z - debug: studio default theme is: light
+2025-03-19T14:13:22.282Z - info: Creating default express app.
+2025-03-19T14:13:22.297Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T14:13:22.300Z - info: Verifying license key free
+2025-03-19T14:13:22.301Z - info: Using free license
+2025-03-19T14:13:22.307Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T14:13:22.308Z - info: Migration successful
+2025-03-19T14:13:22.309Z - debug: Creating samples is disabled
+2025-03-19T14:13:22.309Z - info: Initializing worker threads
+2025-03-19T14:13:22.310Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T14:13:22.928Z - info: 2 worker threads initialized in 619ms
+2025-03-19T14:13:22.928Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T14:13:22.929Z - info: reporter initialized
+2025-03-19T14:13:26.488Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T14:13:26.490Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:13:26.494Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:13:26.566Z - info: Found 35 extension(s)
+2025-03-19T14:13:26.592Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T14:13:26.593Z - debug: Discovered 35 extensions
+2025-03-19T14:13:26.629Z - info: Using extension authentication@4.2.3
+2025-03-19T14:13:30.907Z - info: Initializing jsreport (version: 4.8.0, configuration file: none, nodejs: 20.15.1)
+2025-03-19T14:13:30.910Z - info: Searching for available extensions in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:13:30.914Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\barua\OneDrive\Desktop\Gadify-Backend\
+2025-03-19T14:13:30.983Z - info: Found 35 extension(s)
+2025-03-19T14:13:31.007Z - debug: Writing extension locations cache to C:\Users\barua\AppData\Local\Temp\jsreport\core\locations.json
+2025-03-19T14:13:31.008Z - debug: Discovered 35 extensions
+2025-03-19T14:13:31.040Z - info: Using extension authentication@4.2.3
+2025-03-19T14:13:31.192Z - debug: Extension authentication@4.2.3 was disabled
+2025-03-19T14:13:31.193Z - info: Using extension base@4.0.0
+2025-03-19T14:13:31.196Z - info: Using extension child-templates@4.1.0
+2025-03-19T14:13:31.197Z - info: Using extension cli@4.1.0
+2025-03-19T14:13:31.199Z - info: Using extension components@4.0.2
+2025-03-19T14:13:31.201Z - info: Using extension data@4.1.0
+2025-03-19T14:13:31.202Z - info: Using extension express@4.2.0
+2025-03-19T14:13:31.470Z - info: Using extension freeze@4.0.0
+2025-03-19T14:13:31.473Z - info: Using extension fs-store@4.1.0
+2025-03-19T14:13:31.624Z - debug: Extension fs-store@4.1.0 was disabled
+2025-03-19T14:13:31.625Z - info: Using extension handlebars@4.0.1
+2025-03-19T14:13:31.626Z - info: Using extension import-export@4.0.6
+2025-03-19T14:13:31.645Z - info: Using extension jsrender@4.0.0
+2025-03-19T14:13:31.647Z - info: Using extension licensing@4.0.4
+2025-03-19T14:13:31.687Z - info: Using extension localization@4.0.1
+2025-03-19T14:13:31.689Z - info: Using extension npm@4.0.0
+2025-03-19T14:13:31.694Z - info: Using extension pdf-utils@4.3.0
+2025-03-19T14:13:31.696Z - info: Using extension reports@4.1.3
+2025-03-19T14:13:31.699Z - info: Using extension tags@4.0.1
+2025-03-19T14:13:31.701Z - info: Using extension text@4.0.2
+2025-03-19T14:13:31.702Z - info: Using extension version-control@4.1.0
+2025-03-19T14:13:31.716Z - info: Using extension assets@4.2.1
+2025-03-19T14:13:31.731Z - info: Using extension authorization@4.1.0
+2025-03-19T14:13:31.735Z - debug: Extension authorization@4.1.0 was disabled
+2025-03-19T14:13:31.735Z - info: Using extension browser-client@4.1.0
+2025-03-19T14:13:31.738Z - info: Using extension chrome-pdf@4.1.1
+2025-03-19T14:13:31.741Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-03-19T14:13:31.741Z - debug: Chrome custom launch options are args=--no-sandbox,--disable-setuid-sandbox, protocolTimeout=60000
+2025-03-19T14:13:31.742Z - info: Using extension docx@4.7.0
+2025-03-19T14:13:31.744Z - info: Using extension html-to-xlsx@4.2.0
+2025-03-19T14:13:31.945Z - info: html-to-xlsx detected chrome as available html engine
+2025-03-19T14:13:31.945Z - info: Using extension pptx@4.4.0
+2025-03-19T14:13:31.947Z - info: Using extension scheduling@4.1.0
+2025-03-19T14:13:31.973Z - info: Using extension scripts@4.2.0
+2025-03-19T14:13:31.975Z - info: Using extension static-pdf@4.1.0
+2025-03-19T14:13:31.976Z - info: Using extension studio@4.3.0
+2025-03-19T14:13:32.046Z - info: Using extension xlsx@4.4.0
+2025-03-19T14:13:32.048Z - info: Using extension public-templates@4.0.0
+2025-03-19T14:13:32.049Z - debug: Extension public-templates@4.0.0 was disabled
+2025-03-19T14:13:32.050Z - info: Using extension sample-template@4.0.1
+2025-03-19T14:13:32.051Z - info: Using extension studio-theme-dark@4.0.0
+2025-03-19T14:13:32.053Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-03-19T14:13:32.053Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-03-19T14:13:32.064Z - debug: studio default theme is: light
+2025-03-19T14:13:32.067Z - info: Creating default express app.
+2025-03-19T14:13:32.086Z - info: jsreport server successfully started on http port: 5488
+2025-03-19T14:13:32.088Z - info: Verifying license key free
+2025-03-19T14:13:32.089Z - info: Using free license
+2025-03-19T14:13:32.094Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-03-19T14:13:32.098Z - info: Migration successful
+2025-03-19T14:13:32.101Z - debug: Creating samples is disabled
+2025-03-19T14:13:32.102Z - info: Initializing worker threads
+2025-03-19T14:13:32.102Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-03-19T14:13:32.635Z - info: 2 worker threads initialized in 533ms
+2025-03-19T14:13:32.636Z - info: Starting temp files cleanup with 180000ms threshold
+2025-03-19T14:13:32.637Z - info: reporter initialized

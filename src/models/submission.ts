@@ -11,7 +11,11 @@ export class Submission extends Model {
   public fileType!: "Link" | "File";
   public proposalTitle!: string;
   public proposalDescription!: string;
-  public submissionStatus!: "Pending" | "Approved" | "Rejected";
+  public submissionStatus!:
+    | "OnHold"
+    | "Evaluation"
+    | "Completed"
+    | "ForCorrection";
   public remarksId!: number;
   public createdAt!: Date;
 }
