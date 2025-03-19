@@ -61,10 +61,10 @@ sequelize
     console.error("Error during initialization:", err);
   });
 
+app.use("/api", Department);
 app.use("/api", AuthRoutes);
 app.use("/api", authenticateJWT, Admin);
 app.use("/api", authenticateJWT, Proponents);
-app.use("/api", authenticateJWT, Department);
 app.use("/api", authenticateJWT, Campus);
 app.use("/api", authenticateJWT, Office);
 app.use("/api", authenticateJWT, Evaluator);
