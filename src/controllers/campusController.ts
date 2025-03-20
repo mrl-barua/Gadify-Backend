@@ -44,3 +44,31 @@ export const CreateCampus = async (req: Request, res: Response) => {
       .json({ error: "Error creating campus", messageDetails: errorMessage });
   }
 };
+
+export const UpdateCampus = async (req: Request, res: Response) => {
+  const { id, campusName, campusAddress } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ message: "Campus ID is required" });
+  }
+
+  try {
+    const campus = await Campus.findOne({ where: { id } });
+
+    if (!campus) {
+      return res.status(404).json({ message: "Campus not found" });
+    }
+
+    campus.campusName = campusName || campus.campusName;
+    campus.campusAddress = campusAddress || campus.campusAddress;
+
+    await campus.save();
+    res.json(campus);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error updating campus",
+      messageDetails: errorMessage,
+    });
+  }
+};

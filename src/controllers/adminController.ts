@@ -129,11 +129,10 @@ export const GetAdminById = async (req: Request, res: Response) => {
 };
 
 export const UpdateAdmin = async (req: Request, res: Response) => {
-  const { id, adminId, fullName, email } = req.body;
+  const { id, fullName, email } = req.body;
 
   const missingFields = [];
   if (!id) missingFields.push("id");
-  if (!adminId) missingFields.push("adminId");
   if (!fullName) missingFields.push("fullName");
   if (!email) missingFields.push("email");
 
@@ -162,7 +161,6 @@ export const UpdateAdmin = async (req: Request, res: Response) => {
 
     await admin.update({
       id,
-      adminId,
       fullName,
       email,
     });
