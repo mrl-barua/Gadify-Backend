@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { Submission } from "../models/submission";
 import { SubmissionEvaluators } from "../models/submissionEvaluators";
 import { SubmissionFiles } from "../models/submissionFiles";
-import { Proponents } from "../models/proponents";
+import { Proponent } from "../models/proponent";
 import { Evaluator } from "../models/evaluator";
 import { Remarks } from "../models/remarks";
 import { Department } from "../models/department";
@@ -19,7 +19,7 @@ export const GetAllSubmissions = async (req: Request, res: Response) => {
     const submissions = await Submission.findAll({
       include: [
         {
-          model: Proponents,
+          model: Proponent,
           as: "proponent",
           attributes: [
             "proponentId",
@@ -77,7 +77,7 @@ export const GetSubmissionsByProponentId = async (
       where: { proponentId },
       include: [
         {
-          model: Proponents,
+          model: Proponent,
           as: "proponent",
           attributes: [
             "proponentId",
@@ -245,7 +245,7 @@ export const GetSubmissionById = async (req: Request, res: Response) => {
       where: { id: Id },
       include: [
         {
-          model: Proponents,
+          model: Proponent,
           as: "proponent",
           attributes: [
             "proponentId",

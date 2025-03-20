@@ -4,7 +4,7 @@ import cors from "cors";
 import { authenticateJWT } from "./middleware/auth";
 import { setupAssociations } from "./config/associations";
 import Admin from "./routes/adminRoutes";
-import Proponents from "./routes/proponentsRoutes";
+import Proponent from "./routes/proponentsRoutes";
 import Department from "./routes/departmentRoutes";
 import Campus from "./routes/campusRoutes";
 import Office from "./routes/officeRoutes";
@@ -64,7 +64,7 @@ sequelize
 app.use("/api", Department);
 app.use("/api", AuthRoutes);
 app.use("/api", authenticateJWT, Admin);
-app.use("/api", authenticateJWT, Proponents);
+app.use("/api", authenticateJWT, Proponent);
 app.use("/api", authenticateJWT, Campus);
 app.use("/api", authenticateJWT, Office);
 app.use("/api", authenticateJWT, Evaluator);

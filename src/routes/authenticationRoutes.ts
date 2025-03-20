@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { generateToken, hashPassword, comparePassword } from "../auth";
-import { Proponents } from "../models/proponents";
+import { Proponent } from "../models/proponent";
 import { Admin } from "../models/admin";
 import { Evaluator } from "../models/evaluator";
 import { BlacklistedToken } from "../models/blacklistedToken";
@@ -17,7 +17,7 @@ router.post("/login/proponent", async (req: Request, res: Response) => {
 
   console.log("Login request received with email:", email);
 
-  const proponent = await Proponents.findOne({ where: { email } });
+  const proponent = await Proponent.findOne({ where: { email } });
   if (!proponent) {
     return res.status(400).json({ message: "Invalid email or password" });
   }
@@ -72,7 +72,7 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
   }
 
   try {
-    const lastProponents = await Proponents.findOne({
+    const lastProponents = await Proponent.findOne({
       order: [["id", "DESC"]],
     });
 
@@ -87,7 +87,7 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
           : "OUT-0001"
         : null;
 
-    const proponentsUserNameExist = await Proponents.findOne({
+    const proponentsUserNameExist = await Proponent.findOne({
       where: { userName },
     });
     if (proponentsUserNameExist) {
@@ -97,7 +97,7 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
     }
 
     const hashedPassword = await hashPassword(password);
-    const proponent = await Proponents.create({
+    const proponent = await Proponent.create({
       proponentId: newProponentsId,
       departmentId,
       proponentType,
@@ -118,6 +118,39 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
       .json({ message: "Error checking for username", error: errorMessage });
   }
 });
+
+/* Proponent change password */
+router.post(
+  "/changepassword/proponent",
+  async (req: Request, res: Response) => {
+    const { email, oldPassword, newPassword } = req.body;
+
+    if (!email || !oldPassword || !newPassword) {
+      return res.status(400).json({
+        message: "email, old password, and new password are required",
+      });
+    }
+
+    const proponent = await Proponent.findOne({ where: { email } });
+    if (!proponent) {
+      return res.status(400).json({ message: "Invalid email" });
+    }
+
+    const validPassword = await comparePassword(
+      oldPassword,
+      proponent.password
+    );
+    if (!validPassword) {
+      return res.status(400).json({ message: "Invalid password" });
+    }
+
+    const hashedPassword = await hashPassword(newPassword);
+    proponent.password = hashedPassword;
+    await proponent.save();
+
+    res.json({ message: "Password changed successfully" });
+  }
+);
 
 /* Admin Login */
 router.post("/login/admin", async (req: Request, res: Response) => {
@@ -198,6 +231,33 @@ router.post("/register/admin", async (req: Request, res: Response) => {
   }
 });
 
+/* Admin change password */
+router.post("/changepassword/admin", async (req: Request, res: Response) => {
+  const { email, oldPassword, newPassword } = req.body;
+
+  if (!email || !oldPassword || !newPassword) {
+    return res.status(400).json({
+      message: "email, old password, and new password are required",
+    });
+  }
+
+  const admin = await Admin.findOne({ where: { email } });
+  if (!admin) {
+    return res.status(400).json({ message: "Invalid email" });
+  }
+
+  const validPassword = await comparePassword(oldPassword, admin.password);
+  if (!validPassword) {
+    return res.status(400).json({ message: "Invalid password" });
+  }
+
+  const hashedPassword = await hashPassword(newPassword);
+  admin.password = hashedPassword;
+  await admin.save();
+
+  res.json({ message: "Password changed successfully" });
+});
+
 /* Evaluator Login */
 router.post("/login/evaluator", async (req: Request, res: Response) => {
   const { email, password } = req.body;
@@ -275,6 +335,39 @@ router.post("/register/evaluator", async (req: Request, res: Response) => {
     });
   }
 });
+
+/* Evaluator change password */
+router.post(
+  "/changepassword/evaluator",
+  async (req: Request, res: Response) => {
+    const { email, oldPassword, newPassword } = req.body;
+
+    if (!email || !oldPassword || !newPassword) {
+      return res.status(400).json({
+        message: "email, old password, and new password are required",
+      });
+    }
+
+    const evaluator = await Evaluator.findOne({ where: { email } });
+    if (!evaluator) {
+      return res.status(400).json({ message: "Invalid email" });
+    }
+
+    const validPassword = await comparePassword(
+      oldPassword,
+      evaluator.password
+    );
+    if (!validPassword) {
+      return res.status(400).json({ message: "Invalid password" });
+    }
+
+    const hashedPassword = await hashPassword(newPassword);
+    evaluator.password = hashedPassword;
+    await evaluator.save();
+
+    res.json({ message: "Password changed successfully" });
+  }
+);
 
 /* Logout */
 router.post("/logout", async (req: Request, res: Response) => {

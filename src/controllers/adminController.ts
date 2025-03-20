@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Admin } from "../models/admin";
-import { Proponents, ProponentStatus } from "../models/proponents";
+import { Proponent, ProponentStatus } from "../models/proponent";
 import { approveAccountMail } from "../service/mail-templates/approveAccountMail";
 import { rejectAccountMail } from "../service/mail-templates/rejectAccountMail";
 
@@ -58,7 +58,7 @@ export const ApproveProponent = async (req: Request, res: Response) => {
   }
 
   try {
-    const proponent = await Proponents.findByPk(proponentId);
+    const proponent = await Proponent.findByPk(proponentId);
     if (!proponent) {
       return res.status(404).json({ message: "Proponent not found" });
     }
@@ -90,7 +90,7 @@ export const RejectProponent = async (req: Request, res: Response) => {
   }
 
   try {
-    const proponent = await Proponents.findByPk(proponentId);
+    const proponent = await Proponent.findByPk(proponentId);
     if (!proponent) {
       return res.status(404).json({ message: "Proponent not found" });
     }

@@ -1,6 +1,6 @@
 # My Express App
 
-A simple Express application built with TypeScript that interacts with a MySQL database. This application includes models, routes, and controllers for managing various entities such as Admin, Evaluator, Proponents, Submission, SubmissionProponents, Remarks, Campus, and Department.
+A simple Express application built with TypeScript that interacts with a MySQL database. This application includes models, routes, and controllers for managing various entities such as Admin, Evaluator, Proponent, Submission, SubmissionProponents, Remarks, Campus, and Department.
 
 ## Table of Contents
 
@@ -12,16 +12,19 @@ A simple Express application built with TypeScript that interacts with a MySQL d
 ## Installation
 
 1. Clone the repository:
+
    ```
    git clone https://github.com/yourusername/my-express-app.git
    ```
 
 2. Navigate to the project directory:
+
    ```
    cd my-express-app
    ```
 
 3. Install the dependencies:
+
    ```
    npm install
    ```
@@ -34,11 +37,13 @@ A simple Express application built with TypeScript that interacts with a MySQL d
 ## Usage
 
 To start the application, run:
+
 ```
 npm start
 ```
 
 For development mode with hot reloading, use:
+
 ```
 npm run dev
 ```
@@ -46,6 +51,7 @@ npm run dev
 ## API Endpoints
 
 - **Admin**
+
   - `GET /admin`
   - `POST /admin`
   - `GET /admin/:id`
@@ -53,13 +59,15 @@ npm run dev
   - `DELETE /admin/:id`
 
 - **Evaluator**
+
   - `GET /evaluators`
   - `POST /evaluators`
   - `GET /evaluators/:id`
   - `PUT /evaluators/:id`
   - `DELETE /evaluators/:id`
 
-- **Proponents**
+- **Proponent**
+
   - `GET /proponents`
   - `POST /proponents`
   - `GET /proponents/:id`
@@ -67,6 +75,7 @@ npm run dev
   - `DELETE /proponents/:id`
 
 - **Submission**
+
   - `GET /submissions`
   - `POST /submissions`
   - `GET /submissions/:id`
@@ -74,6 +83,7 @@ npm run dev
   - `DELETE /submissions/:id`
 
 - **SubmissionProponents**
+
   - `GET /submission-proponents`
   - `POST /submission-proponents`
   - `GET /submission-proponents/:id`
@@ -81,6 +91,7 @@ npm run dev
   - `DELETE /submission-proponents/:id`
 
 - **Remarks**
+
   - `GET /remarks`
   - `POST /remarks`
   - `GET /remarks/:id`
@@ -88,6 +99,7 @@ npm run dev
   - `DELETE /remarks/:id`
 
 - **Campus**
+
   - `GET /campus`
   - `POST /campus`
   - `GET /campus/:id`

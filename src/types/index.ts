@@ -11,7 +11,7 @@ export interface Evaluator {
   departmentId: number;
 }
 
-export interface Proponents {
+export interface Proponent {
   id: number;
   name: string;
   email: string;

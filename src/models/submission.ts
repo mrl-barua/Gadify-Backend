@@ -1,6 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/db";
-import { Proponents } from "./proponents";
+import { Proponent } from "./proponent";
 import { Remarks } from "./remarks";
 
 export class Submission extends Model {
@@ -36,7 +36,7 @@ Submission.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Proponents",
+        model: "Proponent",
         key: "id",
       },
       onDelete: "CASCADE",

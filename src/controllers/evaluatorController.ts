@@ -7,7 +7,7 @@ import { Submission } from "../models/submission";
 import { SubmissionEvaluation } from "../models/submissionEvaluation";
 import { SubmissionEvaluators } from "../models/submissionEvaluators";
 import { SubmissionFiles } from "../models/submissionFiles";
-import { Proponents } from "../models/proponents";
+import { Proponent } from "../models/proponent";
 import { Remarks } from "../models/remarks";
 import {
   GenderEvaluationAssessment,
@@ -196,7 +196,7 @@ export const GetSubmissionToBeEvaluated = async (
           ],
           include: [
             {
-              model: Proponents,
+              model: Proponent,
               as: "proponent",
               attributes: [
                 "proponentId",

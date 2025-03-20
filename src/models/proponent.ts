@@ -13,7 +13,7 @@ export enum ProponentStatus {
   Rejected = "Rejected",
 }
 
-export class Proponents extends Model {
+export class Proponent extends Model {
   public id!: number;
   public proponentId!: string;
   public departmentId!: number;
@@ -27,7 +27,7 @@ export class Proponents extends Model {
   public readonly createdAt!: Date;
 }
 
-Proponents.init(
+Proponent.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -81,15 +81,15 @@ Proponents.init(
   },
   {
     sequelize,
-    tableName: "proponents",
+    tableName: "proponent",
     timestamps: false,
   }
 );
-Proponents.belongsTo(Department, {
+Proponent.belongsTo(Department, {
   foreignKey: "departmentId",
   as: "department",
 });
-Department.hasMany(Proponents, {
+Department.hasMany(Proponent, {
   foreignKey: "departmentId",
-  as: "proponents",
+  as: "proponent",
 });

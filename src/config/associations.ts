@@ -3,7 +3,7 @@ import { Submission } from "../models/submission";
 import { Evaluator } from "../models/evaluator";
 import { SubmissionEvaluators } from "../models/submissionEvaluators";
 import { SubmissionFiles } from "../models/submissionFiles";
-import { Proponents } from "../models/proponents";
+import { Proponent } from "../models/proponent";
 import { Remarks } from "../models/remarks";
 import {
   GenderEvaluationAssessment,
@@ -11,7 +11,7 @@ import {
 } from "../models/genderEvaluation";
 
 export const setupAssociations = () => {
-  Submission.belongsTo(Proponents, {
+  Submission.belongsTo(Proponent, {
     foreignKey: "proponentId",
     as: "proponent",
   });

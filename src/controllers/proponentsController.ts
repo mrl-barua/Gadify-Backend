@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { Proponents } from "../models/proponents";
+import { Proponent } from "../models/proponent";
 import { Department } from "../models/department";
 import { Campus } from "../models/campus";
 
 export const GetAllProponents = async (req: Request, res: Response) => {
   try {
-    const proponents = await Proponents.findAll({
+    const proponents = await Proponent.findAll({
       where: { isDeleted: false },
       include: [
         {
@@ -36,7 +36,7 @@ export const GetProponentById = async (req: Request, res: Response) => {
   const { id } = req.body;
 
   try {
-    const proponent = await Proponents.findByPk(id, {
+    const proponent = await Proponent.findByPk(id, {
       include: [
         {
           model: Department,
@@ -94,7 +94,7 @@ export const CreateProponents = async (req: Request, res: Response) => {
   }
 
   try {
-    const lastProponents = await Proponents.findOne({
+    const lastProponents = await Proponent.findOne({
       order: [["id", "DESC"]],
     });
 
@@ -109,7 +109,7 @@ export const CreateProponents = async (req: Request, res: Response) => {
           : "OUT-0001"
         : null;
 
-    const proponentsUserNameExist = await Proponents.findOne({
+    const proponentsUserNameExist = await Proponent.findOne({
       where: { userName },
     });
     if (proponentsUserNameExist) {
@@ -118,7 +118,7 @@ export const CreateProponents = async (req: Request, res: Response) => {
       });
     }
 
-    const newProponents = await Proponents.create({
+    const newProponents = await Proponent.create({
       proponentId: newProponentsId,
       departmentId,
       proponentType,
@@ -132,7 +132,7 @@ export const CreateProponents = async (req: Request, res: Response) => {
   } catch (error) {
     const errorMessage = (error as Error).message;
     res.status(500).json({
-      error: "Error creating Proponents",
+      error: "Error creating Proponent",
       messageDetails: errorMessage,
     });
   }
@@ -164,14 +164,14 @@ export const UpdateProponents = async (req: Request, res: Response) => {
   }
 
   try {
-    const proponents = await Proponents.findByPk(id);
+    const proponents = await Proponent.findByPk(id);
     if (!proponents) {
       return res.status(404).json({
-        message: "Proponents not found",
+        message: "Proponent not found",
       });
     }
 
-    const proponentsUserNameExist = await Proponents.findOne({
+    const proponentsUserNameExist = await Proponent.findOne({
       where: { userName },
     });
     if (proponentsUserNameExist && proponentsUserNameExist.id !== Number(id)) {
@@ -202,10 +202,10 @@ export const DeleteProponents = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const proponents = await Proponents.findByPk(id);
+    const proponents = await Proponent.findByPk(id);
     if (!proponents) {
       return res.status(404).json({
-        message: "Proponents not found",
+        message: "Proponent not found",
       });
     }
 
