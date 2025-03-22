@@ -347,6 +347,9 @@ export const EvaluateSubmission = async (req: Request, res: Response) => {
       })
     );
 
+    submission.submissionStatus = "Completed";
+    await submission.save();
+
     res.status(201).json({
       message: "Submission evaluated successfully",
       evaluation,
