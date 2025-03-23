@@ -184,6 +184,7 @@ export const GetSubmissionToBeEvaluated = async (
         {
           model: Submission,
           as: "submission",
+          where: { submissionStatus: "Evaluation" },
           attributes: [
             "id",
             "submissionId",
