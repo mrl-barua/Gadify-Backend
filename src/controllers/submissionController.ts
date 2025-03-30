@@ -7,12 +7,16 @@ import { Evaluator } from "../models/evaluator";
 import { Remarks } from "../models/remarks";
 import { Department } from "../models/department";
 import { Campus } from "../models/campus";
+import { Admin } from "../models/admin";
 import { SubmissionEvaluation } from "../models/submissionEvaluation";
+import { proposalAssignedMail } from "../service/mail-templates/proposalAssignedMail";
+import { proposalAwaitingAssignmentMail } from "../service/mail-templates/proposalAwaitingAssignmentMail";
 import {
   GenderEvaluationAssessment,
   GenderEvaluationSection,
 } from "../models/genderEvaluation";
 import { Op } from "sequelize";
+import { proposalSubmissionMail } from "../service/mail-templates/proposalSubmissionMail";
 
 export const GetAllSubmissions = async (req: Request, res: Response) => {
   try {
@@ -191,6 +195,23 @@ export const CreateSubmission = async (req: Request, res: Response) => {
       ],
     });
 
+    const Admins = await Admin.findAll();
+    Admins.forEach(async (admin) => {
+      proposalAwaitingAssignmentMail(admin.email, proposalTitle);
+    });
+
+    const proponent = await Proponent.findOne({
+      where: { proponentId },
+    });
+
+    if (proponent) {
+      proposalSubmissionMail(
+        proponent.email,
+        proponent.fullName,
+        proposalTitle
+      );
+    }
+
     res.status(201).json(submissionWithFiles);
   } catch (error) {
     const errorMessage = (error as Error).message;
@@ -355,6 +376,18 @@ export const AssignEvaluatorsToSubmission = async (
 
     if (newEvaluators.length > 0) {
       await SubmissionEvaluators.bulkCreate(newEvaluators);
+    }
+
+    const evaluators = await Evaluator.findAll({
+      where: { id: evaluatorIds },
+    });
+
+    for (const evaluator of evaluators) {
+      await proposalAssignedMail(
+        evaluator.email,
+        evaluator.fullName,
+        submission.proposalTitle
+      );
     }
 
     res.status(200).json({

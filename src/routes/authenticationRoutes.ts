@@ -5,6 +5,7 @@ import { Admin } from "../models/admin";
 import { Evaluator } from "../models/evaluator";
 import { BlacklistedToken } from "../models/blacklistedToken";
 import { sendMail } from "../service/mailService";
+import { userSignUpPendinMail } from "../service/mail-templates/userSignUpPendingMail";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
 const router = express.Router();
@@ -108,6 +109,11 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
       userName,
       email,
       password: hashedPassword,
+    });
+
+    const Admins = await Admin.findAll();
+    Admins.forEach(async (admin) => {
+      await userSignUpPendinMail(admin.email);
     });
 
     res

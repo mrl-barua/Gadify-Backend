@@ -7,8 +7,11 @@ import { Submission } from "../models/submission";
 import { SubmissionEvaluation } from "../models/submissionEvaluation";
 import { SubmissionEvaluators } from "../models/submissionEvaluators";
 import { SubmissionFiles } from "../models/submissionFiles";
+import { Admin } from "../models/admin";
 import { Proponent } from "../models/proponent";
 import { Remarks } from "../models/remarks";
+import { proposalEvaluationCompletedMail } from "../service/mail-templates/proposalEvaluationCompletedMail";
+import { proposalSubmissionMail } from "../service/mail-templates/proposalSubmissionMail";
 import {
   GenderEvaluationAssessment,
   GenderEvaluationSection,
@@ -50,7 +53,7 @@ export const GetAllEvaluators = async (req: Request, res: Response) => {
 };
 
 export const CreateEvaluator = async (req: Request, res: Response) => {
-  const { departmentId, officeId, fullName, email, password } = req.body;
+  const { officeId, fullName, email, password } = req.body;
 
   const missingFields = [];
   if (!officeId) missingFields.push("officeId");
@@ -350,6 +353,11 @@ export const EvaluateSubmission = async (req: Request, res: Response) => {
 
     submission.submissionStatus = "Completed";
     await submission.save();
+
+    const Admins = await Admin.findAll();
+    Admins.forEach(async (admin) => {
+      proposalEvaluationCompletedMail(admin.email, submission.proposalTitle);
+    });
 
     res.status(201).json({
       message: "Submission evaluated successfully",
