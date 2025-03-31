@@ -3,8 +3,8 @@ import sequelize from "../config/db";
 import { Department } from "./department";
 
 export enum ProponentType {
-  Inside = "Inside",
-  Outside = "Outside",
+  Insider = "Insider",
+  Outsider = "Outsider",
 }
 
 export enum ProponentStatus {

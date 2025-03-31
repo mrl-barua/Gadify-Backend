@@ -99,11 +99,11 @@ export const CreateProponents = async (req: Request, res: Response) => {
     });
 
     const newProponentsId =
-      proponentType === "Inside"
+      proponentType === "Insider"
         ? lastProponents
           ? `IN-${String(lastProponents.id + 1).padStart(4, "0")}`
           : "IN-0001"
-        : proponentType === "Outside"
+        : proponentType === "Outsider"
         ? lastProponents
           ? `OUT-${String(lastProponents.id + 1).padStart(4, "0")}`
           : "OUT-0001"

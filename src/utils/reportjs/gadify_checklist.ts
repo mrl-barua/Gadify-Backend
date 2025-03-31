@@ -1,12 +1,13 @@
-export const gadify_checklist = `<html lang="en">
+export const gadify_checklist = `
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checklist</title>
-    <style>
+   <style>
+    /* Global Styles */
         @page {
-            size: A4; 
+            size: A4;
             margin-top: 1in;
             margin-bottom: 1in;
         }
@@ -18,48 +19,101 @@ export const gadify_checklist = `<html lang="en">
             padding: 0;
         }
 
+        /* Certificate Header Styles */
+        .certificate_table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid black;
+        }
+
         .certificate_header_table_head th {
-            text-align: center; 
+            text-align: center;
             vertical-align: middle;
             padding: 10px;
+            border: 1px solid black;
         }
 
         .university_logo {
-            width: 20%; 
+            width: 20%;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .university_logo img {
+            display: block;
+            margin: 0 auto;
         }
 
         .university_details {
-            width: 96.7%;
+            width: 80%;
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell;
         }
 
-        .university_details {
-            display: flex;
-            flex-direction: column;
-            justify-content: center; 
-            align-items: center; 
-        }
-
+        .university_details p,
         .university_details h1 {
-            font-size: 0.8em; 
+            text-align: center;
         }
 
         .university_details p {
-            margin: 2px 0;
-            font-size: 0.5em; 
+            font-size: 8px;
+            font-weight: normal;
         }
 
-        .certificate_header th,
-        .certificate_header td {
+        .university_details h1 {
+            font-size: 12px;
+        }
+
+        .university_details a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Project Information Section Styles */
+        .project_information {
+            margin: 0;
+            padding-left: 0.5in;
+            padding-right: 0.5in;
+        }
+
+        .project_information_table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid black;
+        }
+
+        .project_information th,
+        .project_information td {
+            text-align: left;
             border: 1px solid black;
             padding: 8px;
-            text-align: left;
         }
 
-        .certificate_header th {
-            background-color: #FFFFFF;
+        .title_column {
+            width: 30%;
+            font-weight: bold;
+            background-color: #f0f0f0;
         }
 
-        .report_body, .certificate_header {
+        .details_column {
+            width: 70%;
+        }
+
+
+        /* Form Title */
+        .form_title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        /* Report Body Styles */
+        .report_body,
+        .certificate_header {
             margin: 0;
             padding: 0.5in;
         }
@@ -75,14 +129,11 @@ export const gadify_checklist = `<html lang="en">
             margin-top: 20px;
         }
 
+        /* Table Styles */
         .table_body table {
             width: 100%;
             border-collapse: collapse;
             page-break-inside: auto;
-        }
-
-        .table_head {
-            text-align: center;
         }
 
         .table_body th,
@@ -96,86 +147,143 @@ export const gadify_checklist = `<html lang="en">
             background-color: #BEBEBE;
         }
 
-        /* Ensures each table row does not split across pages */
         tr {
             page-break-inside: avoid;
         }
 
-        /* Forces page breaks after the table for cleaner formatting */
         .page-break {
             page-break-before: always;
         }
 
+        /* Ending Details Section */
         .ending_details {
             padding: 10px;
             margin-top: 50px;
             background-color: #BEBEBE;
         }
 
-        .ending_details_header{
+        .ending_details_header {
             text-align: center;
             font-size: 12px;
-            font-weight: bold;}
-                .flex-container {
+            font-weight: bold;
+        }
+
+        /* Flexbox Layouts */
+        .flex-container {
             display: flex;
-            flex-direction: column; 
+            flex-direction: column;
             gap: 10px;
         }
 
         .flex-row {
             display: flex;
-            justify-content: space-between; 
-            align-items: left; 
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
+        /* Scoring and Description */
         .score {
             font-weight: bold;
             text-align: left;
-            width: 15%; 
+            width: 15%;
         }
 
         .description {
             text-align: left;
-            width: 80%; 
+            width: 80%;
         }
-
-    </style>
+</style>
 </head>
 
 <body>
     <section class="certificate_header">
-        <div class="certificate_header_table_body">
-           <table width="100%">
-                <thead class="certificate_header_table_head">
+    <div class="certificate_header_table_body">
+       <table class="certificate_table">
+            <thead class="certificate_header_table_head">
+                <tr>
+                    <th class="university_logo">
+                        <img src="/logo.png" alt="University Logo" width="100"
+                            onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/en/1/18/University_of_Southeastern_Philippines_logo.png';">
+                    </th>
+                    <th class="university_details">
+                        <p>Republic of the Philippines</p>
+                        <h1>University of Southeastern Philippines</h1>
+                        <p>Iñigo St., Bo. Obrero, Davao City 8000</p>
+                        <p>Telephone: (082) 227-8192</p>
+                        <p>Website: <a href="https://www.usep.edu.ph">www.usep.edu.ph</a></p>
+                        <p>Email: <a href="mailto:president@usep.edu.ph">president@usep.edu.ph</a></p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2" class="form_title">GENDER MAINSTREAMING REVIEW FORM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </section>
+    <br></br>
+    <p style="margin-left: 0.5in;">Kindly provide all the required information on this form.</p>
+    
+    <section class="project_information">
+        <div class="project_information_table_body">
+        <table class="project_information_table">
+                <thead>
                     <tr>
-                        <th class="university_logo">
-                            <img src="logo.png" alt="University Logo" width="100">
-                        </th>
-                        <th class="university_details">
-                            <p>Republic of the Philippines</p>
-                            <h1>University of Southeastern Philippines</h1>
-                            <p>Iñigo St., Bo. Obrero, Davao City 8000</p>
-                            <p>Telephone: (082) 227-8192</p>
-                            <p>Website: <a href="https://www.usep.edu.ph">www.usep.edu.ph</a></p>
-                            <p>Email: <a href="mailto:president@usep.edu.ph">president@usep.edu.ph</a></p>
-                        </th>
+                        <th class="title_column">TITLE OF THE PROPOSAL</th>
+                        <th class="details_column">{{evaluatedSubmission.proposalTitle}}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="2">GENDER MAINSTREAMING REVIEW FORM</td>
+                        <td colspan="2"> 
+                          <strong>NAME OF THE PROPONENT/S:   </strong>  
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                             <strong> OFFICE/UNIT: </strong>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                             <strong> PROGRAM/PROJECT DESCRIPTION: </strong>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">
+                             <strong>SCORE: </strong>   
+                        </td>
+                        <td colspan="1">
+                             <strong>REMARKS:  </strong>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                             <strong>REVIEWED BY THE COMMITTEE: </strong>   
+                             <p>Evaluator: {{evaluator.fullName}}</p>
+                             <p>Date Requested: </p>
+                             <p>Date Reviewed: </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                        <br></br>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
+    
     <section class="report_body">
         <header>
-            <h5 class="checklist_header">Summary checklist for the assessment of proposed projec</h1>
+            <h5 class="checklist_header">Summary checklist for the assessment of proposed project</h1>
         </header>
         <main>
             <div class="project_title">
-                <p><strong>PROJECT TITLE:</strong> {{submission.proposalTitle}}</p>
+                <p><strong>TITLE OF THE PROPOSAL:</strong> {{evaluatedSubmission.proposalTitle}}</p>
             </div>
             <div class="summary_checklist">
                 <p><strong>Box 7.</strong> Summary checklist for the assessment of proposed projects</p>
@@ -265,6 +373,7 @@ export const gadify_checklist = `<html lang="en">
 </body>
 
 </html>
+
 `;
 
 export default gadify_checklist;

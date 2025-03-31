@@ -17,6 +17,7 @@ import FileRoutes from "./routes/fileRoutes";
 import MailRoutes from "./routes/mailRoutes";
 import ReportRoutes from "./routes/reportRoutes";
 const jsreport = require("jsreport");
+import path from "path";
 
 const app = express();
 setupAssociations();
@@ -31,6 +32,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(express.static("public"));
 
 const jsreportInstance = jsreport({
   httpPort: 5488,
