@@ -73,7 +73,6 @@ export const CreateProponents = async (req: Request, res: Response) => {
     proponentType,
     proponentStatus,
     fullName,
-    userName,
     email,
     password,
   } = req.body;
@@ -83,7 +82,6 @@ export const CreateProponents = async (req: Request, res: Response) => {
   if (!proponentType) missingFields.push("proponentType");
   if (!proponentStatus) missingFields.push("proponentStatus");
   if (!fullName) missingFields.push("fullName");
-  if (!userName) missingFields.push("userName");
   if (!email) missingFields.push("email");
   if (!password) missingFields.push("password");
 
@@ -109,22 +107,12 @@ export const CreateProponents = async (req: Request, res: Response) => {
           : "OUT-0001"
         : null;
 
-    const proponentsUserNameExist = await Proponent.findOne({
-      where: { userName },
-    });
-    if (proponentsUserNameExist) {
-      return res.status(400).json({
-        message: "Username already exist in the database, please use another",
-      });
-    }
-
     const newProponents = await Proponent.create({
       proponentId: newProponentsId,
       departmentId,
       proponentType,
       proponentStatus,
       fullName,
-      userName,
       email,
       password,
     });
@@ -139,22 +127,14 @@ export const CreateProponents = async (req: Request, res: Response) => {
 };
 
 export const UpdateProponents = async (req: Request, res: Response) => {
-  const {
-    id,
-    departmentId,
-    proponentType,
-    proponentStatus,
-    fullName,
-    userName,
-    email,
-  } = req.body;
+  const { id, departmentId, proponentType, proponentStatus, fullName, email } =
+    req.body;
 
   const missingFields = [];
   if (!departmentId) missingFields.push("departmentId");
   if (!proponentType) missingFields.push("proponentType");
   if (!proponentStatus) missingFields.push("proponentStatus");
   if (!fullName) missingFields.push("fullName");
-  if (!userName) missingFields.push("userName");
   if (!email) missingFields.push("email");
 
   if (missingFields.length > 0) {
@@ -171,21 +151,11 @@ export const UpdateProponents = async (req: Request, res: Response) => {
       });
     }
 
-    const proponentsUserNameExist = await Proponent.findOne({
-      where: { userName },
-    });
-    if (proponentsUserNameExist && proponentsUserNameExist.id !== Number(id)) {
-      return res.status(400).json({
-        message: "Username already exist in the database, please use another",
-      });
-    }
-
     await proponents.update({
       departmentId,
       proponentType,
       proponentStatus,
       fullName,
-      userName,
       email,
     });
     res.json(proponents);

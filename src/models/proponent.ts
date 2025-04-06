@@ -20,7 +20,6 @@ export class Proponent extends Model {
   public proponentType!: ProponentType;
   public proponentStatus!: ProponentStatus;
   public fullName!: string;
-  public userName!: string;
   public email!: string;
   public password!: string;
   public isDeleted!: boolean;
@@ -53,10 +52,6 @@ Proponent.init(
       allowNull: false,
     },
     fullName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    userName: {
       type: DataTypes.STRING,
       allowNull: false,
     },

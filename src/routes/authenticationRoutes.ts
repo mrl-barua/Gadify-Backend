@@ -36,7 +36,7 @@ router.post("/login/proponent", async (req: Request, res: Response) => {
 
   const validPassword = await comparePassword(password, proponent.password);
   if (!validPassword) {
-    return res.status(400).json({ message: "Invalid username or password" });
+    return res.status(400).json({ message: "Invalid email or password" });
   }
 
   const token = generateToken({
@@ -54,7 +54,6 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
     proponentType,
     proponentStatus,
     fullName,
-    userName,
     email,
     password,
   } = req.body;
@@ -64,7 +63,6 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
   if (!proponentType) missingFields.push("proponentType");
   if (!proponentStatus) missingFields.push("proponentStatus");
   if (!fullName) missingFields.push("fullName");
-  if (!userName) missingFields.push("userName");
   if (!email) missingFields.push("email");
   if (!password) missingFields.push("password");
 
@@ -75,6 +73,17 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
   }
 
   try {
+
+    const proponentsEmailExist = await Proponent.findOne({
+      where: { email },
+    });
+    if (proponentsEmailExist) {
+      return res.status(400).json({
+        message: "Email already exist in the database, please use another",
+      });
+    }
+
+
     const lastProponents = await Proponent.findOne({
       order: [["id", "DESC"]],
     });
@@ -90,15 +99,6 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
           : "OUT-0001"
         : null;
 
-    const proponentsUserNameExist = await Proponent.findOne({
-      where: { userName },
-    });
-    if (proponentsUserNameExist) {
-      return res.status(400).json({
-        message: "Username already exist in the database, please use another",
-      });
-    }
-
     const hashedPassword = await hashPassword(password);
     const proponent = await Proponent.create({
       proponentId: newProponentsId,
@@ -106,7 +106,6 @@ router.post("/register/proponent", async (req: Request, res: Response) => {
       proponentType,
       proponentStatus: "Pending",
       fullName,
-      userName,
       email,
       password: hashedPassword,
     });
