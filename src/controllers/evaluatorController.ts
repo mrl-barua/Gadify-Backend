@@ -208,7 +208,6 @@ export const GetSubmissionToBeEvaluated = async (
                 "proponentType",
                 "proponentStatus",
                 "fullName",
-                "userName",
               ],
               include: [
                 {

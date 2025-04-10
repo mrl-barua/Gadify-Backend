@@ -31,7 +31,61 @@ export const GetAllSubmissions = async (req: Request, res: Response) => {
             "proponentType",
             "proponentStatus",
             "fullName",
-            "userName",
+          ],
+          include: [
+            {
+              model: Department,
+              as: "department",
+              attributes: ["departmentId", "campusId", "departmentName"],
+              include: [
+                {
+                  model: Campus,
+                  as: "campus",
+                  attributes: ["campusId", "campusName", "campusAddress"],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          model: Remarks,
+          as: "remarks",
+          attributes: ["remarksId", "remarks"],
+        },
+        {
+          model: SubmissionFiles,
+          as: "submissionFiles",
+          attributes: ["resourcesLink"],
+        },
+      ],
+    });
+    res.json(submissions);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "error getting submissions with details",
+      details: errorMessage,
+    });
+  }
+};
+
+export const GetAllCompletedSubmissions = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const submissions = await Submission.findAll({
+      where: { submissionStatus: "Completed" },
+      include: [
+        {
+          model: Proponent,
+          as: "proponent",
+          attributes: [
+            "proponentId",
+            "departmentId",
+            "proponentType",
+            "proponentStatus",
+            "fullName",
           ],
           include: [
             {
@@ -89,7 +143,6 @@ export const GetSubmissionsByProponentId = async (
             "proponentType",
             "proponentStatus",
             "fullName",
-            "userName",
           ],
           include: [
             {
@@ -274,7 +327,6 @@ export const GetSubmissionById = async (req: Request, res: Response) => {
             "proponentType",
             "proponentStatus",
             "fullName",
-            "userName",
           ],
           include: [
             {

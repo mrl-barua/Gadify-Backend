@@ -3,6 +3,7 @@ import { Router } from "express";
 import {
   CreateSubmission,
   GetAllSubmissions,
+  GetAllCompletedSubmissions,
   GetSubmissionById,
   GetSubmissionsByProponentId,
   AssignEvaluatorsToSubmission,
@@ -16,6 +17,7 @@ import {
 const router = Router();
 
 router.get("/submissions", GetAllSubmissions);
+router.get("/completedSubmissions", GetAllCompletedSubmissions);
 router.post("/submission", CreateSubmission);
 router.post("/submissionById", GetSubmissionById);
 router.post("/submissionByProponentId", GetSubmissionsByProponentId);
