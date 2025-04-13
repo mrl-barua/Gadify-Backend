@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/app.js",
-    "dev": "nodemon src/app.ts"
+    "dev": "nodemon src/app.ts",
+    "seed": "ts-node src/utils/seeder/proponentSeeder.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -23,6 +24,7 @@
     "sharp": "^0.33.5"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.7.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^9.0.7",
