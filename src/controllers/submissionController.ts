@@ -558,6 +558,7 @@ export const GetSubmissionEvaluationById = async (
             "proposalDescription",
             "submissionStatus",
             "remarksId",
+            "totalScore",
           ],
         },
         {
@@ -621,6 +622,7 @@ export const GetSubmissionEvaluation = async (submissionId: number) => {
             "proposalDescription",
             "submissionStatus",
             "remarksId",
+            "totalScore",
           ],
         },
         {

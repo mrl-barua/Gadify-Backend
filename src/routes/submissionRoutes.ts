@@ -3,7 +3,7 @@ import { Router } from "express";
 import {
   CreateSubmission,
   GetAllSubmissions,
-  GetAllCompletedSubmissions,
+     GetAllCompletedSubmissions,
   GetSubmissionById,
   GetSubmissionsByProponentId,
   AssignEvaluatorsToSubmission,
