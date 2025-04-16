@@ -134,18 +134,33 @@ export const GetAllPendingProponents = async (req: Request, res: Response) => {
 };
 
 export const GetAllApprovedProponents = async (req: Request, res: Response) => {
+  const { page = 1, limit = 10, searchFilter = "" } = req.body;
+  const search =
+    searchFilter && String(searchFilter).trim() !== ""
+      ? String(searchFilter).trim()
+      : null;
+
+  const whereCondition: any = {
+    isDeleted: false,
+    proponentStatus: "Approved",
+  };
+
+  if (search) {
+    whereCondition[Op.or] = [
+      { fullName: { [Op.like]: `%${search}%` } },
+      { email: { [Op.like]: `%${search}%` } },
+    ];
+  }
+
   try {
-    const page = parseInt(req.query.page as string) || 1;
-    const limit = parseInt(req.query.limit as string) || 10;
-    const offset = (page - 1) * limit;
+    const pageNumber = Math.max(Number(page), 1);
+    const limitNumber = Math.max(Number(limit), 1);
+    const offset = (Number(pageNumber) - 1) * Number(limitNumber);
 
     const { rows: proponents, count: total } = await Proponent.findAndCountAll({
-      where: {
-        isDeleted: false,
-        proponentStatus: "Approved",
-      },
+      where: whereCondition,
       order: [["id", "DESC"]],
-      limit,
+      limit: Number(limit),
       offset,
       include: [
         {
@@ -162,29 +177,53 @@ export const GetAllApprovedProponents = async (req: Request, res: Response) => {
         },
       ],
     });
-    res.json(proponents);
+
+    const totalPages = Math.ceil(total / Number(limit));
+    const currentPage = Number(page);
+
+    res.json({
+      PendingProponentCount: total,
+      CurrentPage: currentPage,
+      TotalPages: totalPages,
+      Proponents: proponents,
+    });
   } catch (error) {
     const errorMessage = (error as Error).message;
     res.status(500).json({
-      error: "error getting proponents with department",
+      error: "Error getting proponents with department",
       details: errorMessage,
     });
   }
 };
 
 export const GetAllRejectedProponents = async (req: Request, res: Response) => {
+  const { page = 1, limit = 10, searchFilter = "" } = req.body;
+  const search =
+    searchFilter && String(searchFilter).trim() !== ""
+      ? String(searchFilter).trim()
+      : null;
+
+  const whereCondition: any = {
+    isDeleted: false,
+    proponentStatus: "Rejected",
+  };
+
+  if (search) {
+    whereCondition[Op.or] = [
+      { fullName: { [Op.like]: `%${search}%` } },
+      { email: { [Op.like]: `%${search}%` } },
+    ];
+  }
+
   try {
-    const page = parseInt(req.query.page as string) || 1;
-    const limit = parseInt(req.query.limit as string) || 10;
-    const offset = (page - 1) * limit;
+    const pageNumber = Math.max(Number(page), 1);
+    const limitNumber = Math.max(Number(limit), 1);
+    const offset = (Number(pageNumber) - 1) * Number(limitNumber);
 
     const { rows: proponents, count: total } = await Proponent.findAndCountAll({
-      where: {
-        isDeleted: false,
-        proponentStatus: "Rejected",
-      },
+      where: whereCondition,
       order: [["id", "DESC"]],
-      limit,
+      limit: Number(limit),
       offset,
       include: [
         {
@@ -201,11 +240,20 @@ export const GetAllRejectedProponents = async (req: Request, res: Response) => {
         },
       ],
     });
-    res.json(proponents);
+
+    const totalPages = Math.ceil(total / Number(limit));
+    const currentPage = Number(page);
+
+    res.json({
+      PendingProponentCount: total,
+      CurrentPage: currentPage,
+      TotalPages: totalPages,
+      Proponents: proponents,
+    });
   } catch (error) {
     const errorMessage = (error as Error).message;
     res.status(500).json({
-      error: "error getting proponents with department",
+      error: "Error getting proponents with department",
       details: errorMessage,
     });
   }
