@@ -182,7 +182,7 @@ export const GetAllApprovedProponents = async (req: Request, res: Response) => {
     const currentPage = Number(page);
 
     res.json({
-      PendingProponentCount: total,
+      ApprovedProponentCount: total,
       CurrentPage: currentPage,
       TotalPages: totalPages,
       Proponents: proponents,
@@ -245,7 +245,7 @@ export const GetAllRejectedProponents = async (req: Request, res: Response) => {
     const currentPage = Number(page);
 
     res.json({
-      PendingProponentCount: total,
+      RejectedProponentCount: total,
       CurrentPage: currentPage,
       TotalPages: totalPages,
       Proponents: proponents,

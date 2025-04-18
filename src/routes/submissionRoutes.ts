@@ -2,8 +2,11 @@ import { Router } from "express";
 
 import {
   CreateSubmission,
+  GetAllOnHoldSubmissions,
+  GetAllForEvaluationSubmissions,
+  GetAllForCorrectionSubmissions,
   GetAllSubmissions,
-     GetAllCompletedSubmissions,
+  GetAllCompletedSubmissions,
   GetSubmissionById,
   GetSubmissionsByProponentId,
   AssignEvaluatorsToSubmission,
@@ -17,7 +20,10 @@ import {
 const router = Router();
 
 router.get("/submissions", GetAllSubmissions);
-router.get("/completedSubmissions", GetAllCompletedSubmissions);
+router.post("/onHoldSubmissions", GetAllOnHoldSubmissions);
+router.post("/forEvaluationSubmissions", GetAllForEvaluationSubmissions);
+router.post("/forCorrectionSubmissions", GetAllForCorrectionSubmissions);
+router.post("/completedSubmissions", GetAllCompletedSubmissions);
 router.post("/submission", CreateSubmission);
 router.post("/submissionById", GetSubmissionById);
 router.post("/submissionByProponentId", GetSubmissionsByProponentId);
