@@ -83,8 +83,9 @@ export const GetAllOnHoldSubmissions = async (req: Request, res: Response) => {
 
   if (search) {
     whereCondition[Op.or] = [
-      { fullName: { [Op.like]: `%${search}%` } },
-      { email: { [Op.like]: `%${search}%` } },
+      { submissionId: { [Op.like]: `%${search}%` } },
+      { proposalTitle: { [Op.like]: `%${search}%` } },
+      { proposalDescription: { [Op.like]: `%${search}%` } },
     ];
   }
   try {
@@ -98,6 +99,7 @@ export const GetAllOnHoldSubmissions = async (req: Request, res: Response) => {
         order: [["id", "DESC"]],
         limit: Number(limit),
         offset,
+        distinct: true,
         include: [
           {
             model: Proponent,
@@ -137,7 +139,7 @@ export const GetAllOnHoldSubmissions = async (req: Request, res: Response) => {
         ],
       });
     const totalPages = Math.ceil(total / Number(limit));
-    const currentPage = Number(page);
+    const currentPage = pageNumber > totalPages ? totalPages : pageNumber;
 
     res.json({
       CompletedProponentCount: total,
@@ -170,8 +172,9 @@ export const GetAllForEvaluationSubmissions = async (
 
   if (search) {
     whereCondition[Op.or] = [
-      { fullName: { [Op.like]: `%${search}%` } },
-      { email: { [Op.like]: `%${search}%` } },
+      { submissionId: { [Op.like]: `%${search}%` } },
+      { proposalTitle: { [Op.like]: `%${search}%` } },
+      { proposalDescription: { [Op.like]: `%${search}%` } },
     ];
   }
   try {
@@ -185,6 +188,7 @@ export const GetAllForEvaluationSubmissions = async (
         order: [["id", "DESC"]],
         limit: Number(limit),
         offset,
+        distinct: true,
         include: [
           {
             model: Proponent,
@@ -257,8 +261,9 @@ export const GetAllForCorrectionSubmissions = async (
 
   if (search) {
     whereCondition[Op.or] = [
-      { fullName: { [Op.like]: `%${search}%` } },
-      { email: { [Op.like]: `%${search}%` } },
+      { submissionId: { [Op.like]: `%${search}%` } },
+      { proposalTitle: { [Op.like]: `%${search}%` } },
+      { proposalDescription: { [Op.like]: `%${search}%` } },
     ];
   }
   try {
@@ -272,6 +277,7 @@ export const GetAllForCorrectionSubmissions = async (
         order: [["id", "DESC"]],
         limit: Number(limit),
         offset,
+        distinct: true,
         include: [
           {
             model: Proponent,
@@ -344,8 +350,9 @@ export const GetAllCompletedSubmissions = async (
 
   if (search) {
     whereCondition[Op.or] = [
-      { fullName: { [Op.like]: `%${search}%` } },
-      { email: { [Op.like]: `%${search}%` } },
+      { submissionId: { [Op.like]: `%${search}%` } },
+      { proposalTitle: { [Op.like]: `%${search}%` } },
+      { proposalDescription: { [Op.like]: `%${search}%` } },
     ];
   }
   try {
@@ -359,6 +366,7 @@ export const GetAllCompletedSubmissions = async (
         order: [["id", "DESC"]],
         limit: Number(limit),
         offset,
+        distinct: true,
         include: [
           {
             model: Proponent,
