@@ -29,6 +29,17 @@ const seedProponents = async (numProponents: number = 5) => {
           ? `IN-${String(lastId + i + 1).padStart(4, "0")}`
           : `OUT-${String(lastId + i + 1).padStart(4, "0")}`;
 
+      const existingId = await Proponent.findOne({
+        where: { proponentId: generatedId },
+      });
+
+      if (existingId) {
+        console.warn(
+          `ProponentId already exists: ${generatedId} - Skipping...`
+        );
+        continue;
+      }
+
       const hashedPassword = await hashPassword(password);
 
       const proponent = await Proponent.create({

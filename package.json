@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "node dist/app.js",
     "dev": "nodemon src/app.ts",
-    "seed": "ts-node src/utils/seeder/proponentSeeder.ts"
+    "seed": "ts-node src/utils/seeder/index.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
