@@ -9,6 +9,7 @@ import { Department } from "../models/department";
 import { Campus } from "../models/campus";
 import { Admin } from "../models/admin";
 import { SubmissionEvaluation } from "../models/submissionEvaluation";
+import { SubmissionHistory } from "../models/submissionHistory";
 import { proposalAssignedMail } from "../service/mail-templates/proposalAssignedMail";
 import { proposalAwaitingAssignmentMail } from "../service/mail-templates/proposalAwaitingAssignmentMail";
 import {
@@ -57,6 +58,13 @@ export const GetAllSubmissions = async (req: Request, res: Response) => {
           model: SubmissionFiles,
           as: "submissionFiles",
           attributes: ["resourcesLink"],
+        },
+        {
+          model: SubmissionHistory,
+          as: "submissionHistory",
+          attributes: ["id", "timestamp", "description", "changedBy"],
+          separate: true,
+          order: [["timestamp", "DESC"]],
         },
       ],
     });
@@ -135,6 +143,13 @@ export const GetAllOnHoldSubmissions = async (req: Request, res: Response) => {
             model: SubmissionFiles,
             as: "submissionFiles",
             attributes: ["resourcesLink"],
+          },
+          {
+            model: SubmissionHistory,
+            as: "submissionHistory",
+            attributes: ["id", "timestamp", "description", "changedBy"],
+            separate: true,
+            order: [["timestamp", "DESC"]],
           },
         ],
       });
@@ -225,6 +240,13 @@ export const GetAllForEvaluationSubmissions = async (
             as: "submissionFiles",
             attributes: ["resourcesLink"],
           },
+          {
+            model: SubmissionHistory,
+            as: "submissionHistory",
+            attributes: ["id", "timestamp", "description", "changedBy"],
+            separate: true,
+            order: [["timestamp", "DESC"]],
+          },
         ],
       });
     const totalPages = Math.ceil(total / Number(limit));
@@ -313,6 +335,13 @@ export const GetAllForCorrectionSubmissions = async (
             model: SubmissionFiles,
             as: "submissionFiles",
             attributes: ["resourcesLink"],
+          },
+          {
+            model: SubmissionHistory,
+            as: "submissionHistory",
+            attributes: ["id", "timestamp", "description", "changedBy"],
+            separate: true,
+            order: [["timestamp", "DESC"]],
           },
         ],
       });
@@ -403,6 +432,13 @@ export const GetAllCompletedSubmissions = async (
             as: "submissionFiles",
             attributes: ["resourcesLink"],
           },
+          {
+            model: SubmissionHistory,
+            as: "submissionHistory",
+            attributes: ["id", "timestamp", "description", "changedBy"],
+            separate: true,
+            order: [["timestamp", "DESC"]],
+          },
         ],
       });
     const totalPages = Math.ceil(total / Number(limit));
@@ -419,6 +455,74 @@ export const GetAllCompletedSubmissions = async (
     res.status(500).json({
       error: "error getting submissions with details",
       details: errorMessage,
+    });
+  }
+};
+
+export const GetSubmissionById = async (req: Request, res: Response) => {
+  const { Id } = req.body;
+
+  try {
+    const submission = await Submission.findOne({
+      where: { id: Id },
+      include: [
+        {
+          model: Proponent,
+          as: "proponent",
+          attributes: [
+            "proponentId",
+            "departmentId",
+            "proponentType",
+            "proponentStatus",
+            "fullName",
+          ],
+          include: [
+            {
+              model: Department,
+              as: "department",
+              attributes: ["departmentId", "campusId", "departmentName"],
+              include: [
+                {
+                  model: Campus,
+                  as: "campus",
+                  attributes: ["campusId", "campusName", "campusAddress"],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          model: Remarks,
+          as: "remarks",
+          attributes: ["remarksId", "remarks"],
+        },
+        {
+          model: SubmissionFiles,
+          as: "submissionFiles",
+          attributes: ["resourcesLink"],
+        },
+        {
+          model: SubmissionHistory,
+          as: "submissionHistory",
+          attributes: ["id", "timestamp", "description", "changedBy"],
+          separate: true,
+          order: [["timestamp", "DESC"]],
+        },
+      ],
+    });
+
+    if (!submission) {
+      return res.status(404).json({
+        message: "Submission not found",
+      });
+    }
+
+    res.json(submission);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error getting submission",
+      messageDetails: errorMessage,
     });
   }
 };
@@ -467,6 +571,13 @@ export const GetSubmissionsByProponentId = async (
           model: SubmissionFiles,
           as: "submissionFiles",
           attributes: ["resourcesLink"],
+        },
+        {
+          model: SubmissionHistory,
+          as: "submissionHistory",
+          attributes: ["id", "timestamp", "description", "changedBy"],
+          separate: true,
+          order: [["timestamp", "DESC"]],
         },
       ],
     });
@@ -553,8 +664,16 @@ export const CreateSubmission = async (req: Request, res: Response) => {
     });
 
     const proponent = await Proponent.findOne({
-      where: { proponentId },
+      where: { id: proponentId },
     });
+
+    if (!proponent) {
+      return res.status(404).json({
+        message: "Proponent not found",
+      });
+    }
+
+    let proponentName = "Unknown Proponent";
 
     if (proponent) {
       proposalSubmissionMail(
@@ -562,7 +681,15 @@ export const CreateSubmission = async (req: Request, res: Response) => {
         proponent.fullName,
         proposalTitle
       );
+      proponentName = proponent.fullName;
     }
+
+    await SubmissionHistory.create({
+      timestamp: new Date(),
+      description: `Submission created with ID: ${newSubmissionId} by Proponent: ${proponentName}`,
+      changedBy: proponentName,
+      submissionId: newSubmission.id,
+    });
 
     res.status(201).json(submissionWithFiles);
   } catch (error) {
@@ -610,76 +737,20 @@ export const AddSubmissionRemarks = async (req: Request, res: Response) => {
   }
 };
 
-export const GetSubmissionById = async (req: Request, res: Response) => {
-  const { Id } = req.body;
-
-  try {
-    const submission = await Submission.findOne({
-      where: { id: Id },
-      include: [
-        {
-          model: Proponent,
-          as: "proponent",
-          attributes: [
-            "proponentId",
-            "departmentId",
-            "proponentType",
-            "proponentStatus",
-            "fullName",
-          ],
-          include: [
-            {
-              model: Department,
-              as: "department",
-              attributes: ["departmentId", "campusId", "departmentName"],
-              include: [
-                {
-                  model: Campus,
-                  as: "campus",
-                  attributes: ["campusId", "campusName", "campusAddress"],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          model: Remarks,
-          as: "remarks",
-          attributes: ["remarksId", "remarks"],
-        },
-        {
-          model: SubmissionFiles,
-          as: "submissionFiles",
-          attributes: ["resourcesLink"],
-        },
-      ],
-    });
-
-    if (!submission) {
-      return res.status(404).json({
-        message: "Submission not found",
-      });
-    }
-
-    res.json(submission);
-  } catch (error) {
-    const errorMessage = (error as Error).message;
-    res.status(500).json({
-      error: "Error getting submission",
-      messageDetails: errorMessage,
-    });
-  }
-};
-
 export const AssignEvaluatorsToSubmission = async (
   req: Request,
   res: Response
 ) => {
-  const { submissionId, evaluatorIds } = req.body;
+  const { submissionId, evaluatorIds, actorName } = req.body;
 
-  if (!submissionId || !evaluatorIds || !Array.isArray(evaluatorIds)) {
+  if (
+    !submissionId ||
+    !evaluatorIds ||
+    !actorName ||
+    !Array.isArray(evaluatorIds)
+  ) {
     return res.status(400).json({
-      message: "submissionId and evaluatorIds are required",
+      message: "submissionId, actorName and evaluatorIds are required",
     });
   }
 
@@ -739,6 +810,13 @@ export const AssignEvaluatorsToSubmission = async (
         evaluator.fullName,
         submission.proposalTitle
       );
+
+      await SubmissionHistory.create({
+        timestamp: new Date(),
+        description: `Evaluator ${evaluator.fullName} assigned to submission with ID: ${submission.submissionId}`,
+        changedBy: actorName,
+        submissionId: submission.id,
+      });
     }
 
     res.status(200).json({
@@ -965,11 +1043,11 @@ export const GetSubmissionEvaluation = async (submissionId: number) => {
 };
 
 export const ApproveSubmission = async (req: Request, res: Response) => {
-  const { submissionId } = req.body;
+  const { submissionId, actorName } = req.body;
 
-  if (!submissionId) {
+  if (!submissionId || !actorName) {
     return res.status(400).json({
-      message: "submissionId is required",
+      message: "submissionId and actorName is required",
     });
   }
 
@@ -987,6 +1065,13 @@ export const ApproveSubmission = async (req: Request, res: Response) => {
     submission.submissionStatus = "Completed";
     await submission.save();
 
+    await SubmissionHistory.create({
+      timestamp: new Date(),
+      description: `Submission approved with ID: ${submission.submissionId} by ${actorName}`,
+      changedBy: "Admin",
+      submissionId: submission.id,
+    });
+
     res.status(200).json({
       message: "Submission approved successfully",
     });
@@ -1000,11 +1085,11 @@ export const ApproveSubmission = async (req: Request, res: Response) => {
 };
 
 export const ForCorrectionSubmission = async (req: Request, res: Response) => {
-  const { submissionId } = req.body;
+  const { submissionId, actorName } = req.body;
 
-  if (!submissionId) {
+  if (!submissionId || !actorName) {
     return res.status(400).json({
-      message: "submissionId is required",
+      message: "submissionId and actorName is required",
     });
   }
 
@@ -1022,6 +1107,13 @@ export const ForCorrectionSubmission = async (req: Request, res: Response) => {
     submission.submissionStatus = "ForCorrection";
     await submission.save();
 
+    await SubmissionHistory.create({
+      timestamp: new Date(),
+      description: `Submission marked for correction with ID: ${submission.submissionId} by ${actorName}`,
+      changedBy: actorName,
+      submissionId: submission.id,
+    });
+
     res.status(200).json({
       message: "Submission marked for correction successfully",
     });
@@ -1035,11 +1127,11 @@ export const ForCorrectionSubmission = async (req: Request, res: Response) => {
 };
 
 export const ForEvaluationSubmission = async (req: Request, res: Response) => {
-  const { submissionId } = req.body;
+  const { submissionId, actorName } = req.body;
 
-  if (!submissionId) {
+  if (!submissionId || !actorName) {
     return res.status(400).json({
-      message: "submissionId is required",
+      message: "submissionId and actorName is required",
     });
   }
 
@@ -1056,6 +1148,13 @@ export const ForEvaluationSubmission = async (req: Request, res: Response) => {
 
     submission.submissionStatus = "Evaluation";
     await submission.save();
+
+    await SubmissionHistory.create({
+      timestamp: new Date(),
+      description: `Submission marked for evaluation with ID: ${submission.submissionId} by ${actorName}`,
+      changedBy: actorName,
+      submissionId: submission.id,
+    });
 
     res.status(200).json({
       message: "Submission marked for evaluation successfully",

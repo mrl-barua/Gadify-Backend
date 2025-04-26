@@ -5,6 +5,7 @@ import { SubmissionEvaluators } from "../models/submissionEvaluators";
 import { SubmissionFiles } from "../models/submissionFiles";
 import { Proponent } from "../models/proponent";
 import { Remarks } from "../models/remarks";
+import { SubmissionHistory } from "../models/submissionHistory";
 import {
   GenderEvaluationAssessment,
   GenderEvaluationSection,
@@ -76,5 +77,16 @@ export const setupAssociations = () => {
   GenderEvaluationAssessment.belongsTo(GenderEvaluationSection, {
     foreignKey: "sectionId",
     as: "section",
+  });
+
+  SubmissionHistory.belongsTo(Submission, {
+    foreignKey: "submissionId",
+    as: "submission",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  });
+  Submission.hasMany(SubmissionHistory, {
+    foreignKey: "submissionId",
+    as: "submissionHistory",
   });
 };
