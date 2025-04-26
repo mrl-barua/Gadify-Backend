@@ -196,6 +196,7 @@ export const GetSubmissionToBeEvaluated = async (
             "proposalTitle",
             "submissionStatus",
             "remarksId",
+            "totalScore",
             "createdAt",
           ],
           include: [

@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/app.js",
-    "dev": "nodemon src/app.ts"
+    "dev": "nodemon src/app.ts",
+    "seed": "ts-node src/utils/seeder/index.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -15,6 +16,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^9.0.2",
     "jsreport": "^4.8.0",
+    "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.12.0",
     "nodemailer": "^6.9.16",
@@ -23,6 +25,7 @@
     "sharp": "^0.33.5"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.7.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^9.0.7",

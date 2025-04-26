@@ -17,6 +17,7 @@ import {
 } from "../models/genderEvaluation";
 import { Op } from "sequelize";
 import { proposalSubmissionMail } from "../service/mail-templates/proposalSubmissionMail";
+import { compileFunction } from "vm";
 
 export const GetAllSubmissions = async (req: Request, res: Response) => {
   try {
@@ -69,52 +70,350 @@ export const GetAllSubmissions = async (req: Request, res: Response) => {
   }
 };
 
+export const GetAllOnHoldSubmissions = async (req: Request, res: Response) => {
+  const { page = 1, limit = 10, searchFilter = "" } = req.body;
+  const search =
+    searchFilter && String(searchFilter).trim() !== ""
+      ? String(searchFilter).trim()
+      : null;
+
+  const whereCondition: any = {
+    submissionStatus: "OnHold",
+  };
+
+  if (search) {
+    whereCondition[Op.or] = [
+      { submissionId: { [Op.like]: `%${search}%` } },
+      { proposalTitle: { [Op.like]: `%${search}%` } },
+      { proposalDescription: { [Op.like]: `%${search}%` } },
+    ];
+  }
+  try {
+    const pageNumber = Math.max(Number(page), 1);
+    const limitNumber = Math.max(Number(limit), 1);
+    const offset = (Number(pageNumber) - 1) * Number(limitNumber);
+
+    const { rows: submissions, count: total } =
+      await Submission.findAndCountAll({
+        where: whereCondition,
+        order: [["id", "DESC"]],
+        limit: Number(limit),
+        offset,
+        distinct: true,
+        include: [
+          {
+            model: Proponent,
+            as: "proponent",
+            attributes: [
+              "proponentId",
+              "departmentId",
+              "proponentType",
+              "proponentStatus",
+              "fullName",
+            ],
+            include: [
+              {
+                model: Department,
+                as: "department",
+                attributes: ["departmentId", "campusId", "departmentName"],
+                include: [
+                  {
+                    model: Campus,
+                    as: "campus",
+                    attributes: ["campusId", "campusName", "campusAddress"],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            model: Remarks,
+            as: "remarks",
+            attributes: ["remarksId", "remarks"],
+          },
+          {
+            model: SubmissionFiles,
+            as: "submissionFiles",
+            attributes: ["resourcesLink"],
+          },
+        ],
+      });
+    const totalPages = Math.ceil(total / Number(limit));
+    const currentPage = pageNumber > totalPages ? totalPages : pageNumber;
+
+    res.json({
+      CompletedProponentCount: total,
+      CurrentPage: currentPage,
+      TotalPages: totalPages,
+      Submissions: submissions,
+    });
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "error getting submissions with details",
+      details: errorMessage,
+    });
+  }
+};
+
+export const GetAllForEvaluationSubmissions = async (
+  req: Request,
+  res: Response
+) => {
+  const { page = 1, limit = 10, searchFilter = "" } = req.body;
+  const search =
+    searchFilter && String(searchFilter).trim() !== ""
+      ? String(searchFilter).trim()
+      : null;
+
+  const whereCondition: any = {
+    submissionStatus: "Evaluation",
+  };
+
+  if (search) {
+    whereCondition[Op.or] = [
+      { submissionId: { [Op.like]: `%${search}%` } },
+      { proposalTitle: { [Op.like]: `%${search}%` } },
+      { proposalDescription: { [Op.like]: `%${search}%` } },
+    ];
+  }
+  try {
+    const pageNumber = Math.max(Number(page), 1);
+    const limitNumber = Math.max(Number(limit), 1);
+    const offset = (Number(pageNumber) - 1) * Number(limitNumber);
+
+    const { rows: submissions, count: total } =
+      await Submission.findAndCountAll({
+        where: whereCondition,
+        order: [["id", "DESC"]],
+        limit: Number(limit),
+        offset,
+        distinct: true,
+        include: [
+          {
+            model: Proponent,
+            as: "proponent",
+            attributes: [
+              "proponentId",
+              "departmentId",
+              "proponentType",
+              "proponentStatus",
+              "fullName",
+            ],
+            include: [
+              {
+                model: Department,
+                as: "department",
+                attributes: ["departmentId", "campusId", "departmentName"],
+                include: [
+                  {
+                    model: Campus,
+                    as: "campus",
+                    attributes: ["campusId", "campusName", "campusAddress"],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            model: Remarks,
+            as: "remarks",
+            attributes: ["remarksId", "remarks"],
+          },
+          {
+            model: SubmissionFiles,
+            as: "submissionFiles",
+            attributes: ["resourcesLink"],
+          },
+        ],
+      });
+    const totalPages = Math.ceil(total / Number(limit));
+    const currentPage = Number(page);
+
+    res.json({
+      CompletedProponentCount: total,
+      CurrentPage: currentPage,
+      TotalPages: totalPages,
+      Submissions: submissions,
+    });
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "error getting submissions with details",
+      details: errorMessage,
+    });
+  }
+};
+
+export const GetAllForCorrectionSubmissions = async (
+  req: Request,
+  res: Response
+) => {
+  const { page = 1, limit = 10, searchFilter = "" } = req.body;
+  const search =
+    searchFilter && String(searchFilter).trim() !== ""
+      ? String(searchFilter).trim()
+      : null;
+
+  const whereCondition: any = {
+    submissionStatus: "ForCorrection",
+  };
+
+  if (search) {
+    whereCondition[Op.or] = [
+      { submissionId: { [Op.like]: `%${search}%` } },
+      { proposalTitle: { [Op.like]: `%${search}%` } },
+      { proposalDescription: { [Op.like]: `%${search}%` } },
+    ];
+  }
+  try {
+    const pageNumber = Math.max(Number(page), 1);
+    const limitNumber = Math.max(Number(limit), 1);
+    const offset = (Number(pageNumber) - 1) * Number(limitNumber);
+
+    const { rows: submissions, count: total } =
+      await Submission.findAndCountAll({
+        where: whereCondition,
+        order: [["id", "DESC"]],
+        limit: Number(limit),
+        offset,
+        distinct: true,
+        include: [
+          {
+            model: Proponent,
+            as: "proponent",
+            attributes: [
+              "proponentId",
+              "departmentId",
+              "proponentType",
+              "proponentStatus",
+              "fullName",
+            ],
+            include: [
+              {
+                model: Department,
+                as: "department",
+                attributes: ["departmentId", "campusId", "departmentName"],
+                include: [
+                  {
+                    model: Campus,
+                    as: "campus",
+                    attributes: ["campusId", "campusName", "campusAddress"],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            model: Remarks,
+            as: "remarks",
+            attributes: ["remarksId", "remarks"],
+          },
+          {
+            model: SubmissionFiles,
+            as: "submissionFiles",
+            attributes: ["resourcesLink"],
+          },
+        ],
+      });
+    const totalPages = Math.ceil(total / Number(limit));
+    const currentPage = Number(page);
+
+    res.json({
+      CompletedProponentCount: total,
+      CurrentPage: currentPage,
+      TotalPages: totalPages,
+      Submissions: submissions,
+    });
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "error getting submissions with details",
+      details: errorMessage,
+    });
+  }
+};
+
 export const GetAllCompletedSubmissions = async (
   req: Request,
   res: Response
 ) => {
+  const { page = 1, limit = 10, searchFilter = "" } = req.body;
+  const search =
+    searchFilter && String(searchFilter).trim() !== ""
+      ? String(searchFilter).trim()
+      : null;
+
+  const whereCondition: any = {
+    submissionStatus: "Completed",
+  };
+
+  if (search) {
+    whereCondition[Op.or] = [
+      { submissionId: { [Op.like]: `%${search}%` } },
+      { proposalTitle: { [Op.like]: `%${search}%` } },
+      { proposalDescription: { [Op.like]: `%${search}%` } },
+    ];
+  }
   try {
-    const submissions = await Submission.findAll({
-      where: { submissionStatus: "Completed" },
-      include: [
-        {
-          model: Proponent,
-          as: "proponent",
-          attributes: [
-            "proponentId",
-            "departmentId",
-            "proponentType",
-            "proponentStatus",
-            "fullName",
-          ],
-          include: [
-            {
-              model: Department,
-              as: "department",
-              attributes: ["departmentId", "campusId", "departmentName"],
-              include: [
-                {
-                  model: Campus,
-                  as: "campus",
-                  attributes: ["campusId", "campusName", "campusAddress"],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          model: Remarks,
-          as: "remarks",
-          attributes: ["remarksId", "remarks"],
-        },
-        {
-          model: SubmissionFiles,
-          as: "submissionFiles",
-          attributes: ["resourcesLink"],
-        },
-      ],
+    const pageNumber = Math.max(Number(page), 1);
+    const limitNumber = Math.max(Number(limit), 1);
+    const offset = (Number(pageNumber) - 1) * Number(limitNumber);
+
+    const { rows: submissions, count: total } =
+      await Submission.findAndCountAll({
+        where: whereCondition,
+        order: [["id", "DESC"]],
+        limit: Number(limit),
+        offset,
+        distinct: true,
+        include: [
+          {
+            model: Proponent,
+            as: "proponent",
+            attributes: [
+              "proponentId",
+              "departmentId",
+              "proponentType",
+              "proponentStatus",
+              "fullName",
+            ],
+            include: [
+              {
+                model: Department,
+                as: "department",
+                attributes: ["departmentId", "campusId", "departmentName"],
+                include: [
+                  {
+                    model: Campus,
+                    as: "campus",
+                    attributes: ["campusId", "campusName", "campusAddress"],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            model: Remarks,
+            as: "remarks",
+            attributes: ["remarksId", "remarks"],
+          },
+          {
+            model: SubmissionFiles,
+            as: "submissionFiles",
+            attributes: ["resourcesLink"],
+          },
+        ],
+      });
+    const totalPages = Math.ceil(total / Number(limit));
+    const currentPage = Number(page);
+
+    res.json({
+      CompletedProponentCount: total,
+      CurrentPage: currentPage,
+      TotalPages: totalPages,
+      Submissions: submissions,
     });
-    res.json(submissions);
   } catch (error) {
     const errorMessage = (error as Error).message;
     res.status(500).json({
@@ -558,6 +857,7 @@ export const GetSubmissionEvaluationById = async (
             "proposalDescription",
             "submissionStatus",
             "remarksId",
+            "totalScore",
           ],
         },
         {
@@ -621,6 +921,7 @@ export const GetSubmissionEvaluation = async (submissionId: number) => {
             "proposalDescription",
             "submissionStatus",
             "remarksId",
+            "totalScore",
           ],
         },
         {

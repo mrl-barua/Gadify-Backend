@@ -17,6 +17,7 @@ import FileRoutes from "./routes/fileRoutes";
 import MailRoutes from "./routes/mailRoutes";
 import ReportRoutes from "./routes/reportRoutes";
 const jsreport = require("jsreport");
+const morgan = require("morgan");
 import path from "path";
 
 const app = express();
@@ -33,6 +34,32 @@ app.use(
 );
 app.use(express.json());
 app.use(express.static("public"));
+app.use(
+  morgan(":method :url :status :res[content-length] - :response-time ms")
+);
+
+app.use((req, res, next) => {
+  const start = Date.now();
+  const originalSend = res.send;
+  let responseBody: any = null;
+
+  res.send = function (body) {
+    responseBody = body;
+    res.send = originalSend;
+    return res.send(body);
+  };
+
+  res.on("finish", () => {
+    const duration = Date.now() - start;
+    console.log(`\n[${new Date().toISOString()}]`);
+    console.log(`${req.method} ${req.originalUrl}`);
+    console.log("Request Body:", req.body);
+    console.log("Response Body:", responseBody);
+    console.log(`Status: ${res.statusCode} (${duration}ms)\n`);
+  });
+
+  next();
+});
 
 const jsreportInstance = jsreport({
   httpPort: 5488,
