@@ -52,7 +52,7 @@ export const GetAllSubmissions = async (req: Request, res: Response) => {
         {
           model: Remarks,
           as: "remarks",
-          attributes: ["remarksId", "remarks"],
+          attributes: ["timestamp", "remarks"],
         },
         {
           model: SubmissionFiles,
@@ -137,7 +137,7 @@ export const GetAllOnHoldSubmissions = async (req: Request, res: Response) => {
           {
             model: Remarks,
             as: "remarks",
-            attributes: ["remarksId", "remarks"],
+            attributes: ["timestamp", "remarks"],
           },
           {
             model: SubmissionFiles,
@@ -233,7 +233,7 @@ export const GetAllForEvaluationSubmissions = async (
           {
             model: Remarks,
             as: "remarks",
-            attributes: ["remarksId", "remarks"],
+            attributes: ["timestamp", "remarks"],
           },
           {
             model: SubmissionFiles,
@@ -329,7 +329,7 @@ export const GetAllForCorrectionSubmissions = async (
           {
             model: Remarks,
             as: "remarks",
-            attributes: ["remarksId", "remarks"],
+            attributes: ["timestamp", "remarks"],
           },
           {
             model: SubmissionFiles,
@@ -425,7 +425,7 @@ export const GetAllCompletedSubmissions = async (
           {
             model: Remarks,
             as: "remarks",
-            attributes: ["remarksId", "remarks"],
+            attributes: ["timestamp", "remarks"],
           },
           {
             model: SubmissionFiles,
@@ -494,7 +494,7 @@ export const GetSubmissionById = async (req: Request, res: Response) => {
         {
           model: Remarks,
           as: "remarks",
-          attributes: ["remarksId", "remarks"],
+          attributes: ["timestamp", "remarks"],
         },
         {
           model: SubmissionFiles,
@@ -565,7 +565,7 @@ export const GetSubmissionsByProponentId = async (
         {
           model: Remarks,
           as: "remarks",
-          attributes: ["remarksId", "remarks"],
+          attributes: ["timestamp", "remarks"],
         },
         {
           model: SubmissionFiles,
@@ -598,7 +598,6 @@ export const CreateSubmission = async (req: Request, res: Response) => {
     proposalTitle,
     proposalDescription,
     submissionStatus,
-    remarksId,
     submissionFiles,
   } = req.body;
 
@@ -636,7 +635,6 @@ export const CreateSubmission = async (req: Request, res: Response) => {
       proposalTitle,
       proposalDescription,
       submissionStatus,
-      remarksId,
     });
 
     if (submissionFiles && Array.isArray(submissionFiles)) {
@@ -696,42 +694,6 @@ export const CreateSubmission = async (req: Request, res: Response) => {
     const errorMessage = (error as Error).message;
     res.status(500).json({
       error: "Error creating Submission",
-      messageDetails: errorMessage,
-    });
-  }
-};
-
-export const AddSubmissionRemarks = async (req: Request, res: Response) => {
-  const { submissionId, remarksId } = req.body;
-
-  if (!submissionId || !remarksId) {
-    return res.status(400).json({
-      message: "submissionId and remarksId are required",
-    });
-  }
-
-  try {
-    const submission = await Submission.findOne({
-      where: { submissionId },
-    });
-
-    if (!submission) {
-      return res.status(404).json({
-        message: "Submission not found",
-      });
-    }
-
-    submission.remarksId = remarksId;
-    await submission.save();
-
-    res.status(200).json({
-      message: "Remarks added successfully",
-      submission,
-    });
-  } catch (error) {
-    const errorMessage = (error as Error).message;
-    res.status(500).json({
-      error: "Error adding remarks",
       messageDetails: errorMessage,
     });
   }
@@ -934,7 +896,7 @@ export const GetSubmissionEvaluationById = async (
             "proposalTitle",
             "proposalDescription",
             "submissionStatus",
-            "remarksId",
+       
             "totalScore",
           ],
         },
@@ -998,7 +960,6 @@ export const GetSubmissionEvaluation = async (submissionId: number) => {
             "proposalTitle",
             "proposalDescription",
             "submissionStatus",
-            "remarksId",
             "totalScore",
           ],
         },
@@ -1085,7 +1046,7 @@ export const ApproveSubmission = async (req: Request, res: Response) => {
 };
 
 export const ForCorrectionSubmission = async (req: Request, res: Response) => {
-  const { submissionId, actorName } = req.body;
+  const { submissionId, actorName, remarks } = req.body;
 
   if (!submissionId || !actorName) {
     return res.status(400).json({
@@ -1114,6 +1075,15 @@ export const ForCorrectionSubmission = async (req: Request, res: Response) => {
       submissionId: submission.id,
     });
 
+    if (remarks.length > 0) {
+      const newRemark = `${actorName}: ${remarks}`;
+      await Remarks.create({
+        timestamp: new Date(),
+        remarks: newRemark,
+        submissionId: submission.id,
+      });
+    }
+
     res.status(200).json({
       message: "Submission marked for correction successfully",
     });
@@ -1127,7 +1097,7 @@ export const ForCorrectionSubmission = async (req: Request, res: Response) => {
 };
 
 export const ForEvaluationSubmission = async (req: Request, res: Response) => {
-  const { submissionId, actorName } = req.body;
+  const { submissionId, actorName, remarks } = req.body;
 
   if (!submissionId || !actorName) {
     return res.status(400).json({
@@ -1155,6 +1125,15 @@ export const ForEvaluationSubmission = async (req: Request, res: Response) => {
       changedBy: actorName,
       submissionId: submission.id,
     });
+
+    if (remarks.length > 0) {
+      const newRemark = `${actorName}: ${remarks}`;
+      await Remarks.create({
+        timestamp: new Date(),
+        remarks: newRemark,
+        submissionId: submission.id,
+      });
+    }
 
     res.status(200).json({
       message: "Submission marked for evaluation successfully",

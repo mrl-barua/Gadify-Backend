@@ -36,7 +36,6 @@ const seedSubmissions = async (count = 20) => {
         proposalTitle: faker.lorem.words(5),
         proposalDescription: faker.lorem.sentences(2),
         submissionStatus,
-        remarksId: null,
       });
 
       const numFiles = faker.number.int({ min: 1, max: 3 });

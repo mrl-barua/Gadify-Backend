@@ -16,7 +16,6 @@ export const setupAssociations = () => {
     foreignKey: "proponentId",
     as: "proponent",
   });
-  Submission.belongsTo(Remarks, { foreignKey: "remarksId", as: "remarks" });
 
   Submission.hasMany(SubmissionFiles, {
     foreignKey: "submissionId",
@@ -88,5 +87,16 @@ export const setupAssociations = () => {
   Submission.hasMany(SubmissionHistory, {
     foreignKey: "submissionId",
     as: "submissionHistory",
+  });
+
+  Remarks.belongsTo(Submission, {
+    foreignKey: "submissionId",
+    as: "submission",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  });
+  Submission.hasMany(Remarks, {
+    foreignKey: "submissionId",
+    as: "remarks",
   });
 };

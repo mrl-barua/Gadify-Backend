@@ -14,7 +14,6 @@ const gadify_mockdata = {
       "An Investigation of Mechanical Vibrations in High-Speed Rotors",
     proposalDescription: "This is the description of proposal 1.",
     submissionStatus: "OnHold",
-    remarksId: null,
   },
   evaluator: {
     id: 1,

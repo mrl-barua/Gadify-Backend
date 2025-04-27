@@ -16,7 +16,6 @@ export class Submission extends Model {
     | "Evaluation"
     | "Completed"
     | "ForCorrection";
-  public remarksId!: number;
   public totalScore!: number;
   public createdAt!: Date;
 }
@@ -64,16 +63,6 @@ Submission.init(
         "ForCorrection"
       ),
       allowNull: false,
-    },
-    remarksId: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: "Remarks",
-        key: "id",
-      },
-      onDelete: "SET NULL",
-      onUpdate: "CASCADE",
     },
     totalScore: {
       type: DataTypes.FLOAT,

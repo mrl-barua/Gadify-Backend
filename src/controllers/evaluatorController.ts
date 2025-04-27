@@ -195,7 +195,7 @@ export const GetSubmissionToBeEvaluated = async (
             "fileType",
             "proposalTitle",
             "submissionStatus",
-            "remarksId",
+  
             "totalScore",
             "createdAt",
           ],
