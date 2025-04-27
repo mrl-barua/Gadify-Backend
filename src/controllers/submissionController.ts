@@ -699,6 +699,101 @@ export const CreateSubmission = async (req: Request, res: Response) => {
   }
 };
 
+export const UpdateSubmission = async (req: Request, res: Response) => {
+  const {
+    id,
+    submissionId,
+    fileType,
+    proposalTitle,
+    proposalDescription,
+    submissionStatus,
+    submissionFiles,
+    actorName,
+  } = req.body;
+
+  const missingFields = [];
+  if (!id) missingFields.push("id");
+  if (!fileType) missingFields.push("fileType");
+  if (!proposalTitle) missingFields.push("proposalTitle");
+  if (!submissionStatus) missingFields.push("submissionStatus");
+
+  if (missingFields.length > 0) {
+    return res.status(400).json({
+      message: `${missingFields.join(", ")} are required`,
+    });
+  }
+
+  if (fileType !== "Link" && fileType !== "File") {
+    return res.status(400).json({
+      message: "fileType must be either 'Link' or 'File'",
+    });
+  }
+
+  try {
+    const existingSubmission = await Submission.findOne({
+      where: { id },
+      include: [{ model: SubmissionFiles, as: "submissionFiles" }],
+    });
+
+    if (!existingSubmission) {
+      return res.status(404).json({
+        message: "Submission not found",
+      });
+    }
+
+    existingSubmission.fileType = fileType;
+    existingSubmission.proposalTitle = proposalTitle;
+    existingSubmission.proposalDescription = proposalDescription;
+    existingSubmission.submissionStatus = submissionStatus;
+    await existingSubmission.save();
+
+    if (submissionFiles && Array.isArray(submissionFiles)) {
+      await SubmissionFiles.destroy({
+        where: { submissionId: existingSubmission.id },
+      });
+
+      const fileRecords = submissionFiles.map((file) => {
+        if (typeof file.resourcesLink !== "string") {
+          throw new Error(`Invalid resourcesLink: ${file.resourcesLink}`);
+        }
+        return {
+          submissionId: existingSubmission.id,
+          resourcesLink: file.resourcesLink,
+        };
+      });
+
+      // Bulk create the new file records
+      await SubmissionFiles.bulkCreate(fileRecords);
+    }
+
+    const updatedSubmission = await Submission.findOne({
+      where: { id: existingSubmission.id },
+      include: [
+        {
+          model: SubmissionFiles,
+          as: "submissionFiles",
+          attributes: ["resourcesLink"],
+        },
+      ],
+    });
+
+    await SubmissionHistory.create({
+      timestamp: new Date(),
+      description: `Submission with ID: ${submissionId} updated. by Proponent: ${actorName}`,
+      changedBy: actorName,
+      submissionId: existingSubmission.id,
+    });
+
+    res.status(200).json(updatedSubmission);
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({
+      error: "Error updating Submission",
+      messageDetails: errorMessage,
+    });
+  }
+};
+
 export const AssignEvaluatorsToSubmission = async (
   req: Request,
   res: Response
@@ -896,7 +991,7 @@ export const GetSubmissionEvaluationById = async (
             "proposalTitle",
             "proposalDescription",
             "submissionStatus",
-       
+
             "totalScore",
           ],
         },

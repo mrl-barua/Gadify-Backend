@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import {
   CreateSubmission,
+  UpdateSubmission,
   GetAllOnHoldSubmissions,
   GetAllForEvaluationSubmissions,
   GetAllForCorrectionSubmissions,
@@ -20,6 +21,7 @@ import {
 const router = Router();
 
 router.get("/submissions", GetAllSubmissions);
+router.put("/updateSubmission", UpdateSubmission);
 router.post("/onHoldSubmissions", GetAllOnHoldSubmissions);
 router.post("/forEvaluationSubmissions", GetAllForEvaluationSubmissions);
 router.post("/forCorrectionSubmissions", GetAllForCorrectionSubmissions);
