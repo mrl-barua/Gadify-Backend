@@ -195,7 +195,6 @@ export const GetSubmissionToBeEvaluated = async (
             "fileType",
             "proposalTitle",
             "submissionStatus",
-  
             "totalScore",
             "createdAt",
           ],
@@ -228,7 +227,7 @@ export const GetSubmissionToBeEvaluated = async (
             {
               model: Remarks,
               as: "remarks",
-              attributes: ["remarksId", "remarks"],
+              attributes: ["timestamp", "remarks"],
             },
             {
               model: SubmissionFiles,
