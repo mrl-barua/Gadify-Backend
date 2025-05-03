@@ -7,7 +7,7 @@ import {
   GetEvaluatorById,
   UpdateEvaluator,
   EvaluateSubmission,
-  UpdateSubmissionTotalScore,
+
   GetSubmissionToBeEvaluated,
 } from "../controllers/evaluatorController";
 
@@ -19,7 +19,6 @@ router.post("/getEvaluatorById", GetEvaluatorById);
 router.put("/updateEvaluator", UpdateEvaluator);
 router.post("/addEvaluatorSignature", AddEvaluatorSignature);
 router.post("/evaluateSubmission", EvaluateSubmission);
-router.post("/updateSubmissionTotalScore", UpdateSubmissionTotalScore);
 router.post("/getSubmissionToBeEvaluated", GetSubmissionToBeEvaluated);
 
 export default router;

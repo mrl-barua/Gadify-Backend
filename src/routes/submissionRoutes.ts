@@ -16,6 +16,7 @@ import {
   ApproveSubmission,
   ForCorrectionSubmission,
   ForEvaluationSubmission,
+  UpdateSubmissionTotalScore,
 } from "../controllers/submissionController";
 
 const router = Router();
@@ -35,5 +36,6 @@ router.post("/getSubmissionEvaluation", GetSubmissionEvaluationById);
 router.post("/approveSubmission", ApproveSubmission);
 router.post("/forCorrectionSubmission", ForCorrectionSubmission);
 router.post("/forEvaluationSubmission", ForEvaluationSubmission);
+router.post("/updateSubmissionTotalScore", UpdateSubmissionTotalScore);
 
 export default router;

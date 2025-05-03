@@ -1268,3 +1268,38 @@ export const ForEvaluationSubmission = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const UpdateSubmissionTotalScore = async (
+  req: Request,
+  res: Response
+) => {
+  const { submissionId, submissionTotalScore } = req.body;
+
+  const submissionRecord = await Submission.findByPk(submissionId);
+
+  if (!submissionRecord) {
+    return res.status(404).json({
+      message: "Submission not found",
+    });
+  }
+  if (!submissionTotalScore) {
+    return res.status(400).json({
+      message: "totalSubmissionScore is required",
+    });
+  }
+
+  try {
+    submissionRecord.totalScore = submissionTotalScore;
+    await submissionRecord.save();
+
+    res.status(200).json({
+      message: "Total score updated successfully",
+      submission: Submission,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: "Error updating total score",
+      messageDetails: (error as Error).message,
+    });
+  }
+};
