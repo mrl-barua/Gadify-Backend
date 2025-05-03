@@ -351,6 +351,7 @@ export const EvaluateSubmission = async (req: Request, res: Response) => {
     );
 
     submission.submissionStatus = "Completed";
+    submission.evaluatedAt = new Date();
     await submission.save();
 
     const Admins = await Admin.findAll();
@@ -370,5 +371,3 @@ export const EvaluateSubmission = async (req: Request, res: Response) => {
     });
   }
 };
-
-
