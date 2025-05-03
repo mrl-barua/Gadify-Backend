@@ -104,7 +104,7 @@ export const GetAllOnHoldSubmissions = async (req: Request, res: Response) => {
     const { rows: submissions, count: total } =
       await Submission.findAndCountAll({
         where: whereCondition,
-        order: [["id", "DESC"]],
+        order: [["id", "ASC"]],
         limit: Number(limit),
         offset,
         distinct: true,
@@ -200,7 +200,7 @@ export const GetAllForEvaluationSubmissions = async (
     const { rows: submissions, count: total } =
       await Submission.findAndCountAll({
         where: whereCondition,
-        order: [["id", "DESC"]],
+        order: [["id", "ASC"]],
         limit: Number(limit),
         offset,
         distinct: true,
@@ -296,7 +296,7 @@ export const GetAllForCorrectionSubmissions = async (
     const { rows: submissions, count: total } =
       await Submission.findAndCountAll({
         where: whereCondition,
-        order: [["id", "DESC"]],
+        order: [["id", "ASC"]],
         limit: Number(limit),
         offset,
         distinct: true,
@@ -392,7 +392,7 @@ export const GetAllCompletedSubmissions = async (
     const { rows: submissions, count: total } =
       await Submission.findAndCountAll({
         where: whereCondition,
-        order: [["id", "DESC"]],
+        order: [["id", "ASC"]],
         limit: Number(limit),
         offset,
         distinct: true,
@@ -993,6 +993,33 @@ export const GetSubmissionEvaluationById = async (
             "submissionStatus",
 
             "totalScore",
+          ],
+          include: [
+            {
+              model: Proponent,
+              as: "proponent",
+              attributes: [
+                "proponentId",
+                "departmentId",
+                "proponentType",
+                "proponentStatus",
+                "fullName",
+              ],
+              include: [
+                {
+                  model: Department,
+                  as: "department",
+                  attributes: ["departmentId", "campusId", "departmentName"],
+                  include: [
+                    {
+                      model: Campus,
+                      as: "campus",
+                      attributes: ["campusId", "campusName", "campusAddress"],
+                    },
+                  ],
+                },
+              ],
+            },
           ],
         },
         {
