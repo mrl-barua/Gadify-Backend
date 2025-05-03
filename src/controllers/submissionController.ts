@@ -1126,11 +1126,11 @@ export const GetSubmissionEvaluation = async (submissionId: number) => {
 };
 
 export const ApproveSubmission = async (req: Request, res: Response) => {
-  const { submissionId, actorName } = req.body;
+  const { submissionId, actorName, fromStatus } = req.body;
 
-  if (!submissionId || !actorName) {
+  if (!submissionId || !actorName || !fromStatus) {
     return res.status(400).json({
-      message: "submissionId and actorName is required",
+      message: "submissionId, actorName and fromStatus is required",
     });
   }
 
@@ -1150,7 +1150,7 @@ export const ApproveSubmission = async (req: Request, res: Response) => {
 
     await SubmissionHistory.create({
       timestamp: new Date(),
-      description: `Submission approved with ID: ${submission.submissionId} by ${actorName}`,
+      description: `Submission with ID: ${submission.submissionId} was approved by ${actorName} (Status changed from '${fromStatus}' to 'Completed')`,
       changedBy: "Admin",
       submissionId: submission.id,
     });
@@ -1168,11 +1168,11 @@ export const ApproveSubmission = async (req: Request, res: Response) => {
 };
 
 export const ForCorrectionSubmission = async (req: Request, res: Response) => {
-  const { submissionId, actorName, remarks } = req.body;
+  const { submissionId, actorName, remarks, fromStatus } = req.body;
 
-  if (!submissionId || !actorName) {
+  if (!submissionId || !actorName || !fromStatus) {
     return res.status(400).json({
-      message: "submissionId and actorName is required",
+      message: "submissionId, actorName and fromStatus is required",
     });
   }
 
@@ -1192,7 +1192,7 @@ export const ForCorrectionSubmission = async (req: Request, res: Response) => {
 
     await SubmissionHistory.create({
       timestamp: new Date(),
-      description: `Submission marked for correction with ID: ${submission.submissionId} by ${actorName}`,
+      description: `Submission marked for correction with ID: ${submission.submissionId} by ${actorName} (Status changed from '${fromStatus}' to 'For Correction')`,
       changedBy: actorName,
       submissionId: submission.id,
     });
@@ -1219,11 +1219,11 @@ export const ForCorrectionSubmission = async (req: Request, res: Response) => {
 };
 
 export const ForEvaluationSubmission = async (req: Request, res: Response) => {
-  const { submissionId, actorName, remarks } = req.body;
+  const { submissionId, actorName, remarks, fromStatus } = req.body;
 
-  if (!submissionId || !actorName) {
+  if (!submissionId || !actorName || !fromStatus) {
     return res.status(400).json({
-      message: "submissionId and actorName is required",
+      message: "submissionId, actorName and fromStatus is required",
     });
   }
 
@@ -1243,7 +1243,7 @@ export const ForEvaluationSubmission = async (req: Request, res: Response) => {
 
     await SubmissionHistory.create({
       timestamp: new Date(),
-      description: `Submission marked for evaluation with ID: ${submission.submissionId} by ${actorName}`,
+      description: `Submission marked for evaluation with ID: ${submission.submissionId} by ${actorName} (Status changed from '${fromStatus}' to 'For Evaluation')`,
       changedBy: actorName,
       submissionId: submission.id,
     });
