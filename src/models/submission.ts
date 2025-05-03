@@ -17,6 +17,7 @@ export class Submission extends Model {
     | "Completed"
     | "ForCorrection";
   public totalScore!: number;
+  public gadScoreRemark!: string;
   public createdAt!: Date;
 }
 
@@ -68,10 +69,24 @@ Submission.init(
       type: DataTypes.FLOAT,
       allowNull: true,
     },
+    gadScoreRemark: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
+      get() {
+        const rawDate = this.getDataValue("createdAt");
+        return rawDate
+          ? new Date(rawDate).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          : null;
+      },
     },
   },
   {

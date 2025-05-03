@@ -1,5 +1,6 @@
 export const gadify_checklist = `
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -238,22 +239,22 @@ export const gadify_checklist = `
                 <tbody>
                     <tr>
                         <td colspan="2"> 
-                          <strong>NAME OF THE PROPONENT/S:   </strong>  
+                          <strong>NAME OF THE PROPONENT/S:   </strong>{{evaluatedSubmission.proponent.fullName}}
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                             <strong> OFFICE/UNIT: </strong>   
+                             <strong> OFFICE/UNIT: </strong>{{evaluatedSubmission.proponent.department.departmentName}}   
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                             <strong> PROGRAM/PROJECT DESCRIPTION: </strong>   
+                             <strong> PROGRAM/PROJECT DESCRIPTION: </strong> {{evaluatedSubmission.proposalDescription}}
                         </td>
                     </tr>
                     <tr>
                         <td colspan="1">
-                             <strong>SCORE: </strong>   
+                             <strong>SCORE: </strong>   {{evaluatedSubmission.totalScore}} 
                         </td>
                         <td colspan="1">
                              <strong>REMARKS:  </strong>   
@@ -324,6 +325,12 @@ export const gadify_checklist = `
                         <td>{{comments}}</td>
                         </tr>
                     {{/each}}
+                    <tr style="background-color: #d3d3d3;">
+                        <td colspan="4"></td>
+                        <td><strong>{{evaluatedSubmission.totalScore}}</strong></td>
+                        <td><strong>{{evaluatedSubmission.gadScoreRemark}}</strong></td>
+                    </tr>
+   
                     </tbody>
                 </table>
             </div>

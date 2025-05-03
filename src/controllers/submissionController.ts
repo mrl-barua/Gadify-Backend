@@ -991,8 +991,9 @@ export const GetSubmissionEvaluationById = async (
             "proposalTitle",
             "proposalDescription",
             "submissionStatus",
-
             "totalScore",
+            "gadScoreRemark",
+            "createdAt",
           ],
           include: [
             {
@@ -1083,6 +1084,34 @@ export const GetSubmissionEvaluation = async (submissionId: number) => {
             "proposalDescription",
             "submissionStatus",
             "totalScore",
+            "gadScoreRemark",
+          ],
+          include: [
+            {
+              model: Proponent,
+              as: "proponent",
+              attributes: [
+                "proponentId",
+                "departmentId",
+                "proponentType",
+                "proponentStatus",
+                "fullName",
+              ],
+              include: [
+                {
+                  model: Department,
+                  as: "department",
+                  attributes: ["departmentId", "campusId", "departmentName"],
+                  include: [
+                    {
+                      model: Campus,
+                      as: "campus",
+                      attributes: ["campusId", "campusName", "campusAddress"],
+                    },
+                  ],
+                },
+              ],
+            },
           ],
         },
         {
@@ -1290,6 +1319,21 @@ export const UpdateSubmissionTotalScore = async (
 
   try {
     submissionRecord.totalScore = submissionTotalScore;
+
+    if (submissionTotalScore >= 0 && submissionTotalScore <= 3.9) {
+      submissionRecord.gadScoreRemark =
+        "GAD is invisible in the project (proposal is returned)";
+    } else if (submissionTotalScore >= 4 && submissionTotalScore <= 7.9) {
+      submissionRecord.gadScoreRemark =
+        " Proposed project has promising GAD prospects (proposal earns a 'conditional pass  pending identification of gender issue/s and strategies and activities to address these,and inclusion of the collection of sex-disaggregated data in the monitoring and evaluation plan).";
+    } else if (submissionTotalScore >= 8.0 && submissionTotalScore <= 14.9) {
+      submissionRecord.gadScoreRemark =
+        "Proposed project is gender-sensitive (proposal passes the GAD test)";
+    } else if (submissionTotalScore >= 15.0 && submissionTotalScore <= 20.0) {
+      submissionRecord.gadScoreRemark =
+        "Proposed project is gender-responsive  (proponent is commended)";
+    }
+
     await submissionRecord.save();
 
     res.status(200).json({

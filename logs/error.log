@@ -24,3 +24,25 @@ Error: Folder with shortid "kx_IBDA" does not exists
   at async C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-core\lib\worker\reporter.js:232:24
   at async processAndResponse (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\advanced-workers\lib\workerHandler.js:41:17) rootId=hslxecnn50cmki3, id=hslxecnn50cmki3
 2025-03-12T12:16:49.816Z - error: Rendering request 2 finished with error in 11 ms rootId=hslxecnn50cmki3, id=hslxecnn50cmki3
+2025-05-03T13:19:28.189Z - error: Error when starting http server on port 5488 Error: listen EADDRINUSE: address already in use :::5488
+    at Server.setupListenHandle [as _listen2] (node:net:1898:16)
+    at listenInCluster (node:net:1946:12)
+    at Server.listen (node:net:2044:7)
+    at C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-05-03T13:19:28.189Z - error: Error occurred during reporter init: Error: listen EADDRINUSE: address already in use :::5488
+    at Server.setupListenHandle [as _listen2] (node:net:1898:16)
+    at listenInCluster (node:net:1946:12)
+    at Server.listen (node:net:2044:7)
+    at C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\barua\OneDrive\Desktop\Gadify-Backend\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
