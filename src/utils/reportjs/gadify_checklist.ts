@@ -1,6 +1,7 @@
 export const gadify_checklist = `
 
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -193,6 +194,10 @@ export const gadify_checklist = `
             text-align: left;
             width: 80%;
         }
+        
+        .page-break {
+            page-break-before: always;
+        }
 </style>
 </head>
 
@@ -254,18 +259,19 @@ export const gadify_checklist = `
                     </tr>
                     <tr>
                         <td colspan="1">
-                             <strong>SCORE: </strong>   {{evaluatedSubmission.totalScore}} 
+                             <strong>SCORE: </strong> {{evaluatedSubmission.totalScore}} 
                         </td>
                         <td colspan="1">
-                             <strong>REMARKS:  </strong>   
+                             <strong>REMARKS: </strong> <br></br/> {{evaluatedSubmission.gadScoreRemark}}    
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                              <strong>REVIEWED BY THE COMMITTEE: </strong>   
                              <p>Evaluator: {{evaluator.fullName}}</p>
-                             <p>Date Requested: </p>
-                             <p>Date Reviewed: </p>
+                            
+                             <p> <strong>Date Requested:  <u>{{evaluatedSubmission.createdAt}}</u></strong></p> 
+                             <p> <strong>Date Reviewed: <u>{{evaluatedSubmission.evaluatedAt}}</u></strong></p>
                         </td>
                     </tr>
                     <tr>
@@ -279,7 +285,7 @@ export const gadify_checklist = `
     </section>
     
     <section class="report_body">
-        <header>
+        <header class="page-break">
             <h5 class="checklist_header">Summary checklist for the assessment of proposed project</h1>
         </header>
         <main>
