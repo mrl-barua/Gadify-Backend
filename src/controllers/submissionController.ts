@@ -67,6 +67,7 @@ export const GetAllSubmissions = async (req: Request, res: Response) => {
           order: [["timestamp", "DESC"]],
         },
       ],
+      order: [["id", "DESC"]],
     });
     res.json(submissions);
   } catch (error) {
@@ -580,6 +581,7 @@ export const GetSubmissionsByProponentId = async (
           order: [["timestamp", "DESC"]],
         },
       ],
+      order: [["id", "DESC"]],
     });
     res.json(submissions);
   } catch (error) {
@@ -779,7 +781,7 @@ export const UpdateSubmission = async (req: Request, res: Response) => {
 
     await SubmissionHistory.create({
       timestamp: new Date(),
-      description: `Submission with ID: ${submissionId} updated. by Proponent: ${actorName}`,
+      description: `Proponent ${actorName} updated the submission with ID: ${submissionId}.`,
       changedBy: actorName,
       submissionId: existingSubmission.id,
     });
@@ -861,16 +863,25 @@ export const AssignEvaluatorsToSubmission = async (
       where: { id: evaluatorIds },
     });
 
-    for (const evaluator of evaluators) {
-      await proposalAssignedMail(
-        evaluator.email,
-        evaluator.fullName,
-        submission.proposalTitle
-      );
+    if (evaluatorIds.length !== 0) {
+      for (const evaluator of evaluators) {
+        await proposalAssignedMail(
+          evaluator.email,
+          evaluator.fullName,
+          submission.proposalTitle
+        );
 
+        await SubmissionHistory.create({
+          timestamp: new Date(),
+          description: `Evaluator ${evaluator.fullName} assigned to submission with ID: ${submission.submissionId}`,
+          changedBy: actorName,
+          submissionId: submission.id,
+        });
+      }
+    } else if (evaluatorIds.length === 0) {
       await SubmissionHistory.create({
         timestamp: new Date(),
-        description: `Evaluator ${evaluator.fullName} assigned to submission with ID: ${submission.submissionId}`,
+        description: `${actorName}  cleared all evaluators assigned to the submission with ID: ${submission.submissionId}.`,
         changedBy: actorName,
         submissionId: submission.id,
       });
