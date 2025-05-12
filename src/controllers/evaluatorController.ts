@@ -10,6 +10,8 @@ import { SubmissionFiles } from "../models/submissionFiles";
 import { Admin } from "../models/admin";
 import { Proponent } from "../models/proponent";
 import { Remarks } from "../models/remarks";
+import { SubmissionHistory } from "../models/submissionHistory";
+import { Op } from "sequelize";
 import { proposalEvaluationCompletedMail } from "../service/mail-templates/proposalEvaluationCompletedMail";
 import { proposalSubmissionMail } from "../service/mail-templates/proposalSubmissionMail";
 import {
@@ -187,7 +189,11 @@ export const GetSubmissionToBeEvaluated = async (
         {
           model: Submission,
           as: "submission",
-          where: { submissionStatus: "Evaluation" },
+          where: {
+            submissionStatus: {
+              [Op.in]: ["Evaluation", "Completed"],
+            },
+          },
           attributes: [
             "id",
             "submissionId",
@@ -292,7 +298,7 @@ export const GetEvaluatorById = async (req: Request, res: Response) => {
 };
 
 export const EvaluateSubmission = async (req: Request, res: Response) => {
-  const { submissionId, evaluatorId, genderAssessments } = req.body;
+  const { submissionId, evaluatorId, genderAssessments, actorName } = req.body;
 
   if (!submissionId || !evaluatorId || !Array.isArray(genderAssessments)) {
     return res.status(400).json({
@@ -357,6 +363,13 @@ export const EvaluateSubmission = async (req: Request, res: Response) => {
     const Admins = await Admin.findAll();
     Admins.forEach(async (admin) => {
       proposalEvaluationCompletedMail(admin.email, submission.proposalTitle);
+    });
+
+    await SubmissionHistory.create({
+      timestamp: new Date(),
+      description: `Evaluator ${actorName} completed and submitted their evaluation for the submission with ID: ${submission.submissionId}. (Status changed from 'For Evaluation' to 'Completed')`,
+      changedBy: actorName,
+      submissionId: submissionId,
     });
 
     res.status(201).json({
