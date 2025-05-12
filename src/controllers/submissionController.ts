@@ -1005,6 +1005,7 @@ export const GetSubmissionEvaluationById = async (
             "totalScore",
             "gadScoreRemark",
             "createdAt",
+            "requestedAt",
             "evaluatedAt",
           ],
           include: [
@@ -1098,6 +1099,7 @@ export const GetSubmissionEvaluation = async (submissionId: number) => {
             "totalScore",
             "gadScoreRemark",
             "createdAt",
+            "requestedAt",
             "evaluatedAt",
           ],
           include: [

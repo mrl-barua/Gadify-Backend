@@ -80,8 +80,15 @@ Submission.init(
       defaultValue: DataTypes.NOW,
       get() {
         const rawDate = this.getDataValue("createdAt");
+        return rawDate ? new Date(rawDate).toLocaleString("en-US", {}) : null;
+      },
+    },
+    requestedAt: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        const rawDate = this.getDataValue("createdAt");
         return rawDate
-          ? new Date(rawDate).toLocaleDateString("en-US", {
+          ? new Date(rawDate).toLocaleString("en-US", {
               year: "numeric",
               month: "long",
               day: "numeric",
@@ -89,6 +96,7 @@ Submission.init(
           : null;
       },
     },
+
     evaluatedAt: {
       type: DataTypes.DATE,
       allowNull: true,

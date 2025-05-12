@@ -270,7 +270,7 @@ export const gadify_checklist = `
                              <strong>REVIEWED BY THE COMMITTEE: </strong>   
                              <p>Evaluator: {{evaluator.fullName}}</p>
                             
-                             <p> <strong>Date Requested:  <u>{{evaluatedSubmission.createdAt}}</u></strong></p> 
+                             <p> <strong>Date Requested:  <u>{{evaluatedSubmission.requestedAt}}</u></strong></p> 
                              <p> <strong>Date Reviewed: <u>{{evaluatedSubmission.evaluatedAt}}</u></strong></p>
                         </td>
                     </tr>
