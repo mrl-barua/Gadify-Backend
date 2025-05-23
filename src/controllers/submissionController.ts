@@ -1001,6 +1001,7 @@ export const GetSubmissionEvaluationById = async (
             "fileType",
             "proposalTitle",
             "proposalDescription",
+            "submissionEvaluators",
             "submissionStatus",
             "totalScore",
             "gadScoreRemark",
@@ -1034,12 +1035,19 @@ export const GetSubmissionEvaluationById = async (
                 },
               ],
             },
+            {
+              model: SubmissionEvaluators,
+              as: "evaluators",
+              attributes: ["id", "submissionId", "evaluatorId"],
+              include: [
+                {
+                  model: Evaluator,
+                  as: "evaluator",
+                  attributes: ["id", "officeId", "fullName", "email"],
+                },
+              ],
+            },
           ],
-        },
-        {
-          model: Evaluator,
-          as: "evaluator",
-          attributes: ["id", "officeId", "fullName", "email"],
         },
         {
           model: GenderEvaluationAssessment,
@@ -1095,6 +1103,7 @@ export const GetSubmissionEvaluation = async (submissionId: number) => {
             "fileType",
             "proposalTitle",
             "proposalDescription",
+            "submissionEvaluators",
             "submissionStatus",
             "totalScore",
             "gadScoreRemark",
@@ -1128,12 +1137,19 @@ export const GetSubmissionEvaluation = async (submissionId: number) => {
                 },
               ],
             },
+            {
+              model: SubmissionEvaluators,
+              as: "evaluators",
+              attributes: ["id", "submissionId", "evaluatorId"],
+              include: [
+                {
+                  model: Evaluator,
+                  as: "evaluator",
+                  attributes: ["id", "officeId", "fullName", "email"],
+                },
+              ],
+            },
           ],
-        },
-        {
-          model: Evaluator,
-          as: "evaluator",
-          attributes: ["id", "officeId", "fullName", "email"],
         },
         {
           model: GenderEvaluationAssessment,

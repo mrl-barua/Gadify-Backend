@@ -1,5 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/db";
+import { SubmissionEvaluators } from "../models/submissionEvaluators";
 import { Proponent } from "./proponent";
 import { Remarks } from "./remarks";
 
@@ -11,6 +12,7 @@ export class Submission extends Model {
   public fileType!: "Link" | "File";
   public proposalTitle!: string;
   public proposalDescription!: string;
+  public submissionEvaluators!: SubmissionEvaluators[];
   public submissionStatus!:
     | "OnHold"
     | "Evaluation"
@@ -56,7 +58,15 @@ Submission.init(
       type: DataTypes.TEXT,
       allowNull: true,
     },
-
+    submissionEvaluators: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        return this.getDataValue("submissionEvaluators");
+      },
+      set(value) {
+        this.setDataValue("submissionEvaluators", value);
+      },
+    },
     submissionStatus: {
       type: DataTypes.ENUM(
         "OnHold",

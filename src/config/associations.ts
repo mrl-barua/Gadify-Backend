@@ -63,6 +63,16 @@ export const setupAssociations = () => {
     as: "submission",
   });
 
+  SubmissionEvaluators.belongsTo(Evaluator, {
+    foreignKey: "evaluatorId",
+    as: "evaluator",
+  });
+
+  SubmissionEvaluators.belongsTo(SubmissionEvaluation, {
+    foreignKey: "submissionEvaluationId",
+    as: "submissionEvaluation",
+  });
+
   Submission.hasMany(SubmissionEvaluators, {
     foreignKey: "submissionId",
     as: "evaluators",

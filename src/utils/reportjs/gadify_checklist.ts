@@ -1,7 +1,5 @@
 export const gadify_checklist = `
 
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -268,8 +266,10 @@ export const gadify_checklist = `
                     <tr>
                         <td colspan="2">
                              <strong>REVIEWED BY THE COMMITTEE: </strong>   
-                             <p>Evaluator: {{evaluator.fullName}}</p>
-                            
+                             <p>Evaluator/s:</p>
+                                {{#each evaluatedSubmission.evaluators}}
+                                    <li style="padding-left: 100px;">{{evaluator.fullName}}</li>
+                                {{/each}}
                              <p> <strong>Date Requested:  <u>{{evaluatedSubmission.requestedAt}}</u></strong></p> 
                              <p> <strong>Date Reviewed: <u>{{evaluatedSubmission.evaluatedAt}}</u></strong></p>
                         </td>
