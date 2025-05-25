@@ -7,7 +7,6 @@ import {
   GetEvaluatorById,
   UpdateEvaluator,
   EvaluateSubmission,
-
   GetSubmissionToBeEvaluated,
 } from "../controllers/evaluatorController";
 

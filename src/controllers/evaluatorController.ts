@@ -185,6 +185,7 @@ export const GetSubmissionToBeEvaluated = async (
   try {
     const evaluationToBeEvaluated = await SubmissionEvaluators.findAll({
       where: { evaluatorId },
+      attributes: ["id", "evaluatorId", "submissionId"], 
       include: [
         {
           model: Submission,
