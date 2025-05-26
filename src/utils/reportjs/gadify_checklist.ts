@@ -233,13 +233,11 @@ export const gadify_checklist = `
     <section class="project_information">
         <div class="project_information_table_body">
         <table class="project_information_table">
-                <thead>
-                    <tr>
+                <tbody>
+                  <tr>
                         <th class="title_column">TITLE OF THE PROPOSAL</th>
                         <th class="details_column">{{evaluatedSubmission.proposalTitle}}</th>
                     </tr>
-                </thead>
-                <tbody>
                     <tr>
                         <td colspan="2"> 
                           <strong>NAME OF THE PROPONENT/S:   </strong>{{evaluatedSubmission.proponent.fullName}}
@@ -289,9 +287,7 @@ export const gadify_checklist = `
             <h5 class="checklist_header">Summary checklist for the assessment of proposed project</h1>
         </header>
         <main>
-            <div class="project_title">
-                <p><strong>TITLE OF THE PROPOSAL:</strong> {{evaluatedSubmission.proposalTitle}}</p>
-            </div>
+   
             <div class="summary_checklist">
                 <p><strong>Box 7.</strong> Summary checklist for the assessment of proposed projects</p>
             </div>
