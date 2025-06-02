@@ -12,6 +12,7 @@ import {
   GetSubmissionsByProponentId,
   AssignEvaluatorsToSubmission,
   GetEvaluatorsBySubmission,
+  GetAssignedEvaluatorsBySubmission,
   GetSubmissionEvaluationById,
   ApproveSubmission,
   ForCorrectionSubmission,
@@ -32,6 +33,7 @@ router.post("/submissionById", GetSubmissionById);
 router.post("/submissionByProponentId", GetSubmissionsByProponentId);
 router.post("/assignEvaluators", AssignEvaluatorsToSubmission);
 router.post("/getEvaluators", GetEvaluatorsBySubmission);
+router.post("/getAssignedEvaluators", GetAssignedEvaluatorsBySubmission);
 router.post("/getSubmissionEvaluation", GetSubmissionEvaluationById);
 router.post("/approveSubmission", ApproveSubmission);
 router.post("/forCorrectionSubmission", ForCorrectionSubmission);

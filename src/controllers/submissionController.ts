@@ -974,6 +974,65 @@ export const GetEvaluatorsBySubmission = async (
   }
 };
 
+export const GetAssignedEvaluatorsBySubmission = async (
+  req: Request,
+  res: Response
+) => {
+  const { submissionId } = req.body;
+
+  if (!submissionId) {
+    return res.status(400).json({
+      message: "Submission ID is required",
+    });
+  }
+
+  try {
+    const submission = await Submission.findOne({
+      where: { id: submissionId },
+    });
+
+    if (!submission) {
+      return res.status(404).json({
+        message: "Submission not found",
+      });
+    }
+
+    const submissionEvaluators = await SubmissionEvaluators.findAll({
+      where: { submissionId },
+      attributes: ["evaluatorId", "createdAt", "updatedAt"],
+    });
+
+    if (submissionEvaluators.length === 0) {
+      return res.status(404).json({
+        message: "No evaluators found for this submission",
+      });
+    }
+
+    const evaluatorIds = submissionEvaluators.map((se) => se.evaluatorId);
+
+    const evaluators = await Evaluator.findAll({
+      where: { id: { [Op.in]: evaluatorIds } },
+    });
+
+    const response = {
+      id: submission.id,
+      submission,
+      evaluatorsId: evaluatorIds,
+      evaluators,
+      createdAt: submissionEvaluators[0].createdAt,
+      updatedAt: submissionEvaluators[0].updatedAt,
+    };
+
+    res.status(200).json(response);
+  } catch (error) {
+    console.error("Error fetching evaluators:", error);
+    res.status(500).json({
+      error: "Error fetching evaluators",
+      messageDetails: (error as Error).message,
+    });
+  }
+};
+
 export const GetSubmissionEvaluationById = async (
   req: Request,
   res: Response
