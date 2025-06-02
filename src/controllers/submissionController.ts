@@ -16,9 +16,10 @@ import {
   GenderEvaluationAssessment,
   GenderEvaluationSection,
 } from "../models/genderEvaluation";
-import { Op } from "sequelize";
+import { Op, QueryTypes } from "sequelize";
 import { proposalSubmissionMail } from "../service/mail-templates/proposalSubmissionMail";
 import { compileFunction } from "vm";
+import sequelize from "../config/db"; // Adjust the path if your sequelize instance is elsewhere
 
 export const GetAllSubmissions = async (req: Request, res: Response) => {
   try {
@@ -64,7 +65,10 @@ export const GetAllSubmissions = async (req: Request, res: Response) => {
           as: "submissionHistory",
           attributes: ["id", "timestamp", "description", "changedBy"],
           separate: true,
-          order: [["timestamp", "DESC"]],
+          order: [
+            ["timestamp", "DESC"],
+            ["id", "DESC"],
+          ],
         },
       ],
       order: [["id", "DESC"]],
@@ -150,7 +154,10 @@ export const GetAllOnHoldSubmissions = async (req: Request, res: Response) => {
             as: "submissionHistory",
             attributes: ["id", "timestamp", "description", "changedBy"],
             separate: true,
-            order: [["timestamp", "DESC"]],
+            order: [
+              ["timestamp", "DESC"],
+              ["id", "DESC"],
+            ],
           },
         ],
       });
@@ -246,7 +253,10 @@ export const GetAllForEvaluationSubmissions = async (
             as: "submissionHistory",
             attributes: ["id", "timestamp", "description", "changedBy"],
             separate: true,
-            order: [["timestamp", "DESC"]],
+            order: [
+              ["timestamp", "DESC"],
+              ["id", "DESC"],
+            ],
           },
         ],
       });
@@ -342,7 +352,10 @@ export const GetAllForCorrectionSubmissions = async (
             as: "submissionHistory",
             attributes: ["id", "timestamp", "description", "changedBy"],
             separate: true,
-            order: [["timestamp", "DESC"]],
+            order: [
+              ["timestamp", "DESC"],
+              ["id", "DESC"],
+            ],
           },
         ],
       });
@@ -438,7 +451,10 @@ export const GetAllCompletedSubmissions = async (
             as: "submissionHistory",
             attributes: ["id", "timestamp", "description", "changedBy"],
             separate: true,
-            order: [["timestamp", "DESC"]],
+            order: [
+              ["timestamp", "DESC"],
+              ["id", "DESC"],
+            ],
           },
         ],
       });
@@ -507,7 +523,10 @@ export const GetSubmissionById = async (req: Request, res: Response) => {
           as: "submissionHistory",
           attributes: ["id", "timestamp", "description", "changedBy"],
           separate: true,
-          order: [["timestamp", "DESC"]],
+          order: [
+            ["timestamp", "DESC"],
+            ["id", "DESC"],
+          ],
         },
       ],
     });
@@ -578,7 +597,10 @@ export const GetSubmissionsByProponentId = async (
           as: "submissionHistory",
           attributes: ["id", "timestamp", "description", "changedBy"],
           separate: true,
-          order: [["timestamp", "DESC"]],
+          order: [
+            ["timestamp", "DESC"],
+            ["id", "DESC"],
+          ],
         },
       ],
       order: [["id", "DESC"]],
@@ -1133,8 +1155,77 @@ export const GetSubmissionEvaluationById = async (
     });
 
     if (!evaluation) {
-      console.error("Evaluation not found");
+      return res.status(404).json({ message: "Evaluation not found" });
     }
+
+    const averageSectionScores = await sequelize.query(
+      `
+      SELECT
+        submissionevaluation.submissionId,
+        genderevaluationassessment.sectionId,
+        ROUND(AVG(genderevaluationassessment.score), 2) AS average_score,
+        genderevaluationsection.isMainSection
+      FROM
+        submissionevaluation
+      LEFT JOIN
+        genderevaluationassessment
+          ON genderevaluationassessment.submissionEvaluationId = submissionevaluation.id
+      LEFT JOIN
+        genderevaluationsection
+          ON genderevaluationsection.id = genderevaluationassessment.sectionId 
+      WHERE
+        submissionevaluation.submissionId = :submissionId
+        AND genderevaluationsection.isMainSection IN (0, 1)
+      GROUP BY
+        submissionevaluation.submissionId,
+        genderevaluationassessment.sectionId,
+        genderevaluationsection.isMainSection
+      ORDER BY
+        genderevaluationassessment.sectionId ASC;
+    `,
+      {
+        replacements: { submissionId },
+        type: QueryTypes.SELECT,
+      }
+    );
+
+    const [averageTotalScore] = await sequelize.query(
+      `
+      SELECT
+	      coalesce(sum(average_score), 0) as AverageTotalScore
+      FROM
+        (
+          SELECT
+            submissionevaluation.submissionId,
+            genderevaluationassessment.sectionId,
+            ROUND(AVG(genderevaluationassessment.score), 2) AS average_score,
+            genderevaluationsection.isMainSection
+          FROM
+            submissionevaluation
+          LEFT JOIN
+            genderevaluationassessment
+            ON genderevaluationassessment.submissionEvaluationId = submissionevaluation.id
+          left join
+            genderevaluationsection
+            on genderevaluationsection.id = genderevaluationassessment.sectionId 
+          WHERE
+            submissionevaluation.submissionId = :submissionId
+            and genderevaluationsection.isMainSection in (1)
+          GROUP BY
+            submissionevaluation.submissionId,
+            genderevaluationassessment.sectionId
+          ORDER BY
+            genderevaluationassessment.sectionId ASC
+          ) as Total;
+    `,
+      {
+        replacements: { submissionId },
+        type: QueryTypes.SELECT,
+      }
+    );
+
+    evaluation.setDataValue("aggregatedScores", averageSectionScores);
+    evaluation.setDataValue("averageTotalScore", averageTotalScore);
 
     res.status(200).json(evaluation);
   } catch (error) {

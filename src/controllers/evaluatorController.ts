@@ -346,6 +346,13 @@ export const EvaluateSubmission = async (req: Request, res: Response) => {
         evaluator.hasEvaluated = true;
         await evaluator.save();
         evaluatorUpdated = true;
+        await SubmissionHistory.create({
+          timestamp: new Date(),
+          description: `Evaluator ${actorName} completed and submitted their evaluation for the submission with ID: ${submission.submissionId}.`,
+          changedBy: actorName,
+          submissionId: submissionId,
+        });
+
         break;
       }
     }
@@ -357,6 +364,13 @@ export const EvaluateSubmission = async (req: Request, res: Response) => {
     if (remainingPending === 0) {
       submission.submissionStatus = "Completed";
       submission.evaluatedAt = new Date();
+      await SubmissionHistory.create({
+        timestamp: new Date(),
+        description: `All evaluators have completed their evaluation for submission ID: ${submission.submissionId}. Status changed from 'For Evaluation' to 'Completed'.`,
+        changedBy: actorName,
+        submissionId: submissionId,
+      });
+
       await submission.save();
     }
 
@@ -392,13 +406,6 @@ export const EvaluateSubmission = async (req: Request, res: Response) => {
     const Admins = await Admin.findAll();
     Admins.forEach(async (admin) => {
       proposalEvaluationCompletedMail(admin.email, submission.proposalTitle);
-    });
-
-    await SubmissionHistory.create({
-      timestamp: new Date(),
-      description: `Evaluator ${actorName} completed and submitted their evaluation for the submission with ID: ${submission.submissionId}. (Status changed from 'For Evaluation' to 'Completed')`,
-      changedBy: actorName,
-      submissionId: submissionId,
     });
 
     res.status(201).json({
