@@ -939,7 +939,7 @@ export const GetEvaluatorsBySubmission = async (
     }
 
     const submissionEvaluators = await SubmissionEvaluators.findAll({
-      where: { submissionId },
+      where: { submissionId, hasEvaluated: false },
       attributes: ["evaluatorId", "createdAt", "updatedAt"],
     });
 

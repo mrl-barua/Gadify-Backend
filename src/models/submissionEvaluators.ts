@@ -5,6 +5,7 @@ export class SubmissionEvaluators extends Model {
   public id!: number;
   public submissionId!: number;
   public evaluatorId!: number;
+  public hasEvaluated!: boolean;
 
   // timestamps
   public readonly createdAt!: Date;
@@ -25,6 +26,11 @@ SubmissionEvaluators.init(
     evaluatorId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    },
+    hasEvaluated: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
   },
   {

@@ -185,7 +185,7 @@ export const GetSubmissionToBeEvaluated = async (
   try {
     const evaluationToBeEvaluated = await SubmissionEvaluators.findAll({
       where: { evaluatorId },
-      attributes: ["id", "evaluatorId", "submissionId"], 
+      attributes: ["id", "evaluatorId", "submissionId"],
       include: [
         {
           model: Submission,
@@ -328,6 +328,38 @@ export const EvaluateSubmission = async (req: Request, res: Response) => {
       });
     }
 
+    const pendingEvaluators = await SubmissionEvaluators.findAll({
+      where: { submissionId, hasEvaluated: false },
+      attributes: [
+        "id",
+        "evaluatorId",
+        "hasEvaluated",
+        "createdAt",
+        "updatedAt",
+      ],
+    });
+
+    let evaluatorUpdated = false;
+
+    for (const evaluator of pendingEvaluators) {
+      if (evaluator.evaluatorId === evaluatorId) {
+        evaluator.hasEvaluated = true;
+        await evaluator.save();
+        evaluatorUpdated = true;
+        break;
+      }
+    }
+
+    const remainingPending = await SubmissionEvaluators.count({
+      where: { submissionId, hasEvaluated: false },
+    });
+
+    if (remainingPending === 0) {
+      submission.submissionStatus = "Completed";
+      submission.evaluatedAt = new Date();
+      await submission.save();
+    }
+
     const evaluation = await SubmissionEvaluation.create({
       submissionId,
       evaluatorId,
@@ -356,10 +388,6 @@ export const EvaluateSubmission = async (req: Request, res: Response) => {
         });
       })
     );
-
-    submission.submissionStatus = "Completed";
-    submission.evaluatedAt = new Date();
-    await submission.save();
 
     const Admins = await Admin.findAll();
     Admins.forEach(async (admin) => {
