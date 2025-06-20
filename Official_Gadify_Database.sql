@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: gadify
+-- Host: 127.0.0.1    Database: Gadify
 -- ------------------------------------------------------
--- Server version	8.3.0
+-- Server version	9.3.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (14,'A-0001','Admin','admin1@example.com','$2a$10$h.fV1xp3EJ.W8ja3BfQsEeSSJzAcFu3552y/SAG9EewJA32Ee2Q6S','2025-02-09 02:52:09');
+INSERT INTO `admin` VALUES (14,'A-0001','Admin','Admin@gmail.com','$2a$10$h.fV1xp3EJ.W8ja3BfQsEeSSJzAcFu3552y/SAG9EewJA32Ee2Q6S','2025-02-09 02:52:09');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -112,7 +112,7 @@ CREATE TABLE `campus` (
 
 LOCK TABLES `campus` WRITE;
 /*!40000 ALTER TABLE `campus` DISABLE KEYS */;
-INSERT INTO `campus` VALUES (1,'C-0001','USeP Obrero','Inigo Street Obrero'),(9,'C-0002','USeP Mabini','Mabini Idk'),(10,'C-0010','USeP Tagum','Tagum Idk'),(11,'C-0011','Main Campus','123 Main St, City A'),(12,'C-0012','Main Campus','123 Main St, City A'),(13,'C-0013','Testdsa','Test Address'),(14,'C-0014','New','New'),(15,'C-0015','Main Campus','123 Main St, City A'),(16,'C-0016','Testdasdsa','testasdasdas');
+INSERT INTO `campus` VALUES (1,'C-0001','USeP Obrero','Iñigo Street, Barangay Obrero, Poblacion District, Davao City, Davao del Sur, 8000, Philippines'),(9,'C-0002','USeP Mabini','Barangay Pindasan, Municipality of Mabini, Davao de Oro (Compostela Valley), Philippines, ZIP 8807 '),(10,'C-0010','USeP Tagum','Apokon, Tagum City, Davao del Norte');
 /*!40000 ALTER TABLE `campus` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -159,7 +159,7 @@ CREATE TABLE `department` (
 
 LOCK TABLES `department` WRITE;
 /*!40000 ALTER TABLE `department` DISABLE KEYS */;
-INSERT INTO `department` VALUES (1,'D-0001',11,'College of Information and Computing'),(2,'D-0002',10,'College of Engineering'),(3,'D-0003',1,'College of Arts and Sciences'),(4,'D-0004',1,'College of Business Administration'),(5,'D-0005',1,'College of Technology'),(6,'D-0006',1,'College of Industrial Technology'),(7,'D-0007',1,'College of Cyber Security'),(8,'D-0008',1,'College of Amazon Web Services'),(9,'D-0009',1,'College of Chill'),(10,'D-0010',1,'test Department'),(11,'D-0011',9,'TEST TREST TEST'),(12,'D-0012',9,'dasdasd'),(13,'D-0013',9,'Teasdasdasdsad'),(14,'D-0014',1,'sdas'),(15,'D-0015',9,'tests'),(16,'D-0016',9,'dasdasdasdasdasdsad'),(17,'D-0017',9,'dasdasdasdasdasdsad'),(18,'D-0018',13,'TEst Test'),(19,'D-0019',1,'test Department');
+INSERT INTO `department` VALUES (1,'D-0001',11,'College of Information and Computing'),(2,'D-0002',10,'College of Engineering'),(3,'D-0003',1,'College of Arts and Sciences'),(4,'D-0004',1,'College of Business Administration'),(5,'D-0005',1,'College of Technology'),(6,'D-0006',1,'College of Industrial Technology');
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -202,7 +202,7 @@ CREATE TABLE `evaluator` (
   UNIQUE KEY `EvaluatorId` (`EvaluatorId`),
   UNIQUE KEY `Email` (`Email`),
   KEY `OfficeId` (`OfficeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -211,7 +211,7 @@ CREATE TABLE `evaluator` (
 
 LOCK TABLES `evaluator` WRITE;
 /*!40000 ALTER TABLE `evaluator` DISABLE KEYS */;
-INSERT INTO `evaluator` VALUES (1,'E-0002',1,'Evaluator','admin1@example.com','$2a$10$h.fV1xp3EJ.W8ja3BfQsEeSSJzAcFu3552y/SAG9EewJA32Ee2Q6S',NULL,'2025-01-12 01:33:29');
+INSERT INTO `evaluator` VALUES (1,'E-0002',1,'Evaluator','Evaluator@gmail.com','$2a$10$h.fV1xp3EJ.W8ja3BfQsEeSSJzAcFu3552y/SAG9EewJA32Ee2Q6S',NULL,'2025-01-12 01:33:29');
 /*!40000 ALTER TABLE `evaluator` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -253,7 +253,7 @@ CREATE TABLE `genderevaluationassessment` (
   PRIMARY KEY (`id`),
   KEY `section_id` (`sectionId`),
   KEY `submission_evaluation_id` (`submissionEvaluationId`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1123 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,7 +262,6 @@ CREATE TABLE `genderevaluationassessment` (
 
 LOCK TABLES `genderevaluationassessment` WRITE;
 /*!40000 ALTER TABLE `genderevaluationassessment` DISABLE KEYS */;
-INSERT INTO `genderevaluationassessment` VALUES (1,3,1,0,0,1,1,'test'),(2,2,1,0,0,1,1,'Test'),(3,4,1,0,0,1,2,'test'),(4,5,1,0,0,0,1,''),(5,1,1,0,0,0,2,''),(6,6,1,0,1,0,0.5,'test'),(7,7,1,0,1,0,0.5,'test'),(8,8,1,0,0,1,2,'test'),(9,9,1,0,0,0,0,'test'),(10,10,1,0,0,0,1.33,''),(11,11,1,0,1,0,0.33,'tet'),(12,12,1,0,0,1,0.67,'test'),(13,13,1,0,1,0,0.33,'test'),(14,14,1,0,0,1,2,'test'),(15,15,1,0,1,0,1,'test'),(16,16,1,0,0,0,1.5,''),(17,17,1,0,0,1,1,'test'),(18,18,1,0,1,0,0.5,'test'),(19,19,1,0,0,0,1.67,''),(20,20,1,0,0,1,0.67,'test'),(21,21,1,0,1,0,0.33,'test'),(22,22,1,0,0,1,0.67,'test'),(23,1,2,0,0,0,2,''),(24,3,2,0,0,1,1,'test'),(25,2,2,0,0,1,1,'Test'),(26,4,2,0,0,1,2,'test'),(27,5,2,0,0,0,2,''),(28,6,2,0,0,1,1,'test'),(29,7,2,0,0,1,1,'test'),(30,8,2,0,1,0,1,'test'),(31,9,2,0,1,0,1,'test'),(32,10,2,0,0,0,0.66,''),(33,11,2,0,1,0,0.33,'tet'),(34,12,2,1,0,0,0,'test'),(35,13,2,0,1,0,0.33,'test'),(36,14,2,0,0,1,2,'test'),(37,15,2,0,1,0,1,'test'),(38,16,2,0,0,0,1.5,''),(39,17,2,0,0,1,1,'test'),(40,18,2,0,1,0,0.5,'test'),(41,19,2,0,0,0,1,''),(42,20,2,0,0,1,0.67,'test'),(43,21,2,0,1,0,0.33,'test'),(44,22,2,1,0,0,0,'test'),(45,1,3,0,0,0,2,''),(46,2,3,0,0,1,1,'Test'),(47,3,3,0,0,1,1,'test'),(48,4,3,0,0,1,2,'test'),(49,5,3,0,0,0,2,''),(50,6,3,0,0,1,1,'test'),(51,7,3,0,0,1,1,'test'),(52,10,3,0,0,0,2,''),(53,8,3,0,0,1,2,'test'),(54,11,3,0,0,1,0.67,'tet'),(55,9,3,0,0,1,2,'test'),(56,12,3,0,0,1,0.67,'test'),(57,13,3,0,0,1,0.67,'test'),(58,14,3,0,0,1,2,'test'),(59,15,3,0,0,1,2,'test'),(60,16,3,0,0,0,2,''),(61,17,3,0,0,1,1,'test'),(62,18,3,0,0,1,1,'test'),(63,19,3,0,0,0,2,''),(64,20,3,0,0,1,0.67,'test'),(65,21,3,0,0,1,0.67,'test'),(66,22,3,0,0,1,0.67,'test');
 /*!40000 ALTER TABLE `genderevaluationassessment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,14 +300,12 @@ DROP TABLE IF EXISTS `office`;
 CREATE TABLE `office` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `OfficeId` varchar(10) NOT NULL,
-  `CampusId` int NOT NULL,
   `DepartmentId` int NOT NULL,
   `OfficeName` varchar(255) NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `OfficeId` (`OfficeId`),
-  KEY `CampusId` (`CampusId`),
   KEY `DepartmentId` (`DepartmentId`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -317,7 +314,7 @@ CREATE TABLE `office` (
 
 LOCK TABLES `office` WRITE;
 /*!40000 ALTER TABLE `office` DISABLE KEYS */;
-INSERT INTO `office` VALUES (1,'O-0001',1,1,'Office of IT'),(2,'O-0002',2,2,'Office of Research');
+INSERT INTO `office` VALUES (1,'O-0001',1,'Office of Internal Affair');
 /*!40000 ALTER TABLE `office` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -355,18 +352,16 @@ CREATE TABLE `proponent` (
   `ProponentType` enum('Insider','Outsider') NOT NULL,
   `ProponentStatus` enum('Pending','Approved','Rejected') NOT NULL,
   `FullName` varchar(60) NOT NULL,
-  `UserName` varchar(45) NOT NULL,
   `Email` varchar(45) NOT NULL,
   `Password` varchar(255) NOT NULL,
   `IsDeleted` tinyint NOT NULL DEFAULT '0',
   `CreatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `ProponentId` (`ProponentId`),
-  UNIQUE KEY `UserName_UNIQUE` (`UserName`),
   UNIQUE KEY `Email_UNIQUE` (`Email`),
   KEY `DepartmentId` (`DepartmentId`),
   KEY `OfficeId` (`OfficeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5376 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -375,7 +370,7 @@ CREATE TABLE `proponent` (
 
 LOCK TABLES `proponent` WRITE;
 /*!40000 ALTER TABLE `proponent` DISABLE KEYS */;
-INSERT INTO `proponent` VALUES (1,'IN-0001',1,1,'Insider','Approved','Proponent','Proponent','admin1@example.com','$2a$10$/sNiaiix0TkXHo9TtekvF.1Js2rcRCbeE1j2xaDWpuG0yET7ENGW2',0,'2025-02-09 02:46:21');
+INSERT INTO `proponent` VALUES (1,'IN-0001',1,1,'Insider','Approved','Proponent','proponent@gmail.com','$2a$10$/sNiaiix0TkXHo9TtekvF.1Js2rcRCbeE1j2xaDWpuG0yET7ENGW2',0,'2025-02-09 02:46:21');
 /*!40000 ALTER TABLE `proponent` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -410,11 +405,11 @@ DROP TABLE IF EXISTS `remarks`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `remarks` (
   `Id` int NOT NULL AUTO_INCREMENT,
-  `RemarksId` varchar(10) NOT NULL,
-  `Remarks` text NOT NULL,
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `RemarksId` (`RemarksId`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `Remarks` text,
+  `SubmissionId` int NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -423,28 +418,8 @@ CREATE TABLE `remarks` (
 
 LOCK TABLES `remarks` WRITE;
 /*!40000 ALTER TABLE `remarks` DISABLE KEYS */;
-INSERT INTO `remarks` VALUES (8,'R-0001','Well-written proposal, pending minor revisions');
 /*!40000 ALTER TABLE `remarks` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = '' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `BeforeInsertRemarks` BEFORE INSERT ON `remarks` FOR EACH ROW BEGIN
-    IF NEW.RemarksId IS NULL THEN
-        SET NEW.RemarksId = CONCAT('R-', LPAD((SELECT IFNULL(MAX(Id), 0) + 1 FROM Remarks), 4, '0'));
-    END IF;
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `submission`
@@ -461,13 +436,14 @@ CREATE TABLE `submission` (
   `ProposalTitle` text NOT NULL,
   `ProposalDescription` text,
   `SubmissionStatus` enum('OnHold','Evaluation','Completed','ForCorrection') NOT NULL,
-  `RemarksId` int DEFAULT NULL,
+  `TotalScore` double DEFAULT '0',
+  `GadScoreRemark` text,
   `CreatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `EvaluatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `SubmissionId` (`SubmissionId`),
-  KEY `ProponentId` (`ProponentId`),
-  KEY `RemarksId` (`RemarksId`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `ProponentId` (`ProponentId`)
+) ENGINE=InnoDB AUTO_INCREMENT=10280 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -476,7 +452,6 @@ CREATE TABLE `submission` (
 
 LOCK TABLES `submission` WRITE;
 /*!40000 ALTER TABLE `submission` DISABLE KEYS */;
-INSERT INTO `submission` VALUES (66,'SUB-0001',1,'File','ts','ts','ForCorrection',NULL,'2025-03-23 00:57:49'),(67,'SUB-0067',26,'File','Mark Title','Mark Description','Evaluation',NULL,'2025-03-24 11:39:04'),(68,'SUB-0068',26,'File','Test','Test','ForCorrection',NULL,'2025-03-24 11:40:12'),(69,'SUB-0069',1,'File','Test','Testg','Completed',NULL,'2025-03-30 00:44:32'),(70,'SUB-0070',1,'File','Nerw','dsada','OnHold',NULL,'2025-03-30 01:07:52'),(71,'SUB-0071',1,'File','dasdasd','asdsadas','OnHold',NULL,'2025-03-30 01:18:50'),(72,'SUB-0072',1,'File','asdasdas','asdasdas','OnHold',NULL,'2025-03-30 01:20:33');
 /*!40000 ALTER TABLE `submission` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -515,7 +490,7 @@ CREATE TABLE `submissionevaluation` (
   PRIMARY KEY (`id`),
   KEY `submissionId` (`submissionId`),
   KEY `evaluatorId` (`evaluatorId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -524,7 +499,6 @@ CREATE TABLE `submissionevaluation` (
 
 LOCK TABLES `submissionevaluation` WRITE;
 /*!40000 ALTER TABLE `submissionevaluation` DISABLE KEYS */;
-INSERT INTO `submissionevaluation` VALUES (1,66,1,'2025-03-23 00:58:56','2025-03-23 00:58:56'),(2,67,16,'2025-03-24 11:46:02','2025-03-24 11:46:02'),(3,69,1,'2025-03-31 15:55:46','2025-03-31 15:55:46');
 /*!40000 ALTER TABLE `submissionevaluation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -539,6 +513,7 @@ CREATE TABLE `submissionevaluator` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `SubmissionId` int NOT NULL,
   `EvaluatorId` int NOT NULL,
+  `hasEvaluated` tinyint NOT NULL DEFAULT '0',
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`),
@@ -546,7 +521,7 @@ CREATE TABLE `submissionevaluator` (
   KEY `FK_EvaluatorId` (`EvaluatorId`),
   CONSTRAINT `FK_EvaluatorId` FOREIGN KEY (`EvaluatorId`) REFERENCES `evaluator` (`Id`),
   CONSTRAINT `FK_SubmissionId` FOREIGN KEY (`SubmissionId`) REFERENCES `submission` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -555,7 +530,6 @@ CREATE TABLE `submissionevaluator` (
 
 LOCK TABLES `submissionevaluator` WRITE;
 /*!40000 ALTER TABLE `submissionevaluator` DISABLE KEYS */;
-INSERT INTO `submissionevaluator` VALUES (1,69,1,'2025-03-31 15:55:13','2025-03-31 15:55:13');
 /*!40000 ALTER TABLE `submissionevaluator` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -573,7 +547,7 @@ CREATE TABLE `submissionfiles` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=20328 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -582,16 +556,43 @@ CREATE TABLE `submissionfiles` (
 
 LOCK TABLES `submissionfiles` WRITE;
 /*!40000 ALTER TABLE `submissionfiles` DISABLE KEYS */;
-INSERT INTO `submissionfiles` VALUES (1,66,'Downloaded-File-13.pdf','2025-03-23 00:57:49','2025-03-23 00:57:49'),(2,67,'Downloaded-File-13(1).pdf','2025-03-24 11:39:04','2025-03-24 11:39:04'),(3,68,'Downloaded-File-14.pdf','2025-03-24 11:40:12','2025-03-24 11:40:12'),(4,69,'BARUA_CV.pdf','2025-03-30 00:44:32','2025-03-30 00:44:32'),(5,70,'Downloaded-File-13(2).pdf','2025-03-30 01:07:52','2025-03-30 01:07:52'),(6,71,'BARUA_CV(1).pdf','2025-03-30 01:18:50','2025-03-30 01:18:50'),(7,72,'Downloaded-File-13(3).pdf','2025-03-30 01:20:33','2025-03-30 01:20:33');
 /*!40000 ALTER TABLE `submissionfiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'gadify'
+-- Table structure for table `submissionhistory`
+--
+
+DROP TABLE IF EXISTS `submissionhistory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `submissionhistory` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `timestamp` datetime NOT NULL,
+  `description` text NOT NULL,
+  `changedBy` varchar(100) NOT NULL,
+  `submissionId` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `submissionId` (`submissionId`),
+  CONSTRAINT `submissionhistory_ibfk_1` FOREIGN KEY (`submissionId`) REFERENCES `submission` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=385 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `submissionhistory`
+--
+
+LOCK TABLES `submissionhistory` WRITE;
+/*!40000 ALTER TABLE `submissionhistory` DISABLE KEYS */;
+/*!40000 ALTER TABLE `submissionhistory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping events for database 'Gadify'
 --
 
 --
--- Dumping routines for database 'gadify'
+-- Dumping routines for database 'Gadify'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -603,4 +604,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-01  1:40:45
+-- Dump completed on 2025-06-21  3:26:57
